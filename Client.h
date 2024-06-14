@@ -11,6 +11,7 @@ string password;
 
 public:
     Client();
+
     ~Client();
 
 };

@@ -15,6 +15,7 @@ string brand;
 string model;
 int year;
 string location;
+int price;
 
 public:
     Vehicle();

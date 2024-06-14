@@ -23,4 +23,5 @@ add_executable(directory_of_cars main.cpp
         Trailer_Bus.cpp
         Trailer_Bus.h
         Trailer_Truck.cpp
-        Trailer_Truck.h)
+        Trailer_Truck.h
+        WrongTypeEx.h)
