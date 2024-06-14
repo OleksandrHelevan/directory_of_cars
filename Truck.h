@@ -2,9 +2,10 @@
 #define DIRECTORY_OF_CARS_TRUCK_H
 
 #include <iostream>
+#include "Vehicle.h"
 using namespace std;
 
-class Truck {
+class Truck :public Vehicle{
 int cargo_capacity;
 
 public:

@@ -20,7 +20,7 @@ istream& operator>>(istream& is, Engine& obj){
     return is;
 }
 
-void Engine::write() {
+void Engine::write_to_file() {
     ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database\Engines.txt)",
                    ios_base::app);
     fout<<capacity<<"\t"<<fuel<<"\t"<<power<<endl;

@@ -1,10 +1,6 @@
 #include <iostream>
-//#include "Client.h"
+#include "User.h"
 #include "Engine.h"
-//#include "Trailer.h"
-//#include "Trailer_Bus.h"
-//#include "Trailer_Car.h"
-//#include "Trailer_Truck.h"
 //#include "Truck.h"
 //#include "Vehicle.h"
 //#include "Car.h"
@@ -12,15 +8,27 @@
 #include "memory"
 //#include "WrongTypeEx.h"
 
+
+using namespace std;
+
+
 void addEngine(){
     unique_ptr <Engine> newEngine {new Engine()};
     cin >> *newEngine;
-    newEngine->write();
+    newEngine->write_to_file();
     cout << *newEngine;
 }
 
-using namespace std;
+void registration(){
+    unique_ptr <User> newUser {new User()};
+    cin >> *newUser;
+    newUser->write_to_file();
+    cout<< *newUser;
+}
+
 int main() {
+    registration();
+
     addEngine();
     return 0;
 }
