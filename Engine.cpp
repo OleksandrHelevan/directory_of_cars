@@ -9,7 +9,7 @@ Engine::Engine(double cap, string& new_fuel, double pow) :capacity{cap},
         fuel{new_fuel},power{pow}{}
 
 ostream &operator<<(ostream& os, const Engine& obj){
-    os<<obj.capacity<<"\t"<<obj.fuel<<"\t"<<obj.power<<endl;
+    os<<obj.capacity<<"\t"<<obj.fuel<<"\t"<<obj.power<<"\t";
     return os;
 }
 

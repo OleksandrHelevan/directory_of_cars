@@ -10,7 +10,11 @@ int cargo_capacity;
 
 public:
     Truck();
-    ~Truck();
+    Truck(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
+          string& bran, string& mod, int new_year, string& loc, int new_price, int cargo);
+    friend ostream &operator<<(ostream &os, const Truck &obj);
+    friend istream &operator>>(istream &is, Truck &obj);
+    ~Truck(){cout<<"truck was deleted";};
 };
 
 

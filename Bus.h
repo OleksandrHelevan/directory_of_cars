@@ -10,7 +10,11 @@ class Bus :public Vehicle {
     int passenger_capacity;
 public:
     Bus();
-    ~Bus();
+    Bus(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
+    string& bran, string& mod, int new_year, string& loc, int new_price, int cap);
+    friend ostream &operator<<(ostream &os, const Bus &obj);
+    friend istream &operator>>(istream  &is, Bus &obj);
+    ~Bus(){cout<<"bus was deleted";};
 };
 
 
