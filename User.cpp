@@ -25,3 +25,22 @@ void User::write_to_file(){
     fout<<name<<"\t"<<surname<<"\t"<<password<<endl;
     fout.close();
 }
+
+bool User::search() {
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)");
+    User A;
+    while(fin>>A){
+        if(A.name==name && A.surname==surname && A.password==password)
+            return true;
+    }
+    return false;
+}
+
+User &User::operator=(const User &rhs) {
+    if(this!=&rhs)
+    {
+        this->surname=rhs.surname;
+        this->name=rhs.name;
+    }
+    return *this;
+}

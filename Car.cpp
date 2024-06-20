@@ -1,4 +1,5 @@
 #include "Car.h"
+#include <fstream>
 
 using namespace std;
 
@@ -14,8 +15,10 @@ ostream &operator<<(ostream &os, const Car &obj){
     os<<obj.wheel_drive<<"\t"<<obj.transmission<<endl;
     return os;
 }
+
 istream &operator>>(istream &is, Car &obj){
     is>>static_cast <Vehicle&>(obj);
     is>>obj.wheel_drive>>obj.transmission;
     return is;
 }
+

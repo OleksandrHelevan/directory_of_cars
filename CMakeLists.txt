@@ -16,4 +16,5 @@ add_executable(directory_of_cars main.cpp
         Bus.h
         Truck.cpp
         Truck.h
-        WrongTypeEx.h)
+        WrongTypeEx.h
+)
