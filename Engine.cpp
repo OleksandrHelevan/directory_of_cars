@@ -16,7 +16,25 @@ ostream &operator<<(ostream& os, const Engine& obj){
 istream& operator>>(istream& is, Engine& obj){
         if (!(is >> obj.capacity)||!(is >> obj.fuel)||!(is >> obj.power))
             throw WrongTypeEx();
-
     return is;
 }
 
+bool Engine::sort_capacity_l(double cap) {
+    return this->capacity <= cap;
+}
+
+bool Engine::sort_power_l(double pow) {
+    return this->power <= pow;
+}
+
+bool Engine::sort_capacity_h(double cap) {
+    return this->capacity >= cap;
+}
+
+bool Engine::sort_power_h(double pow) {
+    return this->power >= pow;
+}
+
+bool Engine::sort_fuel(std::string &fuel1) {
+    return this->fuel==fuel1;
+}

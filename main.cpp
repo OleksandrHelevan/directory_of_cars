@@ -9,7 +9,11 @@
 #include <fstream>
 
 
+
+
 using namespace std;
+
+
 
 void addCar(){
     unique_ptr <Car> newCar {new Car()};
@@ -26,6 +30,7 @@ void addTruck(){
     fout<<*newTruck;
     fout.close();
 }
+
 void addBus(){
     unique_ptr <Bus> newBus { new Bus()};
     cin>>*newBus;
@@ -44,8 +49,11 @@ bool authorization(){
     unique_ptr<string> name{new string{"unknown"}};
     unique_ptr<string> surname{new string{"unknown"}};
     unique_ptr<string> password{new string{"unknown"}};
+    cout<<"Enter your name"<<endl;
     cin>>*name;
+    cout<<"Enter your surname"<<endl;
     cin>>*surname;
+    cout<<"Enter your password"<<endl;
     cin>>*password;
     User newUser(*name, *surname, *password);
     return newUser.search();
@@ -53,9 +61,10 @@ bool authorization(){
 
 
 int main() {
-if(authorization())
-    cout<<"Good";
-else cout<<"Bad";
+    if (authorization())
+        cout << "Супер!";
+    else cout << "Погано!";
 
     return 0;
 }
+

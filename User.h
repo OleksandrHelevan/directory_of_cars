@@ -17,7 +17,7 @@ public:
     User &operator=(const User &rhs);
     void write_to_file();
     bool search();
-    ~User(){cout << name << "obj was deleted"<<endl;};
+    ~User(){cout << name << " obj was deleted"<<endl;};
 
 };
 
