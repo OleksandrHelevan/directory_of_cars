@@ -7,13 +7,43 @@
 #include <memory>
 //#include "WrongTypeEx.h"
 #include <fstream>
-
-
+#include <vector>
+#include <algorithm>
 
 
 using namespace std;
 
+vector<Car> cars_from_file(){
+    shared_ptr<Car> car;
+    vector <Car> cars;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+    while(fin>>*car){
+        cars.push_back(*car);
+    }
+    fin.close();
+    return cars;
+}
 
+vector<Truck> trucks_from_file(){
+    shared_ptr<Truck> truck;
+    vector <Truck> trucks;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    while(fin>>*truck){
+        trucks.push_back(*truck);
+    }
+    fin.close();
+    return trucks;
+}
+
+vector<Bus> buses_from_file(){
+    shared_ptr<Bus> bus;
+    vector<Bus> buses;
+    ifstream fin (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
+    while (fin>>*bus){
+        buses.push_back(*bus);
+    }
+    return buses;
+}
 
 void addCar(){
     unique_ptr <Car> newCar {new Car()};
@@ -61,9 +91,9 @@ bool authorization(){
 
 
 int main() {
-    if (authorization())
-        cout << "Супер!";
-    else cout << "Погано!";
+    vector <Car> cars;
+    cars = cars_from_file();
+    for_each(cars.begin(),cars.end(),[](Car &car){if(car.sort_year_h(2012))cout<<car;});
 
     return 0;
 }

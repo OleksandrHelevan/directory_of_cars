@@ -23,7 +23,7 @@ public:
             string& bran, string& mod, int new_year, string& loc, int new_price);
     friend ostream &operator<<(ostream &os, const Vehicle &obj);
     friend istream &operator>>(istream &is, Vehicle &obj);
-    ~Vehicle(){cout<<"was deleted"<<endl;};
+    ~Vehicle(){};//cout<<"was deleted"<<endl;};
 
     bool sort_capacity_l(double cap);
     bool sort_power_l(double pow);

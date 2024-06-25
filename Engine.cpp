@@ -14,8 +14,7 @@ ostream &operator<<(ostream& os, const Engine& obj){
 }
 
 istream& operator>>(istream& is, Engine& obj){
-        if (!(is >> obj.capacity)||!(is >> obj.fuel)||!(is >> obj.power))
-            throw WrongTypeEx();
+is>>obj.capacity>>obj.fuel>>obj.power;
     return is;
 }
 
