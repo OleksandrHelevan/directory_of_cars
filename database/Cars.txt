@@ -1,2 +1,3 @@
-BMW	X5	black	2017	22500	0	8	2500	Khust	2.5	disel	2000	full	auto
-Ford	Focus	blue	2012	6500	0	6	2000	Uzhhorod	1.7	disel	1800	back	auto	
+BMW		X5		black	2017	22500	0	8	2500	Chernivtsi	2.5	disel	200	full	automatics
+Ford		Focus		blue	2012	6500	0	6	2000	Uzhhorod	1.7	disel	180	back	automatics	
+Mercedes-Benz	G-vagen		black	2020	28000	0	12	3000	Kyiv		2	disel	210	full	mechanics

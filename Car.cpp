@@ -22,5 +22,9 @@ istream &operator>>(istream &is, Car &obj){
     return is;
 }
 
+void Car::getCar () const  {
+    getVehicle();
+    cout<<"Wheel drive: "<<wheel_drive<<"\nTransmission: "<<transmission<<endl;
+}
 
 

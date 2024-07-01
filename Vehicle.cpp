@@ -1,5 +1,6 @@
 #include "Vehicle.h"
 using namespace std;
+#include <iomanip>
 
 Vehicle::Vehicle() :engine{Engine()},weight{0}, fuel_consumption{0},
         mileage{0}, color{"none"}, brand{"none"},model{"none"},
@@ -11,8 +12,8 @@ Vehicle::Vehicle(Engine& new_engine, int weigh, double consumption, int new_mile
                  brand {bran}, model{mod}, year{new_year}, location{loc}, price{new_price} {}
 
 ostream &operator<<(ostream &os, const Vehicle &obj){
-    os<<obj.brand<<"\t"<<obj.model<<"\t"<<obj.color<<"\t"<<obj.year<<"\t"<<obj.price<<"\t"<<obj.mileage<<"\t"
-    <<obj.fuel_consumption<<"\t"<<obj.weight<<"\t"<<obj.location<<"\t"<<obj.engine;
+    os<<obj.brand<<"\t"<<obj.model<<"\t"<<obj.color<<"\t"<<obj.year<<"\t"<<obj.price<<"\t"<<obj.mileage<<
+    "\t"<<obj.fuel_consumption<<"\t"<<obj.weight<<"\t"<<obj.location<<"\t"<<obj.engine;
     return os;
 }
 
@@ -96,5 +97,12 @@ bool Vehicle::sort_price_h(int pric) const {
 
 bool Vehicle::sort_price_l(int pric) const {
     return this->price <= pric;
+}
+
+void Vehicle::getVehicle() const{
+    cout<<brand<<" "<<model<<" "<<color<<" "<<year<<
+    "\nMileage: "<<mileage<<" thousands of km"<<"\nFuel consumption: "<<fuel_consumption<<" liters/100km"<<
+    "\nWeight: "<<weight<<" kg"<<"\nLocation: "<<location<<endl;
+    engine.getEngine();
 }
 

@@ -37,3 +37,22 @@ bool Engine::sort_power_h(double pow) {
 bool Engine::sort_fuel(std::string &fuel1) {
     return this->fuel==fuel1;
 }
+
+Engine::Engine(const Engine &other) {
+    fuel=other.fuel;
+    capacity=other.capacity;
+    power=other.power;
+}
+
+Engine::Engine(Engine &&other)  noexcept {
+    fuel=other.fuel;
+    capacity=other.capacity;
+    power=other.power;
+    other.power=0;
+    other.fuel=" ";
+    other.capacity=0;
+}
+
+void Engine::getEngine() const {
+    cout<<"Capacity: "<<capacity<<" liters"<<"\nFuel: "<<fuel<<"\nPower: "<<power<<" kW"<<endl;
+}

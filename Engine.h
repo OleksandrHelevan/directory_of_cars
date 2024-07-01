@@ -14,7 +14,11 @@ public:
     Engine(double cap, string& new_fuel, double pow);
     friend ostream &operator<<(ostream& os, const Engine& obj);
     friend istream &operator>>(istream& is, Engine& engine);
-    ~Engine() {}//cout<<capacity<<" "<<fuel<<" engine is deleted";};
+    ~Engine() {cout<<capacity<<" "<<fuel<<" destructor"<<endl;};
+    Engine (Engine &&other) noexcept ;
+    Engine(const Engine &other);
+    void getEngine() const;
+
     bool sort_capacity_l(double cap);
     bool sort_power_l(double pow);
     bool sort_capacity_h(double cap);

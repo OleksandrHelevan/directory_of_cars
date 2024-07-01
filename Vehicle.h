@@ -23,7 +23,8 @@ public:
             string& bran, string& mod, int new_year, string& loc, int new_price);
     friend ostream &operator<<(ostream &os, const Vehicle &obj);
     friend istream &operator>>(istream &is, Vehicle &obj);
-    ~Vehicle(){};//cout<<"was deleted"<<endl;};
+    ~Vehicle(){cout<<brand<<" "<<model<<" destructor"<<endl;};
+
 
     bool sort_capacity_l(double cap);
     bool sort_power_l(double pow);
@@ -44,6 +45,8 @@ public:
     bool sort_location(string &loc);
     [[nodiscard]] bool sort_price_l(int pric) const;
     [[nodiscard]] bool sort_price_h(int pric) const;
+
+    void getVehicle() const ;
 };
 
 

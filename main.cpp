@@ -9,18 +9,28 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
 
 
 using namespace std;
 
+void line(){
+    cout<<"------------------------------------------------------------"
+          "------------------------------------------------------------"<<endl;
+}
+void clear(){
+    system("cls");
+}
+
 vector<Car> cars_from_file(){
-    shared_ptr<Car> car;
-    vector <Car> cars;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
-    while(fin>>*car){
-        cars.push_back(*car);
-    }
-    fin.close();
+   shared_ptr<Car> car{new Car()};
+   vector <Car> cars;
+   ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+   while(fin>>*car){
+       cars.push_back(*car);
+   }
+   fin.close();
+
     return cars;
 }
 
@@ -93,8 +103,9 @@ bool authorization(){
 int main() {
     vector <Car> cars;
     cars = cars_from_file();
-    for_each(cars.begin(),cars.end(),[](Car &car){if(car.sort_year_h(2012))cout<<car;});
-
+    line();
+    for_each(cars.begin(),cars.end(),[](Car &car){if(car.sort_year_h(2012))car.getCar();
+    line();});
     return 0;
 }
 
