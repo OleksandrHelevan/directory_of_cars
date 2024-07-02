@@ -54,5 +54,5 @@ Engine::Engine(Engine &&other)  noexcept {
 }
 
 void Engine::getEngine() const {
-    cout<<"Capacity: "<<capacity<<" liters"<<"\nFuel: "<<fuel<<"\nPower: "<<power<<" kW"<<endl;
+    cout<<"Capacity: "<<capacity<<" liters"<<"\nFuel: "<<fuel<<"\nPower (kW): "<<power<<endl;
 }

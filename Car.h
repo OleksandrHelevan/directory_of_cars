@@ -16,7 +16,7 @@ public:
     friend ostream &operator<<(ostream &os, const Car &obj);
     friend istream &operator>>(istream &is, Car &obj);
     void getCar() const;
-    ~Car(){};//cout<<"car was deleted";};
+    ~Car(){cout<<"car ";};
 };
 
 
