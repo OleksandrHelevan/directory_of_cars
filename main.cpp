@@ -9,7 +9,6 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-#include <cstdlib>
 
 
 using namespace std;
@@ -114,7 +113,7 @@ int main() {
 
     } else if(*choice==2){
         if(authorization()){
-            unique_ptr<int> choice1{new int{0}};
+            unique_ptr<int> choice1{new int};
             while(*choice1!=777){
                 cout<<"Make your choice: "<<endl;
                 cout<<"1 - to add CAR"<<endl<<"2 - to add TRUCK"<<endl<<"3 - to add BUS"<<endl;
@@ -160,6 +159,9 @@ int main() {
                         line();
                         });
                         break;
+                    }
+                    default:{
+
                     }
 
                 }

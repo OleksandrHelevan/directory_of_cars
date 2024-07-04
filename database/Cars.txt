@@ -1,3 +1,4 @@
 BMW		X5		black	2017	22500	0	8	2500	Chernivtsi	2.5	disel	200	full	automatics
 Ford		Focus		blue	2012	6500	0	6	2000	Uzhhorod	1.7	disel	180	back	automatics	
 Mercedes-Benz	G-vagen		black	2020	28000	0	12	3000	Kyiv		2	disel	210	full	mechanics
+Lamborgini	URUS	red	2024	45000	0	12	2000	Khust	30	95	450	back	automathics

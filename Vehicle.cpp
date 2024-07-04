@@ -100,9 +100,9 @@ bool Vehicle::sort_price_l(int pric) const {
 }
 
 void Vehicle::getVehicle() const{
-    cout<<brand<<" "<<model<<" "<<color<<" "<<year<<
-    "\nMileage: "<<mileage<<" thousands of km"<<"\nFuel consumption: "<<fuel_consumption<<" liters/100km"<<
-    "\nWeight: "<<weight<<" kg"<<"\nLocation: "<<location<<endl;
+    cout<<brand<<" "<<model<<" "<<color<<" "<<year<<endl<<
+    "Price: "<<price<<" $\nMileage: "<<mileage<<" thousands of km"<<"\nFuel consumption: "
+    <<fuel_consumption<<" liters/100km"<<"\nWeight: "<<weight<<" kg"<<"\nLocation: "<<location<<endl;
     engine.getEngine();
 }
 
