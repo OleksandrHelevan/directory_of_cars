@@ -9,8 +9,8 @@ WrongTypeEx() = default;
 ~WrongTypeEx() override = default;
 
 [[nodiscard]] const char *what() const noexcept override{
-return "Wrong type of data!!!";
-};
+    return "Wrong type of data!!!";
+    };
 };
 
 #endif //DIRECTORY_OF_CARS_WRONGTYPEEX_H

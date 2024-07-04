@@ -76,5 +76,4 @@ Engine &Engine::operator=(Engine &&other) noexcept {
 
 Engine::~Engine() {
     cout<<*capacity<<" "<<fuel<<" destructor"<<endl;
-    capacity = nullptr;
 }
