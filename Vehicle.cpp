@@ -59,11 +59,11 @@ bool Vehicle::sort_consumption_h(double cons) const {
     return this->fuel_consumption >= weight;
 }
 
-bool Vehicle::sort_milage_l(int mil) const {
+bool Vehicle::sort_mileage_l(int mil) const {
     return this->mileage <= mil;
 }
 
-bool Vehicle::sort_milage_h(int mil) const {
+bool Vehicle::sort_mileage_h(int mil) const {
     return this->mileage >= mil;
 }
 

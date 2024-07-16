@@ -35,8 +35,8 @@ public:
     [[nodiscard]] bool sort_weight_h(int weigh) const;
     [[nodiscard]] bool sort_consumption_l(double cons) const;
     [[nodiscard]] bool sort_consumption_h(double cons) const;
-    [[nodiscard]] bool sort_milage_l(int mil) const;
-    [[nodiscard]] bool sort_milage_h(int mil) const;
+    [[nodiscard]] bool sort_mileage_l(int mil) const;
+    [[nodiscard]] bool sort_mileage_h(int mil) const;
     bool sort_color(string &col);
     bool sort_brand(string &bra);
     bool sort_model(string &mod);

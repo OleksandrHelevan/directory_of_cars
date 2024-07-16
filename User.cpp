@@ -63,3 +63,60 @@ User &User::operator=(User &&other) noexcept {
 User::~User() {
     cout << name << " destructor"<<endl;
 }
+
+vector<Car> User::cars_from_file() {
+        shared_ptr<Car> car{new Car()};
+        vector <Car> cars;
+        ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+        while(fin>>*car){
+            cars.push_back(*car);
+        }
+        fin.close();
+        return cars;
+    }
+
+vector<Bus> User::buses_from_file() {
+    shared_ptr<Bus> bus;
+    vector<Bus> buses;
+    ifstream fin (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
+    while (fin>>*bus){
+        buses.push_back(*bus);
+    }
+    fin.close();
+    return buses;
+}
+
+vector<Truck> User::trucks_from_file() {
+    shared_ptr<Truck> truck;
+    vector <Truck> trucks;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    while(fin>>*truck){
+        trucks.push_back(*truck);
+    }
+    fin.close();
+    return trucks;
+}
+
+void User::addCar() {
+        unique_ptr <Car> newCar {new Car()};
+        cin>>*newCar;
+        ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)",ios_base::app);
+        fout<<*newCar;
+        fout.close();
+    }
+
+void User::addTruck() {
+    unique_ptr <Truck> newTruck{ new Truck()};
+    cin>>*newTruck;
+    ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    fout<<*newTruck;
+    fout.close();
+}
+
+void User::addBus() {
+        unique_ptr <Bus> newBus { new Bus()};
+        cin>>*newBus;
+        ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
+        fout<<*newBus;
+        fout.close();
+    }

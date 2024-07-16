@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <memory>
+#include "Car.h"
+#include "Truck.h"
+#include "Bus.h"
+#include <vector>
+
 using namespace std;
 
 class User {
@@ -21,6 +26,12 @@ public:
     friend ostream &operator<<(ostream& os, const User &obj);
     friend istream &operator>>(istream& is, User &obj);
 
+    vector <Car> cars_from_file();
+    vector <Truck> trucks_from_file();
+    vector <Bus> buses_from_file();
+    void addCar();
+    void addTruck();
+    void addBus();
     void write_to_file();
     bool search();
 

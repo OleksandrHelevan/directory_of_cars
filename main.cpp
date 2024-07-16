@@ -6,7 +6,6 @@
 #include "Bus.h"
 #include <memory>
 //#include "WrongTypeEx.h"
-#include <fstream>
 #include <vector>
 #include <algorithm>
 
@@ -18,86 +17,28 @@ void line(){
           "------------------------------------------------------------";
 }
 
-vector<Car> cars_from_file(){
-   shared_ptr<Car> car{new Car()};
-   vector <Car> cars;
-   ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
-   while(fin>>*car){
-       cars.push_back(*car);
-   }
-   fin.close();
-    return cars;
-}
-
-vector<Truck> trucks_from_file(){
-    shared_ptr<Truck> truck;
-    vector <Truck> trucks;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
-    while(fin>>*truck){
-        trucks.push_back(*truck);
-    }
-    fin.close();
-    return trucks;
-}
-
-vector<Bus> buses_from_file(){
-    shared_ptr<Bus> bus;
-    vector<Bus> buses;
-    ifstream fin (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
-    while (fin>>*bus){
-        buses.push_back(*bus);
-    }
-    return buses;
-}
-
-void addCar(){
-    unique_ptr <Car> newCar {new Car()};
-    cin>>*newCar;
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)",ios_base::app);
-    fout<<*newCar;
-    fout.close();
-}
-
-void addTruck(){
-    unique_ptr <Truck> newTruck{ new Truck()};
-    cin>>*newTruck;
-    ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
-    fout<<*newTruck;
-    fout.close();
-}
-
-void addBus(){
-    unique_ptr <Bus> newBus { new Bus()};
-    cin>>*newBus;
-    ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
-    fout<<*newBus;
-    fout.close();
-}
-
 void registration(){
     unique_ptr <User> newUser {new User()};
     cin >> *newUser;
     newUser->write_to_file();
     cout<<"Welcome! "<<endl;
 }
-bool authorization(){
+User authorization() {
     unique_ptr<string> name{new string{"unknown"}};
     unique_ptr<string> surname{new string{"unknown"}};
     unique_ptr<string> password{new string{"unknown"}};
-    cout<<"Enter your name"<<endl;
-    cin>>*name;
-    cout<<"Enter your surname"<<endl;
-    cin>>*surname;
-    cout<<"Enter your password"<<endl;
-    cin>>*password;
+    cout << "Enter your name" << endl;
+    cin >> *name;
+    cout << "Enter your surname" << endl;
+    cin >> *surname;
+    cout << "Enter your password" << endl;
+    cin >> *password;
     User newUser(*name, *surname, *password);
-    if(newUser.search()) {
-        cout<<"Welcome "<<*name<<" "<<*surname<<endl;
-        return true;
-    }
-    else{
-
-        return false;
+    if (newUser.search()) {
+        cout << "Welcome " << *name << " " << *surname << endl;
+        return newUser;
+    } else{
+        cerr<<"ex";
     }
 }
 
@@ -112,7 +53,7 @@ int main() {
         registration();
 
     } else if(*choice==2){
-        if(authorization()){
+        User user = authorization();
             unique_ptr<int> choice1{new int};
             while(*choice1!=777){
                 cout<<"Make your choice: "<<endl;
@@ -121,32 +62,41 @@ int main() {
                 cin>>*choice1;
                 switch (*choice1) {
                     case 1:{
-                        addCar();
+                        user.addCar();
                         break;
                     }
 
                     case 2:{
-                        addTruck();
+                        user.addTruck();
                         break;
                     }
 
                     case 3:{
-                        addBus();
+                        user.addBus();
                         break;
                     }
 
                     case 4:{
                         vector<Car> cars;
-                        cars = cars_from_file();
-                        for_each(cars.begin(),cars.end(),[](Car &obj){
-                            obj.getCar();
-                            line();
-                        });
+                        cars = user.cars_from_file();
+                        line();
+
+                        string choice2;
+                        cout<<"You can view cars: "<<endl;
+                        cout<<"1h - By higher year"<<endl;
+                        cout<<"1l - By lower year"<<endl;
+                        cout<<"2h - By higher price"<<endl;
+                        cout<<"2l - By lower price"<<endl;
+                        cout<<"3h - By higher mileage"<<endl;
+                        cout<<"3l - By lower mileage"<<endl;
+                        cout<<"4h - By higher fuel consumption"<<endl;
+                        cout<<"4l - By lower fuel consumption"<<endl;
+
                         break;
                     }
                     case 5:{
                         vector<Truck> trucks;
-                        trucks = trucks_from_file();
+                        trucks = user.trucks_from_file();
                         for_each(trucks.begin(),trucks.end(),[](Truck &obj){obj.getVehicle();
                         line();
                         });
@@ -154,7 +104,7 @@ int main() {
                     }
                     case 6: {
                         vector<Bus> buses;
-                        buses = buses_from_file();
+                        buses = user.buses_from_file();
                         for_each(buses.begin(),buses.end(),[](Bus &obj){obj.getVehicle();
                         line();
                         });
@@ -166,9 +116,7 @@ int main() {
 
                 }
             }
-        } else{
 
-        }
 
     } else{
 
