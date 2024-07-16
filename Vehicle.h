@@ -2,29 +2,33 @@
 #define DIRECTORY_OF_CARS_VEHICLE_H
 
 #include <iostream>
+#include <memory>
 #include "Engine.h"
 using namespace std;
 
 class Vehicle {
-Engine engine;
-int weight;
-double fuel_consumption;
-int mileage;
-string color;
-string brand;
-string model;
-int year;
-string location;
-int price;
+    Engine engine;
+    int weight;
+    double fuel_consumption;
+    int mileage;
+    string color;
+    string brand;
+    string model;
+    int year;
+    string location;
+    unique_ptr<int> price;
 
 public:
     Vehicle();
     Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
             string& bran, string& mod, int new_year, string& loc, int new_price);
+    Vehicle(const Vehicle& other); // Copy constructor
+    Vehicle(Vehicle&& other) noexcept; // Move constructor
+    Vehicle& operator=(const Vehicle& other); // Copy assignment operator
+    Vehicle& operator=(Vehicle&& other) noexcept; // Move assignment operator
     friend ostream &operator<<(ostream &os, const Vehicle &obj);
     friend istream &operator>>(istream &is, Vehicle &obj);
-    ~Vehicle(){cout<<brand<<" "<<model<<" destructor"<<endl;};
-
+    ~Vehicle() = default;
 
     bool sort_capacity_l(double cap);
     bool sort_power_l(double pow);
@@ -46,8 +50,7 @@ public:
     [[nodiscard]] bool sort_price_l(int pric) const;
     [[nodiscard]] bool sort_price_h(int pric) const;
 
-    void getVehicle() const ;
+    virtual void getVehicle() const =0;
 };
-
 
 #endif //DIRECTORY_OF_CARS_VEHICLE_H

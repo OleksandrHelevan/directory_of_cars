@@ -17,3 +17,29 @@ istream &operator>>(istream &is, Truck &obj){
     is>>obj.cargo_capacity;
     return is;
 }
+Truck::Truck(const Truck& other) : Vehicle(other), cargo_capacity{other.cargo_capacity} {}
+
+Truck::Truck(Truck&& other) noexcept : Vehicle(std::move(other)), cargo_capacity{other.cargo_capacity} {}
+
+Truck& Truck::operator=(const Truck& other) {
+    if (this == &other) {
+        return *this;
+    }
+    Vehicle::operator=(other);
+    cargo_capacity = other.cargo_capacity;
+    return *this;
+}
+
+Truck& Truck::operator=(Truck&& other) noexcept {
+    if (this == &other) {
+        return *this;
+    }
+    Vehicle::operator=(std::move(other));
+    cargo_capacity = other.cargo_capacity;
+    return *this;
+}
+
+void Truck::getVehicle() const {
+    Vehicle::getVehicle();
+    cout<<"Cargo capacity: "<<cargo_capacity<<" kg"<<endl;
+}

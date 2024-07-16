@@ -15,6 +15,11 @@ public:
     friend ostream &operator<<(ostream &os, const Truck &obj);
     friend istream &operator>>(istream &is, Truck &obj);
     ~Truck(){cout<<"truck was deleted";};
+    Truck(const Truck& other);
+    Truck(Truck&& other) noexcept;
+    Truck& operator=(const Truck& other);
+    Truck& operator=(Truck&& other) noexcept;
+    void getVehicle() const override;
 };
 
 

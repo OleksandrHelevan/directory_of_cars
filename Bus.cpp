@@ -17,3 +17,30 @@ istream &operator>>(istream  &is, Bus &obj){
     is>>obj.passenger_capacity;
     return is;
 }
+
+Bus::Bus(const Bus& other) : Vehicle(other), passenger_capacity{other.passenger_capacity} {}
+
+Bus::Bus(Bus&& other) noexcept : Vehicle(std::move(other)), passenger_capacity{other.passenger_capacity} {}
+
+Bus& Bus::operator=(const Bus& other) {
+    if (this == &other) {
+        return *this;
+    }
+    Vehicle::operator=(other);
+    passenger_capacity = other.passenger_capacity;
+    return *this;
+}
+
+Bus& Bus::operator=(Bus&& other) noexcept {
+    if (this == &other) {
+        return *this;
+    }
+    Vehicle::operator=(std::move(other));
+    passenger_capacity = other.passenger_capacity;
+    return *this;
+}
+
+void Bus::getVehicle() const {
+    Vehicle::getVehicle();
+    cout<<"Passenger capacity: "<<passenger_capacity<<" persons";
+}

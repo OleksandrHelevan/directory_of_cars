@@ -22,9 +22,31 @@ istream &operator>>(istream &is, Car &obj){
     return is;
 }
 
-void Car::getCar () const  {
-    getVehicle();
+void Car::getVehicle() const  {
+    Vehicle::getVehicle();
     cout<<"Wheel drive: "<<wheel_drive<<"\nTransmission: "<<transmission<<endl;
 }
+Car::Car(const Car& other) : Vehicle(other), wheel_drive{other.wheel_drive}, transmission{other.transmission} {}
 
+Car::Car(Car&& other) noexcept : Vehicle(std::move(other)), wheel_drive{std::move(other.wheel_drive)}, transmission{std::move(other.transmission)} {}
+
+Car& Car::operator=(const Car& other) {
+    if (this == &other) {
+        return *this;
+    }
+    Vehicle::operator=(other);
+    wheel_drive = other.wheel_drive;
+    transmission = other.transmission;
+    return *this;
+}
+
+Car& Car::operator=(Car&& other) noexcept {
+    if (this == &other) {
+        return *this;
+    }
+    Vehicle::operator=(std::move(other));
+    wheel_drive = std::move(other.wheel_drive);
+    transmission = std::move(other.transmission);
+    return *this;
+}
 

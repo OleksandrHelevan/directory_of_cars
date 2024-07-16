@@ -15,6 +15,12 @@ public:
     friend ostream &operator<<(ostream &os, const Bus &obj);
     friend istream &operator>>(istream  &is, Bus &obj);
     ~Bus(){cout<<"bus was deleted";};
+    Bus(const Bus& other);
+    Bus(Bus&& other) noexcept;
+    Bus& operator=(const Bus& other);
+    Bus& operator=(Bus&& other) noexcept;
+
+    void getVehicle() const override;
 };
 
 

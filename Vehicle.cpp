@@ -1,25 +1,70 @@
 #include "Vehicle.h"
 using namespace std;
-#include <iomanip>
 
-Vehicle::Vehicle() :engine{Engine()},weight{0}, fuel_consumption{0},
-        mileage{0}, color{"none"}, brand{"none"},model{"none"},
-        year{0},location{"none"},price{0}{}
 
-Vehicle::Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string &col,
-                 string &bran, string &mod, int new_year, string &loc, int new_price) :engine{new_engine},
-                 weight{weigh}, fuel_consumption{consumption}, mileage{new_mileage}, color{col},
-                 brand {bran}, model{mod}, year{new_year}, location{loc}, price{new_price} {}
+Vehicle::Vehicle() : engine{Engine()}, weight{0}, fuel_consumption{0},
+                     mileage{0}, color{"none"}, brand{"none"}, model{"none"},
+                     year{0}, location{"none"}, price{make_unique<int>(0)} {}
 
-ostream &operator<<(ostream &os, const Vehicle &obj){
-    os<<obj.brand<<"\t"<<obj.model<<"\t"<<obj.color<<"\t"<<obj.year<<"\t"<<obj.price<<"\t"<<obj.mileage<<
-    "\t"<<obj.fuel_consumption<<"\t"<<obj.weight<<"\t"<<obj.location<<"\t"<<obj.engine;
+Vehicle::Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
+                 string& bran, string& mod, int new_year, string& loc, int new_price) : engine{new_engine},
+                                                                                        weight{weigh}, fuel_consumption{consumption}, mileage{new_mileage}, color{col},
+                                                                                        brand{bran}, model{mod}, year{new_year}, location{loc}, price{make_unique<int>(new_price)} {}
+
+Vehicle::Vehicle(const Vehicle& other) : engine{other.engine}, weight{other.weight},
+                                         fuel_consumption{other.fuel_consumption}, mileage{other.mileage}, color{other.color},
+                                         brand{other.brand}, model{other.model}, year{other.year}, location{other.location},
+                                         price{make_unique<int>(*other.price)} {}
+
+Vehicle::Vehicle(Vehicle&& other) noexcept : engine{std::move(other.engine)}, weight{other.weight},
+                                             fuel_consumption{other.fuel_consumption}, mileage{other.mileage}, color{std::move(other.color)},
+                                             brand{std::move(other.brand)}, model{std::move(other.model)}, year{other.year}, location{std::move(other.location)},
+                                             price{std::move(other.price)} {}
+
+Vehicle& Vehicle::operator=(const Vehicle& other) {
+    if (this == &other) return *this;
+
+    engine = other.engine;
+    weight = other.weight;
+    fuel_consumption = other.fuel_consumption;
+    mileage = other.mileage;
+    color = other.color;
+    brand = other.brand;
+    model = other.model;
+    year = other.year;
+    location = other.location;
+
+    price = make_unique<int>(*other.price);
+
+    return *this;
+}
+
+Vehicle& Vehicle::operator=(Vehicle&& other) noexcept {
+    if (this == &other) return *this;
+
+    engine = std::move(other.engine);
+    weight = other.weight;
+    fuel_consumption = other.fuel_consumption;
+    mileage = other.mileage;
+    color = std::move(other.color);
+    brand = std::move(other.brand);
+    model = std::move(other.model);
+    year = other.year;
+    location = std::move(other.location);
+    price = std::move(other.price);
+
+    return *this;
+}
+
+ostream &operator<<(ostream &os, const Vehicle &obj) {
+    os << obj.brand << "\t" << obj.model << "\t" << obj.color << "\t" << obj.year << "\t" << *obj.price << "\t" << obj.mileage <<
+       "\t" << obj.fuel_consumption << "\t" << obj.weight << "\t" << obj.location << "\t" << obj.engine;
     return os;
 }
 
-istream &operator>>(istream &is, Vehicle &obj){
-    is>>obj.brand>>obj.model>>obj.color>>obj.year>>obj.price>>obj.mileage>>
-    obj.fuel_consumption>>obj.weight>>obj.location>>obj.engine;
+istream &operator>>(istream &is, Vehicle &obj) {
+    is >> obj.brand >> obj.model >> obj.color >> obj.year >> *obj.price >> obj.mileage >>
+       obj.fuel_consumption >> obj.weight >> obj.location >> obj.engine;
     return is;
 }
 
@@ -52,11 +97,11 @@ bool Vehicle::sort_weight_l(int weigh) const {
 }
 
 bool Vehicle::sort_consumption_l(double cons) const {
-    return this->fuel_consumption <= weight;
+    return this->fuel_consumption <= cons;
 }
 
 bool Vehicle::sort_consumption_h(double cons) const {
-    return this->fuel_consumption >= weight;
+    return this->fuel_consumption >= cons;
 }
 
 bool Vehicle::sort_mileage_l(int mil) const {
@@ -68,7 +113,7 @@ bool Vehicle::sort_mileage_h(int mil) const {
 }
 
 bool Vehicle::sort_model(std::string &mod) {
-    return this->model==mod;
+    return this->model == mod;
 }
 
 bool Vehicle::sort_color(std::string &col) {
@@ -92,17 +137,16 @@ bool Vehicle::sort_location(std::string &loc) {
 }
 
 bool Vehicle::sort_price_h(int pric) const {
-    return this->price >= pric;
+    return *this->price >= pric;
 }
 
 bool Vehicle::sort_price_l(int pric) const {
-    return this->price <= pric;
+    return *this->price <= pric;
 }
 
-void Vehicle::getVehicle() const{
-    cout<<brand<<" "<<model<<" "<<color<<" "<<year<<endl<<
-    "Price: "<<price<<" $\nMileage: "<<mileage<<" thousands of km"<<"\nFuel consumption: "
-    <<fuel_consumption<<" liters/100km"<<"\nWeight: "<<weight<<" kg"<<"\nLocation: "<<location<<endl;
+void Vehicle::getVehicle() const {
+    cout << brand << " " << model << " " << color << " " << year << endl <<
+         "Price: " << *price << " $\nMileage: " << mileage << " thousands of km" << "\nFuel consumption: "
+         << fuel_consumption << " liters/100km" << "\nWeight: " << weight << " kg" << "\nLocation: " << location << endl;
     engine.getEngine();
 }
-
