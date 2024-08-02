@@ -1,5 +1,5 @@
 #include <iostream>
-#include "User.h"
+#include "Person.h"
 #include "Truck.h"
 //#include "Vehicle.h"
 #include "Car.h"
@@ -18,12 +18,12 @@ void line(){
 }
 
 void registration(){
-    unique_ptr <User> newUser {new User()};
+    unique_ptr <Person> newUser {new Person()};
     cin >> *newUser;
     newUser->write_to_file();
     cout<<"Welcome! "<<endl;
 }
-User authorization() {
+Person authorization() {
     unique_ptr<string> name{new string{"unknown"}};
     unique_ptr<string> surname{new string{"unknown"}};
     unique_ptr<string> password{new string{"unknown"}};
@@ -33,7 +33,7 @@ User authorization() {
     cin >> *surname;
     cout << "Enter your password" << endl;
     cin >> *password;
-    User newUser(*name, *surname, *password);
+    Person newUser(*name, *surname, *password);
     if (newUser.search()) {
         cout << "Welcome " << *name << " " << *surname << endl;
         return newUser;
@@ -53,7 +53,7 @@ int main() {
         registration();
 
     } else if(*choice==2){
-        User user = authorization();
+        Person user = authorization();
             unique_ptr<int> choice1{new int};
             while(*choice1!=777){
                 cout<<"Make your choice: "<<endl;

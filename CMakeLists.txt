@@ -4,8 +4,8 @@ project(directory_of_cars)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(directory_of_cars main.cpp
-        User.cpp
-        User.h
+        Person.cpp
+        Person.h
         Engine.cpp
         Engine.h
         Vehicle.cpp
@@ -17,4 +17,8 @@ add_executable(directory_of_cars main.cpp
         Truck.cpp
         Truck.h
         WrongTypeEx.h
+        User.cpp
+        User.h
+        Admin.cpp
+        Admin.h
 )
