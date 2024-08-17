@@ -27,13 +27,7 @@ void Person::write_to_file(){
 }
 
 bool Person::search() {
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)");
-    Person A;
-    while(fin >> A){
-        if(A.name == name && A.surname == surname && *A.password == *password)
-            return true;
-    }
-    return false;
+
 }
 
 Person &Person::operator=(const Person &other) {
@@ -61,12 +55,14 @@ Person &Person::operator=(Person &&other) noexcept {
 }
 
 Person::~Person() {
-    cout << name << " destructor"<<endl;
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    fout << name << " destructor"<<endl;
+    fout.close();
 }
 
-vector<Car> Person::cars_from_file() {
+list <Car> Person::cars_from_file() {
         shared_ptr<Car> car{new Car()};
-        vector <Car> cars;
+       list <Car> cars;
         ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
         while(fin>>*car){
             cars.push_back(*car);
@@ -98,12 +94,72 @@ vector<Truck> Person::trucks_from_file() {
 }
 
 void Person::addCar() {
-        unique_ptr <Car> newCar {new Car()};
-        cin>>*newCar;
-        ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)",ios_base::app);
-        fout<<*newCar;
-        fout.close();
-    }
+    cout<<"Enter BRAND of car:"<<endl;
+    unique_ptr <string> brand {new string };
+    cin>>*brand;
+
+    cout<<"Enter MODEL of car:"<<endl;
+    unique_ptr <string> model {new string };
+    cin>>*model;
+
+    cout<<"Enter YEAR of car:"<<endl;
+    unique_ptr <int> year {new int };
+    cin>>*year;
+
+    cout<<"Enter COLOR of car:"<<endl;
+    unique_ptr <string> color {new string };
+    cin>>*color;
+
+    cout<<"Enter CAPACITY of car`s engine:"<<endl;
+    unique_ptr <double> capacity{new double };
+    cin>>*capacity;
+
+    cout<<"Enter FUEL of car`s engine:"<<endl;
+    unique_ptr <string> fuel{new string };
+    cin>>*fuel;
+
+    cout<<"Enter POWER of car`s engine:"<<endl;
+    unique_ptr <double> power{new double };
+    cin>>*power;
+
+    Engine engine(*capacity,*fuel,*capacity);
+
+    cout<<"Enter WEIGHT of car:"<<endl;
+    unique_ptr <int> weight {new int };
+    cin>>*weight;
+
+    cout<<"Enter FUEL CONSUMPTION of car/100km:"<<endl;
+    unique_ptr <double> fuel_con {new double };
+    cin>>*fuel_con;
+
+    cout<<"Enter MILEAGE of car in thousands of km:"<<endl;
+    unique_ptr <int> mileage {new int };
+    cin>>*mileage;
+
+    cout<<"Enter LOCATION of car:"<<endl;
+    unique_ptr <string> location {new string };
+    cin>>*location;
+
+    cout<<"Enter wheel drive of car(full/back/front):"<<endl;
+    unique_ptr <string> wheel_drive {new string };
+    cin>>*wheel_drive;
+
+    cout<<"Enter TRANSMISSION of car(automatics/mechanics):"<<endl;
+    unique_ptr <string> transmission {new string };
+    cin>>*transmission;
+
+    cout<<"Enter PRICE of car:"<<endl;
+    unique_ptr <int> price {new int };
+    cin>>*price;
+
+    Car car(engine,*weight,*fuel_con,*mileage,
+            *color,*brand,*model,*year,*location,
+            *price,*wheel_drive,*transmission);
+
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)",ios_base::app);
+    fout<<car;
+    fout.close();
+}
 
 void Person::addTruck() {
     unique_ptr <Truck> newTruck{ new Truck()};
@@ -120,3 +176,7 @@ void Person::addBus() {
         fout<<*newBus;
         fout.close();
     }
+
+string Person::getname() {return name;}
+string Person::getsurname() {return surname;}
+string Person::getpassword() {return *password;}

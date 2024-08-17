@@ -7,6 +7,7 @@
 #include "Truck.h"
 #include "Bus.h"
 #include <vector>
+#include "list"
 
 using namespace std;
 
@@ -26,14 +27,18 @@ public:
     friend ostream &operator<<(ostream& os, const Person &obj);
     friend istream &operator>>(istream& is, Person &obj);
 
-    vector <Car> cars_from_file();
-    vector <Truck> trucks_from_file();
-    vector <Bus> buses_from_file();
-    void addCar();
-    void addTruck();
-    void addBus();
-    void write_to_file();
-    bool search();
+
+    virtual string getname()=0;
+    virtual string getsurname()=0;
+    virtual string getpassword()=0;
+    virtual list <Car> cars_from_file()=0;
+    virtual vector <Truck> trucks_from_file()=0;
+    virtual vector <Bus> buses_from_file()=0;
+    virtual void addCar()=0;
+    virtual void addTruck()=0;
+    virtual void addBus()=0;
+    virtual void write_to_file()=0;
+    virtual bool search()=0;
 
 };
 

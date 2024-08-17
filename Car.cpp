@@ -50,3 +50,9 @@ Car& Car::operator=(Car&& other) noexcept {
     return *this;
 }
 
+Car::~Car() noexcept {
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    fout << "car"<< " destructor"<<endl;
+    fout.close();
+}
+

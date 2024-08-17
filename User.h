@@ -15,6 +15,19 @@ public:
     User(const User& other);
     friend ostream& operator<<(ostream& os, const User& obj);
     friend istream& operator>>(istream& is, User& obj);
+
+    string getname() override;
+    string getsurname() override;
+    string getpassword() override;
+
+    list <Car> cars_from_file() override;
+    vector <Truck> trucks_from_file() override;
+    vector <Bus> buses_from_file() override;
+    void addCar() override{};
+    void addTruck() override{};
+    void addBus() override{};
+    void write_to_file() override;
+    bool search() override;
 };
 
 

@@ -28,7 +28,7 @@ public:
     Vehicle& operator=(Vehicle&& other) noexcept; // Move assignment operator
     friend ostream &operator<<(ostream &os, const Vehicle &obj);
     friend istream &operator>>(istream &is, Vehicle &obj);
-    ~Vehicle() = default;
+    virtual ~Vehicle();
 
     bool sort_capacity_l(double cap);
     bool sort_power_l(double pow);

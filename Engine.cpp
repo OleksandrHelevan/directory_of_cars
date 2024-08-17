@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "WrongTypeEx.h"
+#include "fstream"
 using namespace std;
 
 Engine::Engine() : capacity{new double {0}}, fuel(" "), power(0.0) {}
@@ -75,5 +76,7 @@ Engine &Engine::operator=(Engine &&other) noexcept {
 }
 
 Engine::~Engine() {
-    cout<<*capacity<<" "<<fuel<<" destructor"<<endl;
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    fout<<*capacity<<" "<<fuel<<" destructor"<<endl;
+    fout.close();
 }

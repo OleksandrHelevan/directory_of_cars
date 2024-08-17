@@ -1,4 +1,5 @@
 #include "Vehicle.h"
+#include "fstream"
 using namespace std;
 
 
@@ -150,3 +151,8 @@ void Vehicle::getVehicle() const {
          << fuel_consumption << " liters/100km" << "\nWeight: " << weight << " kg" << "\nLocation: " << location << endl;
     engine.getEngine();
 }
+
+Vehicle::~Vehicle() {
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    fout << model <<" "<<brand<<" "<<year<< " destructor"<<endl;
+    fout.close();}

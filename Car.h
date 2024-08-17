@@ -16,7 +16,7 @@ public:
     friend ostream &operator<<(ostream &os, const Car &obj);
     friend istream &operator>>(istream &is, Car &obj);
     void getVehicle() const override;
-    ~Car(){cout<<"car ";};
+    ~Car() override;
     Car(const Car& other);
     Car(Car&& other) noexcept;
     Car& operator=(const Car& other);

@@ -1,5 +1,6 @@
 
 #include "User.h"
+#include <fstream>
 
 User::User(std::string &new_name, std::string &new_surname, std::string &new_password)
 : Person(new_name,new_surname,new_password){}
@@ -11,7 +12,7 @@ User::User(User &&other) noexcept : Person(std::move(other)){}
 User::User() :Person(){}
 
 ostream& operator<<(ostream& os, const User& obj){
-    os<<static_cast<Person>(obj);
+    os<<static_cast<Person&>((Person &) obj);
     return os;
 }
 
@@ -31,3 +32,47 @@ User &User::operator=(const User &other) {
     Person::operator=(other);
     return *this;
 }
+
+bool User::search() {
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)");
+    User A;
+    while(fin >> A){
+        if(A.getname() == Person::getname() && A.getsurname() == Person::getsurname()
+           && A.getpassword() == Person::getpassword()){
+            fin.close();
+            return true;
+        }
+    }
+    fin.close();
+    return false;
+}
+
+void User::write_to_file() {
+    Person::write_to_file();
+}
+
+
+vector<Truck> User::trucks_from_file() {
+    return Person::trucks_from_file();
+}
+
+vector<Bus> User::buses_from_file() {
+    return Person::buses_from_file();
+}
+
+list <Car> User::cars_from_file() {
+    return Person::cars_from_file();
+}
+
+string User::getname() {
+    return Person::getname();
+}
+
+string User::getsurname() {
+    return Person::getsurname();
+}
+
+string User::getpassword() {
+    return Person::getpassword();
+}
+
