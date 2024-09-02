@@ -1,4 +1,5 @@
 #include "Truck.h"
+#include <fstream>
 
 Truck::Truck():Vehicle(),cargo_capacity{0}{}
 
@@ -42,4 +43,25 @@ Truck& Truck::operator=(Truck&& other) noexcept {
 void Truck::getVehicle() const {
     Vehicle::getVehicle();
     cout<<"Cargo capacity: "<<cargo_capacity<<" kg"<<endl;
+}
+
+void Truck::setcargo_capacity(int newcargo) {
+    this->cargo_capacity=newcargo;
+}
+
+int Truck::getcargo_capacity() const {
+    return cargo_capacity;
+}
+
+bool Truck::sortcargo_capacity_h(int newcap) const {
+    return this->cargo_capacity >= newcap;
+}
+bool Truck::sortcargo_capacity_l(int newcap) const {
+    return this->cargo_capacity <= newcap;
+}
+
+Truck::~Truck() noexcept {
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)",ios_base::app);
+    fout << "truck"<< " destructor"<<endl;
+    fout.close();
 }

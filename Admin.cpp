@@ -4,7 +4,11 @@
 
 
 Admin::Admin(std::string &new_name, std::string &new_surname, std::string &new_password)
-        : Person(new_name, new_surname, new_password) {}
+        : Person(new_name, new_surname, new_password) {
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    fout <<"authorization of ADMIN"<<endl;
+    fout.close();
+}
 
 Admin::Admin(const Admin &other) : Person(other) {}
 
@@ -87,12 +91,31 @@ vector<Bus> Admin::buses_from_file() {
 }
 
 list<Car> Admin::cars_from_file() {
-    Car car;
+    unique_ptr<Car> car{new Car()};
     list <Car> cars;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
-    while(fin>>car){
-        cars.push_back(car);
+    while(fin>>*car){
+        cars.push_back(*car);
     }
     fin.close();
     return cars;
+}
+
+
+Admin::~Admin() noexcept {
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)", ios_base::app);
+    fout << "Admin destructor"<<endl;
+    fout.close();
+}
+
+void Admin::setsurname(std::string &newsurname) {
+    Person::setsurname(newsurname);
+}
+
+void Admin::setname(std::string &newname) {
+    Person::setname(newname);
+}
+
+void Admin::setpassword(std::string &newpassword) {
+    Person::setpassword(newpassword);
 }

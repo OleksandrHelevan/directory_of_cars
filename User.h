@@ -20,6 +20,10 @@ public:
     string getsurname() override;
     string getpassword() override;
 
+    void setname(string& newname) override;
+    void setsurname(string& newsurname) override;
+    void setpassword(string& newpassword) override;
+
     list <Car> cars_from_file() override;
     vector <Truck> trucks_from_file() override;
     vector <Bus> buses_from_file() override;

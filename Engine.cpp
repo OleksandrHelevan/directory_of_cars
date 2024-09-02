@@ -76,7 +76,30 @@ Engine &Engine::operator=(Engine &&other) noexcept {
 }
 
 Engine::~Engine() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)", ios_base::app);
     fout<<*capacity<<" "<<fuel<<" destructor"<<endl;
     fout.close();
+}
+void Engine::setCapacity(double newCapacity) {
+    *this->capacity = newCapacity;
+}
+
+void Engine::setFuel(string& newFuel) {
+    this->fuel = newFuel;
+}
+
+void Engine::setPower(double newPower) {
+    this->power = newPower;
+}
+
+double Engine::getCapacity() const {
+        return *capacity;
+}
+
+string Engine::getFuel() const {
+    return fuel;
+}
+
+double Engine::getPower() const {
+    return power;
 }

@@ -21,6 +21,14 @@ public:
     friend ostream &operator<<(ostream& os, const Engine& obj);
     friend istream &operator>>(istream& is, Engine& engine);
 
+    void setCapacity(double newCapacity);
+    void setFuel(string& newFuel);
+    void setPower(double newPower);
+
+    [[nodiscard]] double getCapacity() const;
+    [[nodiscard]] string getFuel() const;
+    [[nodiscard]] double getPower() const;
+
     void getEngine() const;
     bool sort_capacity_l(double cap);
     [[nodiscard]] bool sort_power_l(double pow) const;

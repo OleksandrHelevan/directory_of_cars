@@ -23,7 +23,6 @@ void line(){
 
 
 int main() {
-
     cout<<"WELCOME!"<<endl;
     line();
     cout<<"MAKE YOUR CHOICE:"<<endl;
@@ -45,51 +44,63 @@ int main() {
             cin>>*password;
             line();
             Admin admin(*name,*surname,*password);
-            if(admin.search()){
-                cout<<"Hello"<<" "<<*name<<endl;
-                cout<<"Choose what do you want"<<endl;
-                cout<<"1 - to add CAR"<<endl;
-                cout<<"2 - to add TRUCK"<<endl;
-                cout<<"3 - to add BUS"<<endl;
-                cout<<"4 - to view all CARS"<<endl;
-                cout<<"5 - to view all TRUCKS"<<endl;
-                cout<<"6 - to view all BUSES"<<endl;
-                unique_ptr<int> choice1{new int};
-                cin>>*choice1;
-                switch (*choice1) {
-                    case 1:{
-                        admin.addCar();
-                        break;
+                if (admin.search()) {
+                    cout << "Hello" << " " << admin.getname() << endl;
+                    while(true) {
+                        cout << "Choose what do you want" << endl;
+                        cout << "1 - to add CAR" << endl;
+                        cout << "2 - to add TRUCK" << endl;
+                        cout << "3 - to add BUS" << endl;
+                        cout << "4 - to view all CARS" << endl;
+                        cout << "5 - to view all TRUCKS" << endl;
+                        cout << "6 - to view all BUSES" << endl;
+                        cout << "0 - STOP " << endl;
+                        unique_ptr<int> choice1{new int};
+                        cin >> *choice1;
+                        switch (*choice1) {
+                            case 1: {
+                                admin.addCar();
+                                break;
+                            }
+                            case 2: {
+                                admin.addTruck();
+                                break;
+                            }
+                            case 3: {
+                                admin.addBus();
+                                break;
+                            }
+                            case 4: {
+                                list<Car> cars = admin.cars_from_file();
+                                for_each(cars.begin(), cars.end(), [](Car &car) {
+                                    car.getVehicle();
+                                    line();
+                                });
+                                break;
+                            }
+                            case 5: {
+                                vector<Truck> trucks = admin.trucks_from_file();
+                                for_each(trucks.begin(), trucks.end(), [](Truck &truck) { truck.getVehicle(); });
+                                break;
+                            }
+                            case 6: {
+                                vector<Bus> buses = admin.buses_from_file();
+                                for_each(buses.begin(), buses.end(), [](Bus &bus) { bus.getVehicle(); });
+                                break;
+                            }
+                            case 0:{
+                                return 0;
+                            }
+                            default: {
+
+                            }
+                        }
                     }
-                    case 2:{
-                        admin.addTruck();
-                        break;
-                    }
-                    case 3:{
-                        admin.addBus();
-                        break;
-                    }
-                    case 4:{
-                        list<Car> cars = admin.cars_from_file();
-                        for_each(cars.begin(),cars.end(),[](Car &car){car.getVehicle();line();});
-                        break;
-                    }
-                    case 5:{
-                        vector<Truck> trucks = admin.trucks_from_file();
-                        for_each(trucks.begin(),trucks.end(),[](Truck &truck){truck.getVehicle();});
-                        break;
-                    }
-                    case 6:{
-                        vector<Bus> buses = admin.buses_from_file();
-                        for_each(buses.begin(),buses.end(),[](Bus &bus){bus.getVehicle();});
-                        break;
-                    }
-                    default:{}
+
+                } else {
+                    cout << "You are not admin!!!" << endl;
                 }
 
-            }else{
-                cout<<"You are not admin!!!"<<endl;
-            }
             break;
         }
         case 2:{
@@ -101,6 +112,5 @@ int main() {
         default:{}
 
     }
-    return 0;
 }
 

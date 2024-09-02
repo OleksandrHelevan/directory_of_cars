@@ -1,1 +1,26 @@
+authorization of ADMIN
+Admin destructor
+Oleksandr destructor
+car destructor
+Touareg Volkswagen 2017 destructor
+3 disel destructor
+car destructor
+X5 BMW 2017 destructor
+2.5 disel destructor
+car destructor
+X7 BMW 2022 destructor
+3 disel destructor
+car destructor
+Focus Ford 2012 destructor
+1.7 disel destructor
+car destructor
+G-vagen Mercedes-Benz 2020 destructor
+2 disel destructor
+car destructor
+URUS Lamborgini 2024 destructor
 30 95 destructor
+car destructor
+Touareg Volkswagen 2017 destructor
+3 disel destructor
+Admin destructor
+Oleksandr destructor

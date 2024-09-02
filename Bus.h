@@ -14,11 +14,16 @@ public:
     string& bran, string& mod, int new_year, string& loc, int new_price, int cap);
     friend ostream &operator<<(ostream &os, const Bus &obj);
     friend istream &operator>>(istream  &is, Bus &obj);
-    ~Bus(){cout<<"bus was deleted";};
+    ~Bus() override;
     Bus(const Bus& other);
     Bus(Bus&& other) noexcept;
     Bus& operator=(const Bus& other);
     Bus& operator=(Bus&& other) noexcept;
+
+    [[nodiscard]] bool sortpassenger_capacity_h(int newcap) const;
+    [[nodiscard]] bool sortpassenger_capacity_l(int newcap) const;
+    [[nodiscard]] int getpassenger_capacity() const;
+    void setpassenger_capacity(int newcap);
 
     void getVehicle() const override;
 };

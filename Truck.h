@@ -14,12 +14,17 @@ public:
           string& bran, string& mod, int new_year, string& loc, int new_price, int cargo);
     friend ostream &operator<<(ostream &os, const Truck &obj);
     friend istream &operator>>(istream &is, Truck &obj);
-    ~Truck(){cout<<"truck was deleted";};
+    ~Truck() override;
     Truck(const Truck& other);
     Truck(Truck&& other) noexcept;
     Truck& operator=(const Truck& other);
     Truck& operator=(Truck&& other) noexcept;
     void getVehicle() const override;
+
+    [[nodiscard]] bool sortcargo_capacity_h(int newcap) const;
+    [[nodiscard]] bool sortcargo_capacity_l(int newcap) const;
+    [[nodiscard]] int getcargo_capacity() const;
+    void setcargo_capacity(int newcargo);
 };
 
 

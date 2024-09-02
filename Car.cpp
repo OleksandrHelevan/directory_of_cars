@@ -51,8 +51,32 @@ Car& Car::operator=(Car&& other) noexcept {
 }
 
 Car::~Car() noexcept {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)",ios_base::app);
     fout << "car"<< " destructor"<<endl;
     fout.close();
+}
+
+string Car::gettransmission() const {
+    return transmission;
+}
+
+string Car::getwheel_drive() const {
+    return wheel_drive;
+}
+
+void Car::settransmission(std::string &newtransmission) {
+    this->transmission = newtransmission;
+}
+
+void Car::setwheel_drive(std::string &newwheel_drive) {
+    this->wheel_drive = newwheel_drive;
+}
+
+bool Car::sorttransmission(std::string &newtransmission) {
+    return transmission == newtransmission;
+}
+
+bool Car::sortwheel_drive(std::string &newwheel_drive) {
+    return wheel_drive == newwheel_drive;
 }
 

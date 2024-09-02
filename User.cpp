@@ -76,3 +76,15 @@ string User::getpassword() {
     return Person::getpassword();
 }
 
+void User::setname(std::string &newname) {
+    Person::setname(newname);
+}
+
+void User::setsurname(std::string &newsurname) {
+    Person::setsurname(newsurname);
+}
+
+void User::setpassword(std::string &newpassword) {
+    Person::setpassword(newpassword);
+}
+

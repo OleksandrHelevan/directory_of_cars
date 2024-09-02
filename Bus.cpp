@@ -44,3 +44,25 @@ void Bus::getVehicle() const {
     Vehicle::getVehicle();
     cout<<"Passenger capacity: "<<passenger_capacity<<" persons";
 }
+
+Bus::~Bus() noexcept {
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)",ios_base::app);
+    fout << "bus"<< " destructor"<<endl;
+    fout.close();
+}
+
+int Bus::getpassenger_capacity() const {
+    return passenger_capacity;
+}
+
+void Bus::setpassenger_capacity(int newcap) {
+    this->passenger_capacity = newcap;
+}
+
+bool Bus::sortpassenger_capacity_h(int newcap) const {
+    return passenger_capacity >= newcap;
+}
+
+bool Bus::sortpassenger_capacity_l(int newcap) const {
+    return passenger_capacity <= newcap;
+}

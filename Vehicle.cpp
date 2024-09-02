@@ -8,19 +8,19 @@ Vehicle::Vehicle() : engine{Engine()}, weight{0}, fuel_consumption{0},
                      year{0}, location{"none"}, price{make_unique<int>(0)} {}
 
 Vehicle::Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
-                 string& bran, string& mod, int new_year, string& loc, int new_price) : engine{new_engine},
-                                                                                        weight{weigh}, fuel_consumption{consumption}, mileage{new_mileage}, color{col},
-                                                                                        brand{bran}, model{mod}, year{new_year}, location{loc}, price{make_unique<int>(new_price)} {}
+    string& bran, string& mod, int new_year, string& loc, int new_price) : engine{new_engine},
+    weight{weigh}, fuel_consumption{consumption}, mileage{new_mileage}, color{col},
+    brand{bran}, model{mod}, year{new_year}, location{loc}, price{make_unique<int>(new_price)} {}
 
 Vehicle::Vehicle(const Vehicle& other) : engine{other.engine}, weight{other.weight},
-                                         fuel_consumption{other.fuel_consumption}, mileage{other.mileage}, color{other.color},
-                                         brand{other.brand}, model{other.model}, year{other.year}, location{other.location},
-                                         price{make_unique<int>(*other.price)} {}
+    fuel_consumption{other.fuel_consumption}, mileage{other.mileage}, color{other.color},
+    brand{other.brand}, model{other.model}, year{other.year}, location{other.location},
+    price{make_unique<int>(*other.price)} {}
 
 Vehicle::Vehicle(Vehicle&& other) noexcept : engine{std::move(other.engine)}, weight{other.weight},
-                                             fuel_consumption{other.fuel_consumption}, mileage{other.mileage}, color{std::move(other.color)},
-                                             brand{std::move(other.brand)}, model{std::move(other.model)}, year{other.year}, location{std::move(other.location)},
-                                             price{std::move(other.price)} {}
+    fuel_consumption{other.fuel_consumption}, mileage{other.mileage}, color{std::move(other.color)},
+    brand{std::move(other.brand)}, model{std::move(other.model)}, year{other.year}, location{std::move(other.location)},
+    price{std::move(other.price)} {}
 
 Vehicle& Vehicle::operator=(const Vehicle& other) {
     if (this == &other) return *this;
@@ -153,6 +153,89 @@ void Vehicle::getVehicle() const {
 }
 
 Vehicle::~Vehicle() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)",ios_base::app);
     fout << model <<" "<<brand<<" "<<year<< " destructor"<<endl;
-    fout.close();}
+    fout.close();
+}
+
+void Vehicle::setEngine(const Engine& newEngine) {
+    this->engine = newEngine;
+}
+
+void Vehicle::setWeight(int newWeight) {
+    this->weight = newWeight;
+}
+
+void Vehicle::setFuelConsumption(double newFuelConsumption) {
+    this->fuel_consumption = newFuelConsumption;
+}
+
+void Vehicle::setMileage(int newMileage) {
+    this->mileage = newMileage;
+}
+
+void Vehicle::setColor(const string& newColor) {
+    this->color = newColor;
+}
+
+void Vehicle::setBrand(const string& newBrand) {
+    this->brand = newBrand;
+}
+
+void Vehicle::setModel(const string& newModel) {
+    this->model = newModel;
+}
+
+void Vehicle::setYear(int newYear) {
+    this->year = newYear;
+}
+
+void Vehicle::setLocation(const string& newLocation) {
+    this->location = newLocation;
+}
+
+void Vehicle::setPrice(int newPrice) {
+    *this->price = newPrice;
+}
+
+
+Engine Vehicle::getEngine() const{
+    return engine;
+}
+
+int Vehicle::getWeight() const {
+    return weight;
+}
+
+double Vehicle::getFuelConsumption() const {
+    return fuel_consumption;
+}
+
+int Vehicle::getMileage() const {
+    return mileage;
+}
+
+string Vehicle::getColor() const {
+    return color;
+}
+
+string Vehicle::getBrand() const {
+    return brand;
+}
+
+string Vehicle::getModel() const {
+    return model;
+}
+
+int Vehicle::getYear() const {
+    return year;
+}
+
+string Vehicle::getLocation() const {
+    return location;
+}
+
+int Vehicle::getPrice() const {
+    return *price;
+}
+

@@ -22,10 +22,10 @@ public:
     Vehicle();
     Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
             string& bran, string& mod, int new_year, string& loc, int new_price);
-    Vehicle(const Vehicle& other); // Copy constructor
-    Vehicle(Vehicle&& other) noexcept; // Move constructor
-    Vehicle& operator=(const Vehicle& other); // Copy assignment operator
-    Vehicle& operator=(Vehicle&& other) noexcept; // Move assignment operator
+    Vehicle(const Vehicle& other);
+    Vehicle(Vehicle&& other) noexcept;
+    Vehicle& operator=(const Vehicle& other);
+    Vehicle& operator=(Vehicle&& other) noexcept;
     friend ostream &operator<<(ostream &os, const Vehicle &obj);
     friend istream &operator>>(istream &is, Vehicle &obj);
     virtual ~Vehicle();
@@ -49,6 +49,28 @@ public:
     bool sort_location(string &loc);
     [[nodiscard]] bool sort_price_l(int pric) const;
     [[nodiscard]] bool sort_price_h(int pric) const;
+
+    void setEngine(const Engine& newEngine);
+    void setWeight(int newWeight);
+    void setFuelConsumption(double newFuelConsumption);
+    void setMileage(int newMileage);
+    void setColor(const string& newColor);
+    void setBrand(const string& newBrand);
+    void setModel(const string& newModel);
+    void setYear(int newYear);
+    void setLocation(const string& newLocation);
+    void setPrice(int newPrice);
+
+    [[nodiscard]] Engine getEngine() const;
+    [[nodiscard]] int getWeight() const;
+    [[nodiscard]] double getFuelConsumption() const;
+    [[nodiscard]] int getMileage() const;
+    [[nodiscard]] string getColor() const;
+    [[nodiscard]] string getBrand() const;
+    [[nodiscard]] string getModel() const;
+    [[nodiscard]] int getYear() const;
+    [[nodiscard]] string getLocation() const;
+    [[nodiscard]] int getPrice() const;
 
     virtual void getVehicle() const =0;
 };

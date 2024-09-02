@@ -31,6 +31,11 @@ public:
     virtual string getname()=0;
     virtual string getsurname()=0;
     virtual string getpassword()=0;
+
+    virtual void setname(string& newname);
+    virtual void setsurname(string& newsurname);
+    virtual void setpassword(string& newpassword);
+
     virtual list <Car> cars_from_file()=0;
     virtual vector <Truck> trucks_from_file()=0;
     virtual vector <Bus> buses_from_file()=0;

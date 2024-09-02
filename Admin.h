@@ -9,7 +9,7 @@ class Admin :public Person{
 public:
     Admin();
     Admin(std::string& new_name, std::string& new_surname, std::string& new_password);
-    ~Admin() override = default;
+    ~Admin() override;
     Admin(Admin&& other) noexcept;
     Admin& operator=(Admin&& other) noexcept;
     Admin& operator=(const Admin& other);
@@ -20,6 +20,10 @@ public:
     string getname() override;
     string getsurname() override;
     string getpassword() override;
+
+    void setname(string& newname) override;
+    void setsurname(string& newsurname) override;
+    void setpassword(string& newpassword) override;
 
     list <Car> cars_from_file() override;
     vector <Truck> trucks_from_file() override;

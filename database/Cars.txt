@@ -3,3 +3,4 @@ BMW	X7	white	2022	49000	0	12	3000	Kharkiv	3	disel	350	full	avtomathics
 Ford		Focus		blue	2012	6500	0	6	2000	Uzhhorod	1.7	disel	180	back	automatics	
 Mercedes-Benz	G-vagen		black	2020	28000	0	12	3000	Kyiv		2	disel	210	full	mechanics
 Lamborgini	URUS	red	2024	45000	0	12	2000	Khust	30	95	450	back	automathics
+Volkswagen	Touareg	blue	2017	25000	100	8	2250	Odesa	3	disel	3	full	automatics

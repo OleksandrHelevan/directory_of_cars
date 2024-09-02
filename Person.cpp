@@ -55,7 +55,7 @@ Person &Person::operator=(Person &&other) noexcept {
 }
 
 Person::~Person() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)", ios_base::app);
     fout << name << " destructor"<<endl;
     fout.close();
 }
@@ -177,6 +177,26 @@ void Person::addBus() {
         fout.close();
     }
 
-string Person::getname() {return name;}
-string Person::getsurname() {return surname;}
-string Person::getpassword() {return *password;}
+string Person::getname() {
+    return name;
+}
+
+string Person::getsurname() {
+    return surname;
+}
+
+string Person::getpassword() {
+    return *password;
+}
+
+void Person::setname(std::string& newname) {
+    this->name = newname;
+}
+
+void Person::setpassword(std::string &newpassword) {
+    *this->password = newpassword;
+}
+
+void Person::setsurname(std::string &newsurname) {
+    this->surname = newsurname;
+}

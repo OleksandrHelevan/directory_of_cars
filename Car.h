@@ -22,6 +22,15 @@ public:
     Car& operator=(const Car& other);
     Car& operator=(Car&& other) noexcept;
 
+    [[nodiscard]] string getwheel_drive() const;
+    [[nodiscard]] string gettransmission() const;
+
+    void setwheel_drive(string& newwheel_drive);
+    void settransmission(string& newtransmission);
+
+    bool sorttransmission(string& newtransmission);
+    bool sortwheel_drive(string& newwheel_drive);
+
 };
 
 
