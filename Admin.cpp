@@ -1,6 +1,7 @@
 
 #include "Admin.h"
 #include <fstream>
+#include "NotFoundEx.h"
 
 
 Admin::Admin(std::string &new_name, std::string &new_surname, std::string &new_password)
@@ -66,10 +67,17 @@ bool Admin::search() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)");
     Admin A;
     while(fin >> A){
-        if(A.getname() == Person::getname() && A.getsurname() == Person::getsurname()
-        && A.getpassword() == Person::getpassword()){
+        try {
+            if (A.getname() == Person::getname() && A.getsurname() == Person::getsurname()
+                && A.getpassword() == Person::getpassword()) {
+                fin.close();
+                return true;
+            } else {
+                throw NotFoundEx();
+            }
+        }catch (NotFoundEx& e){
             fin.close();
-            return true;
+            cerr<<"Admin "<<e.what()<<endl;
         }
     }
     fin.close();

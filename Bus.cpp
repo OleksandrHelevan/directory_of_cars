@@ -1,4 +1,5 @@
 #include "Bus.h"
+#include "fstream"
 using namespace std;
 
 Bus::Bus():Vehicle(),passenger_capacity{0} {}
