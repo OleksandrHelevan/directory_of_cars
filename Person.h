@@ -37,8 +37,8 @@ public:
     virtual void setpassword(string& newpassword);
 
     virtual list <Car> cars_from_file()=0;
-    virtual vector <Truck> trucks_from_file()=0;
-    virtual vector <Bus> buses_from_file()=0;
+    virtual list <Truck> trucks_from_file()=0;
+    virtual list <Bus> buses_from_file()=0;
     virtual void addCar()=0;
     virtual void addTruck()=0;
     virtual void addBus()=0;

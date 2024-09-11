@@ -25,8 +25,8 @@ public:
     void setpassword(string& newpassword) override;
 
     list <Car> cars_from_file() override;
-    vector <Truck> trucks_from_file() override;
-    vector <Bus> buses_from_file() override;
+    list <Truck> trucks_from_file() override;
+    list <Bus> buses_from_file() override;
     void addCar() override{};
     void addTruck() override{};
     void addBus() override{};

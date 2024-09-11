@@ -52,7 +52,7 @@ Car& Car::operator=(Car&& other) noexcept {
 
 Car::~Car() noexcept {
     ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)",ios_base::app);
-    fout << "car"<< " destructor"<<endl;
+    fout << "car destructor"<<endl;
     fout.close();
 }
 

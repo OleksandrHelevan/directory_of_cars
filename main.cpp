@@ -65,6 +65,7 @@ int main() {
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
+                                line();
                                 if (cin.fail()) {
                                     cin.clear();
                                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -92,15 +93,19 @@ int main() {
                                         break;
                                     }
                                     case 5: {
-                                        vector<Truck> trucks = admin.trucks_from_file();
+                                        list<Truck> trucks = admin.trucks_from_file();
                                         for_each(trucks.begin(), trucks.end(),
-                                                 [](Truck &truck) { truck.getVehicle(); });
+                                                 [](Truck &truck) { truck.getVehicle();
+                                        line();
+                                        });
                                         break;
                                     }
                                     case 6: {
-                                        vector<Bus> buses = admin.buses_from_file();
+                                        list<Bus> buses = admin.buses_from_file();
                                         for_each(buses.begin(), buses.end(),
-                                                 [](Bus &bus) { bus.getVehicle(); });
+                                                 [](Bus &bus) { bus.getVehicle();
+                                        line();
+                                        });
                                         break;
                                     }
                                     case 0: {

@@ -90,11 +90,11 @@ void Admin::write_to_file() {
     fout.close();
 }
 
-vector<Truck> Admin::trucks_from_file() {
+list<Truck> Admin::trucks_from_file() {
     return Person::trucks_from_file();
 }
 
-vector<Bus> Admin::buses_from_file() {
+list<Bus> Admin::buses_from_file() {
     return Person::buses_from_file();
 }
 

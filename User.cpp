@@ -52,11 +52,11 @@ void User::write_to_file() {
 }
 
 
-vector<Truck> User::trucks_from_file() {
+list<Truck> User::trucks_from_file() {
     return Person::trucks_from_file();
 }
 
-vector<Bus> User::buses_from_file() {
+list<Bus> User::buses_from_file() {
     return Person::buses_from_file();
 }
 

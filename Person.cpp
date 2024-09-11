@@ -1,7 +1,34 @@
 #include "Person.h"
 #include <fstream>
 #include <iostream>
+#include <limits>
+
 using namespace std;
+
+
+template <typename T>
+T getInput(const string& prompt) {
+    T value;
+    while (true) {
+        cout << prompt << endl;
+        cin >> value;
+        if (cin.fail()) {
+            cin.clear(); // Clear error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore incorrect input
+            cerr << "Invalid input. Please enter a value of the correct type." << endl;
+        } else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore any extra input
+            return value;
+        }
+    }
+}
+
+unique_ptr<string> getStringInput(const string& prompt) {
+    unique_ptr<string> value = make_unique<string>();
+    cout << prompt << endl;
+    cin >> *value;
+    return value;
+}
 
 Person::Person() : name{"none"}, surname{"none"}, password{new string {"none"}} {}
 
@@ -27,7 +54,7 @@ void Person::write_to_file(){
 }
 
 bool Person::search() {
-
+    return false;
 }
 
 Person &Person::operator=(const Person &other) {
@@ -62,7 +89,7 @@ Person::~Person() {
 
 list <Car> Person::cars_from_file() {
         shared_ptr<Car> car{new Car()};
-       list <Car> cars;
+        list<Car> cars;
         ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
         while(fin>>*car){
             cars.push_back(*car);
@@ -71,10 +98,10 @@ list <Car> Person::cars_from_file() {
         return cars;
     }
 
-vector<Bus> Person::buses_from_file() {
-    shared_ptr<Bus> bus;
-    vector<Bus> buses;
-    ifstream fin (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
+list<Bus> Person::buses_from_file() {
+    shared_ptr<Bus> bus{new Bus};
+    list<Bus> buses;
+    ifstream fin (R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
     while (fin>>*bus){
         buses.push_back(*bus);
     }
@@ -82,9 +109,9 @@ vector<Bus> Person::buses_from_file() {
     return buses;
 }
 
-vector<Truck> Person::trucks_from_file() {
-    shared_ptr<Truck> truck;
-    vector <Truck> trucks;
+list<Truck> Person::trucks_from_file() {
+    shared_ptr<Truck> truck {new Truck};
+    list <Truck> trucks;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
     while(fin>>*truck){
         trucks.push_back(*truck);
@@ -94,87 +121,125 @@ vector<Truck> Person::trucks_from_file() {
 }
 
 void Person::addCar() {
-    cout<<"Enter BRAND of car:"<<endl;
-    unique_ptr <string> brand {new string };
-    cin>>*brand;
+    unique_ptr<string> brand =
+            getStringInput("Enter BRAND of car:");
+    unique_ptr<string> model =
+            getStringInput("Enter MODEL of car:");
+    unique_ptr<int> year =
+            make_unique<int>(getInput<int>("Enter YEAR of car:"));
+    unique_ptr<string> color =
+            getStringInput("Enter COLOR of car:");
+    unique_ptr<double> capacity =
+            make_unique<double>(getInput<double>("Enter CAPACITY of car's engine:"));
+    unique_ptr<string> fuel =
+            getStringInput("Enter FUEL of car's engine:");
+    unique_ptr<double> power =
+            make_unique<double>(getInput<double>("Enter POWER of car's engine:"));
 
-    cout<<"Enter MODEL of car:"<<endl;
-    unique_ptr <string> model {new string };
-    cin>>*model;
+    Engine engine(*capacity, *fuel, *power);
 
-    cout<<"Enter YEAR of car:"<<endl;
-    unique_ptr <int> year {new int };
-    cin>>*year;
+    unique_ptr<int> weight =
+            make_unique<int>(getInput<int>("Enter WEIGHT of car:"));
+    unique_ptr<double> fuelConsumption =
+            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of car/100km:"));
+    unique_ptr<int> mileage =
+            make_unique<int>(getInput<int>("Enter MILEAGE of car in thousands of km:"));
+    unique_ptr<string> location =
+            getStringInput("Enter LOCATION of car:");
+    unique_ptr<string> wheelDrive =
+            getStringInput("Enter WHEEL DRIVE of car (full/back/front):");
+    unique_ptr<string> transmission =
+            getStringInput("Enter TRANSMISSION of car (automatic/mechanics):");
+    unique_ptr<int> price =
+            make_unique<int>(getInput<int>("Enter PRICE of car:"));
 
-    cout<<"Enter COLOR of car:"<<endl;
-    unique_ptr <string> color {new string };
-    cin>>*color;
+    Car car(engine, *weight, *fuelConsumption, *mileage,
+            *color, *brand, *model, *year, *location,
+            *price, *wheelDrive, *transmission);
 
-    cout<<"Enter CAPACITY of car`s engine:"<<endl;
-    unique_ptr <double> capacity{new double };
-    cin>>*capacity;
-
-    cout<<"Enter FUEL of car`s engine:"<<endl;
-    unique_ptr <string> fuel{new string };
-    cin>>*fuel;
-
-    cout<<"Enter POWER of car`s engine:"<<endl;
-    unique_ptr <double> power{new double };
-    cin>>*power;
-
-    Engine engine(*capacity,*fuel,*capacity);
-
-    cout<<"Enter WEIGHT of car:"<<endl;
-    unique_ptr <int> weight {new int };
-    cin>>*weight;
-
-    cout<<"Enter FUEL CONSUMPTION of car/100km:"<<endl;
-    unique_ptr <double> fuel_con {new double };
-    cin>>*fuel_con;
-
-    cout<<"Enter MILEAGE of car in thousands of km:"<<endl;
-    unique_ptr <int> mileage {new int };
-    cin>>*mileage;
-
-    cout<<"Enter LOCATION of car:"<<endl;
-    unique_ptr <string> location {new string };
-    cin>>*location;
-
-    cout<<"Enter wheel drive of car(full/back/front):"<<endl;
-    unique_ptr <string> wheel_drive {new string };
-    cin>>*wheel_drive;
-
-    cout<<"Enter TRANSMISSION of car(automatics/mechanics):"<<endl;
-    unique_ptr <string> transmission {new string };
-    cin>>*transmission;
-
-    cout<<"Enter PRICE of car:"<<endl;
-    unique_ptr <int> price {new int };
-    cin>>*price;
-
-    Car car(engine,*weight,*fuel_con,*mileage,
-            *color,*brand,*model,*year,*location,
-            *price,*wheel_drive,*transmission);
-
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)",ios_base::app);
-    fout<<car;
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)", ios_base::app);
+    fout << car;
     fout.close();
 }
 
 void Person::addTruck() {
-    unique_ptr <Truck> newTruck{ new Truck()};
-    cin>>*newTruck;
-    ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
-    fout<<*newTruck;
+    unique_ptr<string> brand =
+            getStringInput("Enter BRAND of truck:");
+    unique_ptr<string> model =
+            getStringInput("Enter MODEL of truck:");
+    unique_ptr<int> year =
+            make_unique<int>(getInput<int>("Enter YEAR of truck:"));
+    unique_ptr<string> color =
+            getStringInput("Enter COLOR of truck:");
+    unique_ptr<double> capacity =
+            make_unique<double>(getInput<double>("Enter CAPACITY of truck's engine:"));
+    unique_ptr<string> fuel =
+            getStringInput("Enter FUEL of truck's engine:");
+    unique_ptr<double> power =
+            make_unique<double>(getInput<double>("Enter POWER of truck's engine:"));
+
+    Engine engine(*capacity, *fuel, *power);
+
+    unique_ptr<int> weight =
+            make_unique<int>(getInput<int>("Enter WEIGHT of truck:"));
+    unique_ptr<double> fuelConsumption =
+            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of truck/100km:"));
+    unique_ptr<int> mileage =
+            make_unique<int>(getInput<int>("Enter MILEAGE of truck in thousands of km:"));
+    unique_ptr<string> location =
+            getStringInput("Enter LOCATION of truck:");
+    unique_ptr<int> cargoCapacity =
+            make_unique<int>(getInput<int>("Enter CARGO CAPACITY of truck:"));
+    unique_ptr<int> price =
+            make_unique<int>(getInput<int>("Enter PRICE of truck:"));
+
+    Truck truck(engine, *weight, *fuelConsumption, *mileage,
+                *color, *brand, *model, *year, *location,
+                *price, *cargoCapacity);
+
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)", ios_base::app);
+    fout << truck;
     fout.close();
 }
 
 void Person::addBus() {
-        unique_ptr <Bus> newBus { new Bus()};
-        cin>>*newBus;
-        ofstream fout (R"(C:\Users\Admin\Desktop\directory_of_cars\database)");
-        fout<<*newBus;
-        fout.close();
+    unique_ptr<string> brand =
+            getStringInput("Enter BRAND of bus:");
+    unique_ptr<string> model =
+            getStringInput("Enter MODEL of bus:");
+    unique_ptr<int> year =
+            make_unique<int>(getInput<int>("Enter YEAR of bus:"));
+    unique_ptr<string> color=
+            getStringInput("Enter COLOR of bus:");
+    unique_ptr<double> capacity =
+            make_unique<double>(getInput<double>("Enter CAPACITY of bus's engine:"));
+    unique_ptr<string> fuel =
+            getStringInput("Enter FUEL of bus's engine:");
+    unique_ptr<double> power =
+            make_unique<double>(getInput<double>("Enter POWER of bus's engine:"));
+
+    Engine engine(*capacity, *fuel, *power);
+
+    unique_ptr<int> weight =
+            make_unique<int>(getInput<int>("Enter WEIGHT of bus:"));
+    unique_ptr<double> fuelConsumption =
+            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of bus/100km:"));
+    unique_ptr<int> mileage =
+            make_unique<int>(getInput<int>("Enter MILEAGE of bus in thousands of km:"));
+    unique_ptr<string> location =
+            getStringInput("Enter LOCATION of bus:");
+    unique_ptr<int> passengerCapacity =
+            make_unique<int>(getInput<int>("Enter PASSENGER CAPACITY of bus:"));
+    unique_ptr<int> price =
+            make_unique<int>(getInput<int>("Enter PRICE of bus:"));
+
+    Bus bus(engine, *weight, *fuelConsumption, *mileage,
+            *color, *brand, *model, *year, *location,
+            *price, *passengerCapacity);
+
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)", ios_base::app);
+    fout << bus;
+    fout.close();
     }
 
 string Person::getname() {

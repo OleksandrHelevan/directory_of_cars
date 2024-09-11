@@ -43,7 +43,7 @@ Bus& Bus::operator=(Bus&& other) noexcept {
 
 void Bus::getVehicle() const {
     Vehicle::getVehicle();
-    cout<<"Passenger capacity: "<<passenger_capacity<<" persons";
+    cout<<"Passenger capacity: "<<passenger_capacity<<" persons"<<endl;
 }
 
 Bus::~Bus() noexcept {

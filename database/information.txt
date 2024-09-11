@@ -1,5 +1,9 @@
 authorization of ADMIN
 Admin destructor
 Oleksandr destructor
-Admin destructor
-Oleksandr destructor
+bus destructor
+A-092 Bogdan 1990 destructor
+5.2 disel destructor
+bus destructor
+A-092 Bogdan 1990 destructor
+5.2 disel destructor
