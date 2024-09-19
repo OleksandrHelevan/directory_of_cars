@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "WrongTypeEx.h"
 #include "fstream"
+#include <algorithm>
 using namespace std;
 
 Engine::Engine() : capacity{new double {0}}, fuel(" "), power(0.0) {}
@@ -35,7 +36,11 @@ bool Engine::sort_power_h(double pow) const {
 }
 
 bool Engine::sort_fuel(std::string &fuel1) {
+    transform(fuel1.begin(), fuel1.end(), fuel1.begin(), [](char c) {
+        return std::tolower(c);});
+    cout<<fuel1;
     return this->fuel==fuel1;
+
 }
 
 Engine::Engine(const Engine &other) {

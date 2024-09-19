@@ -8,7 +8,6 @@
 #include <memory>
 #include "WrongTypeEx.h"
 #include "WrongChoiceEx.h"
-#include <vector>
 
 #include <algorithm>
 #include <limits>
@@ -147,6 +146,7 @@ int main() {
                                 cout << "2 - to view all TRUCKS" << endl;
                                 cout << "3 - to view all BUSES" << endl;
                                 cout << "4 - to use some filter for CARS" << endl;
+                                cout << "4 - to use some filter for TRUCKS" << endl;
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
@@ -182,7 +182,15 @@ int main() {
                                         break;
                                     }
                                     case 4:{
-                                        user.carMenu();
+                                        user.car_menu();
+                                        break;
+                                    }
+                                    case 5:{
+                                        user.truck_menu();
+                                        break;
+                                    }
+                                    case 6:{
+                                        user.bus_menu();
                                         break;
                                     }
                                     case 0:{

@@ -22,8 +22,8 @@ public:
 
     [[nodiscard]] bool sortpassenger_capacity_h(int newcap) const;
     [[nodiscard]] bool sortpassenger_capacity_l(int newcap) const;
-    [[nodiscard]] int getpassenger_capacity() const;
-    void setpassenger_capacity(int newcap);
+    [[maybe_unused]][[nodiscard]] int getpassenger_capacity() const;
+    [[maybe_unused]]void setpassenger_capacity(int newcap);
 
     void getVehicle() const override;
 };

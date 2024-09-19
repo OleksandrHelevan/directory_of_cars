@@ -64,7 +64,7 @@ string Car::getwheel_drive() const {
     return wheel_drive;
 }
 
-void Car::settransmission(std::string &newtransmission) {
+[[maybe_unused]] void Car::settransmission(std::string &newtransmission) {
     this->transmission = newtransmission;
 }
 
@@ -72,11 +72,11 @@ void Car::setwheel_drive(std::string &newwheel_drive) {
     this->wheel_drive = newwheel_drive;
 }
 
-bool Car::sorttransmission(std::string &newtransmission) {
+bool Car::sort_transmission(std::string &newtransmission) {
     return transmission == newtransmission;
 }
 
-bool Car::sortwheel_drive(std::string &newwheel_drive) {
+bool Car::sort_wheel_drive(std::string &newwheel_drive) {
     return wheel_drive == newwheel_drive;
 }
 

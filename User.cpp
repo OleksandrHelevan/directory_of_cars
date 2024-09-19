@@ -90,7 +90,7 @@ void User::setpassword(std::string &newpassword) {
 }
 
 
-void User::carMenu() {
+void User::car_menu() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)");
     char ch;
     while (fin.get(ch)) {
@@ -184,13 +184,10 @@ void User::carMenu() {
                 make_unique<double>(User::getInput<double>("Enter the power of car`s engine you want to start from"));
                 try {
                     User::line();
-                    unique_ptr<double> choice1 =
-                            make_unique<double> (User::getInput<double>("1 - lower power \n2 - higher power"));
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower power \n2 - higher power"));
                     User::line();
 
-//                    cars.sort([](const Car &a, const Car &b) {
-//                        return a.getWeight() < b.getWeight();
-//                    });
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_power_l(*value)) {
@@ -220,13 +217,10 @@ void User::carMenu() {
                 make_unique<double>(User::getInput<double>("Enter the capacity of car`s engine you want to start from"));
                 try {
                     User::line();
-                    unique_ptr<double> choice1 =
-                            make_unique<double> (User::getInput<double>("1 - lower capacity \n2 - higher capacity"));
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
 
-//                    cars.sort([](const Car &a, const Car &b) {
-//                        return a.getWeight() < b.getWeight();
-//                    });
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_capacity_l(*value)) {
@@ -252,7 +246,18 @@ void User::carMenu() {
                 }
             }
             case 5: {
-                    //FUEL
+                unique_ptr<string> value =
+                        getStringInput("Enter the fuel of car you want to have");
+                    User::line();
+                    cars.sort([](const Car &a, const Car &b) {
+                        return a.getYear()< b.getYear();
+                    });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_fuel(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
                 break;
             }
             case 6: {
@@ -261,8 +266,8 @@ void User::carMenu() {
                         ("Enter the consumption of car you want to start from"));
                 try {
                     User::line();
-                    unique_ptr<double> choice1 =
-                            make_unique<double> (User::getInput<double>
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
                                 ("1 - lower consumption \n2 - higher consumption"));
                     User::line();
 
@@ -333,18 +338,66 @@ void User::carMenu() {
                 break;
             }
             case 8: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the brand of car you want to have");
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_brand(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
 
                 break;
             }
             case 9: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the model of car you want to have");
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_model(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
 
                 break;
             }
             case 10: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the color of car you want to have");
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_color(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
 
                 break;
             }
             case 11: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the location of car you want to have");
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_location(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
 
                 break;
             }
@@ -388,13 +441,438 @@ void User::carMenu() {
                 break;
             }
             case 13: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the transmission of car you want to have");
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_transmission(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
 
                 break;
             }
             case 14: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the wheel drive of car you want to have");
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(cars.begin(), cars.end(), [&value](Car &car) {
+                    if (car.sort_wheel_drive(*value)) {
+                        car.getVehicle();
+                        User::line();
+                    }
+                });
 
                 break;
             }
+            default: {
+                throw WrongChoiceEx();
+            }
+
+        }
+    }catch (WrongChoiceEx& e){
+        cerr<<e.what()<<endl;
+    }
+}
+
+void User::truck_menu() {
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)");
+    char ch;
+    while (fin.get(ch)) {
+        cout << ch;
+    }
+    fin.close();
+
+    unique_ptr<int> choice{new int};
+    cin>>*choice;
+    list<Truck> trucks = trucks_from_file();
+    try {
+        switch (*choice) {
+            case 1: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>("Enter the year you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower year \n2 - higher year"));
+                    User::line();
+
+                    trucks.sort([](const Truck &a, const Truck &b) {
+                        return a.getYear() > b.getYear();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_year_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_year_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 2: {
+                unique_ptr<int> value =
+                        make_unique<int>( User::getInput<int>
+                                                  ("Enter the weight of truck you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower weight \n2 - higher weight"));
+                    User::line();
+
+                    trucks.sort([](const Truck &a, const Truck &b) {
+                        return a.getWeight() < b.getWeight();
+                    });
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_weight_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_weight_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 3: {
+                unique_ptr<double> value =
+                        make_unique<double>(User::getInput<double>("Enter the power of truck`s engine you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower power \n2 - higher power"));
+                    User::line();
+
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_power_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_power_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 4: {
+                unique_ptr<double> value =
+                        make_unique<double>(User::getInput<double>("Enter the capacity of truck`s engine you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower capacity \n2 - higher capacity"));
+                    User::line();
+
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_capacity_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_capacity_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 5: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the fuel of truck you want to have");
+                User::line();
+                trucks.sort([](const Truck &a, const Truck &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                    if (truck.sort_fuel(*value)) {
+                        truck.getVehicle();
+                        User::line();
+                    }
+                });
+                break;
+            }
+            case 6: {
+                unique_ptr<double> value =
+                        make_unique<double>(User::getInput<double>
+                                                    ("Enter the consumption of truck you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower consumption \n2 - higher consumption"));
+                    User::line();
+
+                    trucks.sort([](const Truck &a, const Truck &b) {
+                        return a.getFuelConsumption()< b.getFuelConsumption();
+                    });
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_consumption_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_consumption_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+                break;
+            }
+            case 7: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>("Enter the mileage you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower mileage \n2 - higher mileage"));
+                    User::line();
+
+                    trucks.sort([](const Truck &a, const Truck &b) {
+                        return a.getMileage() > b.getMileage();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_mileage_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_mileage_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+                break;
+            }
+            case 8: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the brand of truck you want to have");
+                User::line();
+                trucks.sort([](const Truck &a, const Truck &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                    if (truck.sort_brand(*value)) {
+                        truck.getVehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 9: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the model of truck you want to have");
+                User::line();
+                trucks.sort([](const Truck &a, const Truck &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                    if (truck.sort_model(*value)) {
+                        truck.getVehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 10: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the color of truck you want to have");
+                User::line();
+                trucks.sort([](const Truck &a, const Truck &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                    if (truck.sort_color(*value)) {
+                        truck.getVehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 11: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the location of truck you want to have");
+                User::line();
+                trucks.sort([](const Truck &a, const Truck &b) {
+                    return a.getYear()< b.getYear();
+                });
+                for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                    if (truck.sort_location(*value)) {
+                        truck.getVehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 12: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>("Enter the price you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower price \n2 - higher price"));
+                    User::line();
+
+                    trucks.sort([](const Truck &a, const Truck &b) {
+                        return a.getPrice() > b.getPrice();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_price_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sort_price_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+
+                break;
+            }
+            case 13: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>
+                                ("Enter the cargo capacity you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower year \n2 - higher year"));
+                    User::line();
+
+                    trucks.sort([](const Truck &a, const Truck &b) {
+                        return a.getcargo_capacity() > b.getcargo_capacity();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sortcargo_capacity_l(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
+                            if (truck.sortcargo_capacity_h(*value)) {
+                                truck.getVehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw WrongChoiceEx();
+                    }
+                }catch(WrongChoiceEx& e){
+                    cerr<<e.what()<<endl;
+                }
+                break;
+            }
+
             default: {
                 throw WrongChoiceEx();
             }

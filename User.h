@@ -34,6 +34,9 @@ public:
     void addBus() override{};
     void write_to_file() override;
     bool search() override;
+    void car_menu();
+    void truck_menu();
+    void bus_menu();
 
     static void line(){
         cout<<"------------------------------------------------------------"
@@ -57,14 +60,12 @@ public:
         }
     }
 
-    unique_ptr<string> getStringInput(const string& prompt) {
+    static unique_ptr<string> getStringInput(const string& prompt) {
         unique_ptr<string> value = make_unique<string>();
         cout << prompt << endl;
         cin >> *value;
         return value;
     }
-
-    void carMenu();
 };
 
 #endif //DIRECTORY_OF_CARS_USER_H

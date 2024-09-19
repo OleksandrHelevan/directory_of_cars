@@ -1,5 +1,6 @@
 #include "Vehicle.h"
 #include "fstream"
+#include <algorithm>
 using namespace std;
 
 
@@ -113,15 +114,21 @@ bool Vehicle::sort_mileage_h(int mil) const {
     return this->mileage >= mil;
 }
 
-bool Vehicle::sort_model(std::string &mod) {
+bool Vehicle::sort_model(string &mod) {
+    transform(mod.begin(), mod.end(), mod.begin(), [](char c) {
+        return std::tolower(c);});
     return this->model == mod;
 }
 
-bool Vehicle::sort_color(std::string &col) {
+bool Vehicle::sort_color(string &col) {
+    transform(col.begin(), col.end(), col.begin(), [](char c) {
+        return std::tolower(c);});
     return this->color == col;
 }
 
-bool Vehicle::sort_brand(std::string &bra) {
+bool Vehicle::sort_brand(string &bra) {
+    transform(bra.begin(), bra.end(), bra.begin(), [](char c) {
+        return std::tolower(c);});
     return this->brand == bra;
 }
 
@@ -134,6 +141,8 @@ bool Vehicle::sort_year_h(int yea) const {
 }
 
 bool Vehicle::sort_location(std::string &loc) {
+    transform(loc.begin(), loc.end(), loc.begin(), [](char c) {
+        return std::tolower(c);});
     return this->location == loc;
 }
 

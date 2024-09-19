@@ -50,26 +50,26 @@ public:
     [[nodiscard]] bool sort_price_l(int pric) const;
     [[nodiscard]] bool sort_price_h(int pric) const;
 
-    void setEngine(const Engine& newEngine);
-    void setWeight(int newWeight);
-    void setFuelConsumption(double newFuelConsumption);
-    void setMileage(int newMileage);
-    void setColor(const string& newColor);
-    void setBrand(const string& newBrand);
-    void setModel(const string& newModel);
-    void setYear(int newYear);
-    void setLocation(const string& newLocation);
-    void setPrice(int newPrice);
+    [[maybe_unused]] void setEngine(const Engine& newEngine);
+    [[maybe_unused]] void setWeight(int newWeight);
+    [[maybe_unused]] void setFuelConsumption(double newFuelConsumption);
+    [[maybe_unused]] void setMileage(int newMileage);
+    [[maybe_unused]] void setColor(const string& newColor);
+    [[maybe_unused]] void setBrand(const string& newBrand);
+    [[maybe_unused]] void setModel(const string& newModel);
+    [[maybe_unused]] void setYear(int newYear);
+    [[maybe_unused]] void setLocation(const string& newLocation);
+    [[maybe_unused]] void setPrice(int newPrice);
 
-    [[nodiscard]] Engine getEngine() const;
+    [[maybe_unused]][[nodiscard]] Engine getEngine() const;
     [[nodiscard]] int getWeight() const;
     [[nodiscard]] double getFuelConsumption() const;
     [[nodiscard]] int getMileage() const;
-    [[nodiscard]] string getColor() const;
-    [[nodiscard]] string getBrand() const;
-    [[nodiscard]] string getModel() const;
+    [[maybe_unused]][[nodiscard]] string getColor() const;
+    [[maybe_unused]][[nodiscard]] string getBrand() const;
+    [[maybe_unused]][[nodiscard]] string getModel() const;
     [[nodiscard]] int getYear() const;
-    [[nodiscard]] string getLocation() const;
+    [[maybe_unused]][[nodiscard]] string getLocation() const;
     [[nodiscard]] int getPrice() const;
 
     virtual void getVehicle() const =0;

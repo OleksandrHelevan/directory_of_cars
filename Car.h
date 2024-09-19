@@ -22,14 +22,14 @@ public:
     Car& operator=(const Car& other);
     Car& operator=(Car&& other) noexcept;
 
-    [[nodiscard]] string getwheel_drive() const;
-    [[nodiscard]] string gettransmission() const;
+    [[maybe_unused]] [[nodiscard]] string getwheel_drive() const;
+    [[maybe_unused]][[nodiscard]] string gettransmission() const;
 
-    void setwheel_drive(string& newwheel_drive);
-    void settransmission(string& newtransmission);
+    [[maybe_unused]]void setwheel_drive(string& newwheel_drive);
+    [[maybe_unused]] void settransmission(string& newtransmission);
 
-    bool sorttransmission(string& newtransmission);
-    bool sortwheel_drive(string& newwheel_drive);
+    bool sort_transmission(string& newtransmission);
+    bool sort_wheel_drive(string& newwheel_drive);
 
 };
 
