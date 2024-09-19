@@ -1,14 +1,14 @@
-1 - by YEAR of car/
-2 - by WEIGHT of car/
-3 - by engine`s POWER/
-4 - by engine`s CAPACITY/
-5 - by engine`s FUEL/
-6 - by FUEL CONSUMPTION of car/
-7 - by MILEAGE of car/
-8 - by BRAND of car/
-9 - by MODEL of car/
+1 - by YEAR of car
+2 - by WEIGHT of car
+3 - by engine`s POWER
+4 - by engine`s CAPACITY
+5 - by engine`s FUEL
+6 - by FUEL CONSUMPTION of car
+7 - by MILEAGE of car
+8 - by BRAND of car
+9 - by MODEL of car
 10 - by COLOR of car
 11 - by LOCATION of car
-12 - by PRICE of car/
+12 - by PRICE of car
 13 - by TRANSMISSION of car
 14 - by WHEEL DRIVE of car

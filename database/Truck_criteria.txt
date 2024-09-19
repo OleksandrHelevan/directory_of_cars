@@ -1,0 +1,13 @@
+1 - by YEAR of truck
+2 - by WEIGHT of truck
+3 - by engine`s POWER
+4 - by engine`s CAPACITY
+5 - by engine`s FUEL
+6 - by FUEL CONSUMPTION of truck
+7 - by MILEAGE of truck
+8 - by BRAND of truck
+9 - by MODEL of truck
+10 - by COLOR of truck
+11 - by LOCATION of truck
+12 - by PRICE of truck
+13 - by CARGO CAPACITY of truck
