@@ -40,24 +40,24 @@ Truck& Truck::operator=(Truck&& other) noexcept {
     return *this;
 }
 
-void Truck::getVehicle() const {
-    Vehicle::getVehicle();
+void Truck::get_vehicle() const {
+    Vehicle::get_vehicle();
     cout<<"Cargo capacity: "<<cargo_capacity<<" kg"<<endl;
 }
 
-void Truck::setcargo_capacity(int newcargo) {
-    this->cargo_capacity=newcargo;
+void Truck::set_cargo_capacity(int new_cargo) {
+    this->cargo_capacity=new_cargo;
 }
 
-int Truck::getcargo_capacity() const {
+int Truck::get_cargo_capacity() const {
     return cargo_capacity;
 }
 
-bool Truck::sortcargo_capacity_h(int newcap) const {
-    return this->cargo_capacity >= newcap;
+bool Truck::sort_cargo_capacity_h(int new_cap) const {
+    return this->cargo_capacity >= new_cap;
 }
-bool Truck::sortcargo_capacity_l(int newcap) const {
-    return this->cargo_capacity <= newcap;
+bool Truck::sort_cargo_capacity_l(int new_cap) const {
+    return this->cargo_capacity <= new_cap;
 }
 
 Truck::~Truck() noexcept {

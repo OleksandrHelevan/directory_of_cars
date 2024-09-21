@@ -41,8 +41,8 @@ Bus& Bus::operator=(Bus&& other) noexcept {
     return *this;
 }
 
-void Bus::getVehicle() const {
-    Vehicle::getVehicle();
+void Bus::get_vehicle() const {
+    Vehicle::get_vehicle();
     cout<<"Passenger capacity: "<<passenger_capacity<<" persons"<<endl;
 }
 
@@ -52,18 +52,18 @@ Bus::~Bus() noexcept {
     fout.close();
 }
 
-int Bus::getpassenger_capacity() const {
+int Bus::get_passenger_capacity() const {
     return passenger_capacity;
 }
 
-void Bus::setpassenger_capacity(int newcap) {
+void Bus::set_passenger_capacity(int newcap) {
     this->passenger_capacity = newcap;
 }
 
-bool Bus::sortpassenger_capacity_h(int newcap) const {
+bool Bus::sort_passenger_capacity_h(int newcap) const {
     return passenger_capacity >= newcap;
 }
 
-bool Bus::sortpassenger_capacity_l(int newcap) const {
+bool Bus::sort_passenger_capacity_l(int newcap) const {
     return passenger_capacity <= newcap;
 }

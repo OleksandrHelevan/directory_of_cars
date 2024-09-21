@@ -16,11 +16,11 @@ add_executable(directory_of_cars main.cpp
         Bus.h
         Truck.cpp
         Truck.h
-        WrongTypeEx.h
+        Wrong_type.h
         User.cpp
         User.h
         Admin.cpp
         Admin.h
-        WrongChoiceEx.h
-        NotFoundEx.h
+        Wrong_choice.h
+        Client_not_found.h
 )

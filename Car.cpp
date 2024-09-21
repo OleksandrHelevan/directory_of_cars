@@ -22,8 +22,8 @@ istream &operator>>(istream &is, Car &obj){
     return is;
 }
 
-void Car::getVehicle() const  {
-    Vehicle::getVehicle();
+void Car::get_vehicle() const  {
+    Vehicle::get_vehicle();
     cout<<"Wheel drive: "<<wheel_drive<<"\nTransmission: "<<transmission<<endl;
 }
 Car::Car(const Car& other) : Vehicle(other), wheel_drive{other.wheel_drive}, transmission{other.transmission} {}
@@ -56,19 +56,19 @@ Car::~Car() noexcept {
     fout.close();
 }
 
-string Car::gettransmission() const {
+string Car::get_transmission() const {
     return transmission;
 }
 
-string Car::getwheel_drive() const {
+string Car::get_wheel_drive() const {
     return wheel_drive;
 }
 
-[[maybe_unused]] void Car::settransmission(std::string &newtransmission) {
+[[maybe_unused]] void Car::set_transmission(string &newtransmission) {
     this->transmission = newtransmission;
 }
 
-void Car::setwheel_drive(std::string &newwheel_drive) {
+void Car::set_wheel_drive(string &newwheel_drive) {
     this->wheel_drive = newwheel_drive;
 }
 

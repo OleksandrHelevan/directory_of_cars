@@ -19,12 +19,12 @@ public:
     Truck(Truck&& other) noexcept;
     Truck& operator=(const Truck& other);
     Truck& operator=(Truck&& other) noexcept;
-    void getVehicle() const override;
+    void get_vehicle() const override;
 
-    [[nodiscard]] bool sortcargo_capacity_h(int newcap) const;
-    [[nodiscard]] bool sortcargo_capacity_l(int newcap) const;
-    [[maybe_unused]] [[nodiscard]] int getcargo_capacity() const;
-    [[maybe_unused]] void setcargo_capacity(int newcargo);
+    [[nodiscard]] bool sort_cargo_capacity_h(int new_cap) const;
+    [[nodiscard]] bool sort_cargo_capacity_l(int new_cap) const;
+    [[maybe_unused]] [[nodiscard]] int get_cargo_capacity() const;
+    [[maybe_unused]] void set_cargo_capacity(int new_cargo);
 };
 
 

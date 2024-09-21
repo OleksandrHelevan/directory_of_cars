@@ -114816,3 +114816,23 @@ Touareg Volkswagen 2017 destructor
 car destructor
 Astra Opel 2000 destructor
 1.6 95 destructor
+Oleksandr destructor
+bus destructor
+A-092 Bogdan 1990 destructor
+5.2 disel destructor
+bus destructor
+A-092 Bogdan 1990 destructor
+5.2 disel destructor
+Oleksandr destructor
+bus destructor
+A-092 Bogdan 1990 destructor
+5.2 disel destructor
+bus destructor
+A-092 Bogdan 1990 destructor
+5.2 disel destructor
+Oleksandr destructor
+oLEKSANDR destructor
+Oleksandr destructor
+BGRFVE destructor
+Oleksandr destructor
+efvsdcsa destructor

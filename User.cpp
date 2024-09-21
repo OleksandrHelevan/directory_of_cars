@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "User.h"
 #include <fstream>
-#include "WrongChoiceEx.h"
+#include "Wrong_choice.h"
 
 User::User(std::string &new_name, std::string &new_surname, std::string &new_password)
 : Person(new_name,new_surname,new_password){}
@@ -38,8 +38,8 @@ bool User::search() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)");
     User A;
     while(fin >> A){
-        if(A.getname() == Person::getname() && A.getsurname() == Person::getsurname()
-           && A.getpassword() == Person::getpassword()){
+        if(A.get_name() == Person::get_name() && A.get_surname() == Person::get_surname()
+           && A.get_password() == Person::get_password()){
             fin.close();
             return true;
         }
@@ -65,28 +65,28 @@ list <Car> User::cars_from_file() {
     return Person::cars_from_file();
 }
 
-string User::getname() {
-    return Person::getname();
+string User::get_name() {
+    return Person::get_name();
 }
 
-string User::getsurname() {
-    return Person::getsurname();
+string User::get_surname() {
+    return Person::get_surname();
 }
 
-string User::getpassword() {
-    return Person::getpassword();
+string User::get_password() {
+    return Person::get_password();
 }
 
-void User::setname(std::string &newname) {
-    Person::setname(newname);
+void User::set_name(string &newname) {
+    Person::set_name(newname);
 }
 
-void User::setsurname(std::string &newsurname) {
-    Person::setsurname(newsurname);
+void User::set_surname(string &newsurname) {
+    Person::set_surname(newsurname);
 }
 
-void User::setpassword(std::string &newpassword) {
-    Person::setpassword(newpassword);
+void User::set_password(string &newpassword) {
+    Person::set_password(newpassword);
 }
 
 
@@ -97,6 +97,7 @@ void User::car_menu() {
         cout << ch;
     }
     fin.close();
+    cout<<endl;
 
     unique_ptr<int> choice{new int};
     cin>>*choice;
@@ -114,13 +115,13 @@ void User::car_menu() {
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
-                        return a.getYear() > b.getYear();
+                        return a.get_year() > b.get_year();
                     });
 
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_year_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -129,15 +130,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_year_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -153,12 +154,12 @@ void User::car_menu() {
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
-                        return a.getWeight() < b.getWeight();
+                        return a.get_weight() < b.get_weight();
                     });
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_weight_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -167,15 +168,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_weight_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -191,7 +192,7 @@ void User::car_menu() {
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_power_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -200,15 +201,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_power_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -224,7 +225,7 @@ void User::car_menu() {
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_capacity_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -233,15 +234,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_capacity_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -250,11 +251,11 @@ void User::car_menu() {
                         getStringInput("Enter the fuel of car you want to have");
                     User::line();
                     cars.sort([](const Car &a, const Car &b) {
-                        return a.getYear()< b.getYear();
+                        return a.get_year() < b.get_year();
                     });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_fuel(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -272,12 +273,12 @@ void User::car_menu() {
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
-                        return a.getFuelConsumption() < b.getFuelConsumption();
+                        return a.get_fuel_consumption() < b.get_fuel_consumption();
                     });
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_consumption_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -286,15 +287,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_consumption_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -309,13 +310,13 @@ void User::car_menu() {
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
-                        return a.getMileage() > b.getMileage();
+                        return a.get_mileage() > b.get_mileage();
                     });
 
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_mileage_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -324,15 +325,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_mileage_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -342,11 +343,11 @@ void User::car_menu() {
                         getStringInput("Enter the brand of car you want to have");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_brand(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -358,11 +359,11 @@ void User::car_menu() {
                         getStringInput("Enter the model of car you want to have");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_model(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -374,11 +375,11 @@ void User::car_menu() {
                         getStringInput("Enter the color of car you want to have");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_color(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -390,11 +391,11 @@ void User::car_menu() {
                         getStringInput("Enter the location of car you want to have");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_location(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -411,13 +412,13 @@ void User::car_menu() {
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
-                        return a.getPrice() > b.getPrice();
+                        return a.get_price() > b.get_price();
                     });
 
                     if (*choice1 == 1) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_price_l(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
@@ -426,15 +427,15 @@ void User::car_menu() {
                     if (*choice1 == 2) {
                         for_each(cars.begin(), cars.end(), [&value](Car &car) {
                             if (car.sort_price_h(*value)) {
-                                car.getVehicle();
+                                car.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
 
@@ -445,11 +446,11 @@ void User::car_menu() {
                         getStringInput("Enter the transmission of car you want to have");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_transmission(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -461,11 +462,11 @@ void User::car_menu() {
                         getStringInput("Enter the wheel drive of car you want to have");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_wheel_drive(*value)) {
-                        car.getVehicle();
+                        car.get_vehicle();
                         User::line();
                     }
                 });
@@ -473,11 +474,11 @@ void User::car_menu() {
                 break;
             }
             default: {
-                throw WrongChoiceEx();
+                throw Wrong_choice();
             }
 
         }
-    }catch (WrongChoiceEx& e){
+    }catch (Wrong_choice& e){
         cerr<<e.what()<<endl;
     }
 }
@@ -489,6 +490,7 @@ void User::truck_menu() {
         cout << ch;
     }
     fin.close();
+    cout<<endl;
 
     unique_ptr<int> choice{new int};
     cin>>*choice;
@@ -506,13 +508,13 @@ void User::truck_menu() {
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
-                        return a.getYear() > b.getYear();
+                        return a.get_year() > b.get_year();
                     });
 
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_year_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -521,15 +523,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_year_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -545,12 +547,12 @@ void User::truck_menu() {
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
-                        return a.getWeight() < b.getWeight();
+                        return a.get_weight() < b.get_weight();
                     });
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_weight_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -559,15 +561,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_weight_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -583,7 +585,7 @@ void User::truck_menu() {
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_power_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -592,15 +594,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_power_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -616,7 +618,7 @@ void User::truck_menu() {
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_capacity_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -625,15 +627,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_capacity_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -642,11 +644,11 @@ void User::truck_menu() {
                         getStringInput("Enter the fuel of truck you want to have");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                     if (truck.sort_fuel(*value)) {
-                        truck.getVehicle();
+                        truck.get_vehicle();
                         User::line();
                     }
                 });
@@ -664,12 +666,12 @@ void User::truck_menu() {
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
-                        return a.getFuelConsumption()< b.getFuelConsumption();
+                        return a.get_fuel_consumption() < b.get_fuel_consumption();
                     });
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_consumption_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -678,15 +680,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_consumption_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -701,13 +703,13 @@ void User::truck_menu() {
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
-                        return a.getMileage() > b.getMileage();
+                        return a.get_mileage() > b.get_mileage();
                     });
 
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_mileage_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -716,15 +718,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_mileage_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -734,11 +736,11 @@ void User::truck_menu() {
                         getStringInput("Enter the brand of truck you want to have");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                     if (truck.sort_brand(*value)) {
-                        truck.getVehicle();
+                        truck.get_vehicle();
                         User::line();
                     }
                 });
@@ -750,11 +752,11 @@ void User::truck_menu() {
                         getStringInput("Enter the model of truck you want to have");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                     if (truck.sort_model(*value)) {
-                        truck.getVehicle();
+                        truck.get_vehicle();
                         User::line();
                     }
                 });
@@ -766,11 +768,11 @@ void User::truck_menu() {
                         getStringInput("Enter the color of truck you want to have");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                     if (truck.sort_color(*value)) {
-                        truck.getVehicle();
+                        truck.get_vehicle();
                         User::line();
                     }
                 });
@@ -782,11 +784,11 @@ void User::truck_menu() {
                         getStringInput("Enter the location of truck you want to have");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
-                    return a.getYear()< b.getYear();
+                    return a.get_year() < b.get_year();
                 });
                 for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                     if (truck.sort_location(*value)) {
-                        truck.getVehicle();
+                        truck.get_vehicle();
                         User::line();
                     }
                 });
@@ -803,13 +805,13 @@ void User::truck_menu() {
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
-                        return a.getPrice() > b.getPrice();
+                        return a.get_price() > b.get_price();
                     });
 
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_price_l(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -818,15 +820,15 @@ void User::truck_menu() {
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
                             if (truck.sort_price_h(*value)) {
-                                truck.getVehicle();
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
 
@@ -844,13 +846,13 @@ void User::truck_menu() {
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
-                        return a.getcargo_capacity() > b.getcargo_capacity();
+                        return a.get_cargo_capacity() > b.get_cargo_capacity();
                     });
 
                     if (*choice1 == 1) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
-                            if (truck.sortcargo_capacity_l(*value)) {
-                                truck.getVehicle();
+                            if (truck.sort_cargo_capacity_l(*value)) {
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
@@ -858,27 +860,429 @@ void User::truck_menu() {
                     }
                     if (*choice1 == 2) {
                         for_each(trucks.begin(), trucks.end(), [&value](Truck &truck) {
-                            if (truck.sortcargo_capacity_h(*value)) {
-                                truck.getVehicle();
+                            if (truck.sort_cargo_capacity_h(*value)) {
+                                truck.get_vehicle();
                                 User::line();
                             }
                         });
                         break;
                     } else {
-                        throw WrongChoiceEx();
+                        throw Wrong_choice();
                     }
-                }catch(WrongChoiceEx& e){
+                }catch(Wrong_choice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
             }
 
             default: {
-                throw WrongChoiceEx();
+                throw Wrong_choice();
             }
 
         }
-    }catch (WrongChoiceEx& e){
+    }catch (Wrong_choice& e){
+        cerr<<e.what()<<endl;
+    }
+}
+
+void User::bus_menu() {
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)");
+    char ch;
+    while (fin.get(ch)) {
+        cout << ch;
+    }
+    fin.close();
+    cout<<endl;
+
+    unique_ptr<int> choice{new int};
+    cin>>*choice;
+    list<Bus> buses = buses_from_file();
+    try {
+        switch (*choice) {
+            case 1: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>("Enter the year you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower year \n2 - higher year"));
+                    User::line();
+
+                    buses.sort([](const Bus &a, const Bus &b) {
+                        return a.get_year() > b.get_year();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_year_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_year_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 2: {
+                unique_ptr<int> value =
+                        make_unique<int>( User::getInput<int>
+                                                  ("Enter the weight of truck you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower weight \n2 - higher weight"));
+                    User::line();
+
+                    buses.sort([](const Bus &a, const Bus &b) {
+                        return a.get_weight() < b.get_weight();
+                    });
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_weight_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_weight_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 3: {
+                unique_ptr<double> value =
+                        make_unique<double>(User::getInput<double>("Enter the power of truck`s engine you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower power \n2 - higher power"));
+                    User::line();
+
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_power_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_power_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 4: {
+                unique_ptr<double> value =
+                        make_unique<double>(User::getInput<double>("Enter the capacity of truck`s engine you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower capacity \n2 - higher capacity"));
+                    User::line();
+
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_capacity_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_capacity_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+            }
+            case 5: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the fuel of truck you want to have");
+                User::line();
+                buses.sort([](const Bus &a, const Bus &b) {
+                    return a.get_year() < b.get_year();
+                });
+                for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                    if (bus.sort_fuel(*value)) {
+                        bus.get_vehicle();
+                        User::line();
+                    }
+                });
+                break;
+            }
+            case 6: {
+                unique_ptr<double> value =
+                        make_unique<double>(User::getInput<double>
+                                                    ("Enter the consumption of truck you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower consumption \n2 - higher consumption"));
+                    User::line();
+
+                    buses.sort([](const Bus &a, const Bus &b) {
+                        return a.get_fuel_consumption() < b.get_fuel_consumption();
+                    });
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_consumption_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_consumption_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+                break;
+            }
+            case 7: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>("Enter the mileage you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower mileage \n2 - higher mileage"));
+                    User::line();
+
+                    buses.sort([](const Bus &a, const Bus &b) {
+                        return a.get_mileage() > b.get_mileage();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_mileage_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_mileage_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+                break;
+            }
+            case 8: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the brand of truck you want to have");
+                User::line();
+                buses.sort([](const Bus &a, const Bus &b) {
+                    return a.get_year() < b.get_year();
+                });
+                for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                    if (bus.sort_brand(*value)) {
+                        bus.get_vehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 9: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the model of truck you want to have");
+                User::line();
+                buses.sort([](const Bus &a, const Bus &b) {
+                    return a.get_year() < b.get_year();
+                });
+                for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                    if (bus.sort_model(*value)) {
+                        bus.get_vehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 10: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the color of truck you want to have");
+                User::line();
+                buses.sort([](const Bus &a, const Bus &b) {
+                    return a.get_year() < b.get_year();
+                });
+                for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                    if (bus.sort_color(*value)) {
+                        bus.get_vehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 11: {
+                unique_ptr<string> value =
+                        getStringInput("Enter the location of truck you want to have");
+                User::line();
+                buses.sort([](const Bus &a, const Bus &b) {
+                    return a.get_year() < b.get_year();
+                });
+                for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                    if (bus.sort_location(*value)) {
+                        bus.get_vehicle();
+                        User::line();
+                    }
+                });
+
+                break;
+            }
+            case 12: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>("Enter the price you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>("1 - lower price \n2 - higher price"));
+                    User::line();
+
+                    buses.sort([](const Bus &a, const Bus &b) {
+                        return a.get_price() > b.get_price();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_price_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_price_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+
+                break;
+            }
+            case 13: {
+                unique_ptr<int> value =
+                        make_unique<int>(User::getInput<int>
+                                                 ("Enter the cargo capacity you want to start from"));
+                try {
+                    User::line();
+                    unique_ptr<int> choice1 =
+                            make_unique<int> (User::getInput<int>
+                                                      ("1 - lower year \n2 - higher year"));
+                    User::line();
+
+                    buses.sort([](const Bus &a, const Bus &b) {
+                        return a.get_passenger_capacity() > b.get_passenger_capacity();
+                    });
+
+                    if (*choice1 == 1) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_passenger_capacity_l(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    }
+                    if (*choice1 == 2) {
+                        for_each(buses.begin(), buses.end(), [&value](Bus &bus) {
+                            if (bus.sort_passenger_capacity_h(*value)) {
+                                bus.get_vehicle();
+                                User::line();
+                            }
+                        });
+                        break;
+                    } else {
+                        throw Wrong_choice();
+                    }
+                }catch(Wrong_choice& e){
+                    cerr<<e.what()<<endl;
+                }
+                break;
+            }
+
+            default: {
+                throw Wrong_choice();
+            }
+
+        }
+    }catch (Wrong_choice& e){
         cerr<<e.what()<<endl;
     }
 }

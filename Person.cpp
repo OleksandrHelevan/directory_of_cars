@@ -120,7 +120,7 @@ list<Truck> Person::trucks_from_file() {
     return trucks;
 }
 
-void Person::addCar() {
+void Person::add_car() {
     unique_ptr<string> brand =
             getStringInput("Enter BRAND of car:");
     unique_ptr<string> model =
@@ -162,7 +162,7 @@ void Person::addCar() {
     fout.close();
 }
 
-void Person::addTruck() {
+void Person::add_truck() {
     unique_ptr<string> brand =
             getStringInput("Enter BRAND of truck:");
     unique_ptr<string> model =
@@ -202,7 +202,7 @@ void Person::addTruck() {
     fout.close();
 }
 
-void Person::addBus() {
+void Person::add_bus() {
     unique_ptr<string> brand =
             getStringInput("Enter BRAND of bus:");
     unique_ptr<string> model =
@@ -242,26 +242,26 @@ void Person::addBus() {
     fout.close();
     }
 
-string Person::getname() {
+string Person::get_name() {
     return name;
 }
 
-string Person::getsurname() {
+string Person::get_surname() {
     return surname;
 }
 
-string Person::getpassword() {
+string Person::get_password() {
     return *password;
 }
 
-void Person::setname(std::string& newname) {
+void Person::set_name(string &newname) {
     this->name = newname;
 }
 
-void Person::setpassword(std::string &newpassword) {
+void Person::set_password(string &newpassword) {
     *this->password = newpassword;
 }
 
-void Person::setsurname(std::string &newsurname) {
+void Person::set_surname(string &newsurname) {
     this->surname = newsurname;
 }

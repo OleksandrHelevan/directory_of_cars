@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "WrongTypeEx.h"
+#include "Wrong_type.h"
 #include "fstream"
 #include <algorithm>
 using namespace std;
@@ -58,7 +58,7 @@ Engine::Engine(Engine &&other)  noexcept {
     other.capacity = nullptr;
 }
 
-void Engine::getEngine() const {
+void Engine::get_engine() const {
     cout<<"Capacity: "<<*capacity<<" liters"<<"\nFuel: "<<fuel<<"\nPower (kW): "<<power<<endl;
 }
 
@@ -85,26 +85,26 @@ Engine::~Engine() {
     fout<<*capacity<<" "<<fuel<<" destructor"<<endl;
     fout.close();
 }
-void Engine::setCapacity(double newCapacity) {
+void Engine::set_capacity(double newCapacity) {
     *this->capacity = newCapacity;
 }
 
-void Engine::setFuel(string& newFuel) {
+void Engine::set_fuel(string& newFuel) {
     this->fuel = newFuel;
 }
 
-void Engine::setPower(double newPower) {
+void Engine::set_power(double newPower) {
     this->power = newPower;
 }
 
-double Engine::getCapacity() const {
+double Engine::get_capacity() const {
         return *capacity;
 }
 
-string Engine::getFuel() const {
+string Engine::get_fuel() const {
     return fuel;
 }
 
-double Engine::getPower() const {
+double Engine::get_power() const {
     return power;
 }

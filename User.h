@@ -18,20 +18,20 @@ public:
     friend ostream& operator<<(ostream& os, const User& obj);
     friend istream& operator>>(istream& is, User& obj);
 
-    string getname() override;
-    string getsurname() override;
-    string getpassword() override;
+    string get_name() override;
+    string get_surname() override;
+    string get_password() override;
 
-    void setname(string& newname) override;
-    void setsurname(string& newsurname) override;
-    void setpassword(string& newpassword) override;
+    void set_name(string& newname) override;
+    void set_surname(string& newsurname) override;
+    void set_password(string& newpassword) override;
 
     list <Car> cars_from_file() override;
     list <Truck> trucks_from_file() override;
     list <Bus> buses_from_file() override;
-    void addCar() override{};
-    void addTruck() override{};
-    void addBus() override{};
+    void add_car() override{};
+    void add_truck() override{};
+    void add_bus() override{};
     void write_to_file() override;
     bool search() override;
     void car_menu();

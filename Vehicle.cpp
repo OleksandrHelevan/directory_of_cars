@@ -154,11 +154,11 @@ bool Vehicle::sort_price_l(int pric) const {
     return *this->price <= pric;
 }
 
-void Vehicle::getVehicle() const {
+void Vehicle::get_vehicle() const {
     cout << brand << " " << model << " " << color << " " << year << endl <<
          "Price: " << *price << " $\nMileage: " << mileage << " thousands of km" << "\nFuel consumption: "
          << fuel_consumption << " liters/100km" << "\nWeight: " << weight << " kg" << "\nLocation: " << location << endl;
-    engine.getEngine();
+    engine.get_engine();
 }
 
 Vehicle::~Vehicle() {
@@ -167,84 +167,84 @@ Vehicle::~Vehicle() {
     fout.close();
 }
 
-void Vehicle::setEngine(const Engine& newEngine) {
+void Vehicle::set_engine(const Engine& newEngine) {
     this->engine = newEngine;
 }
 
-void Vehicle::setWeight(int newWeight) {
+void Vehicle::set_weight(int newWeight) {
     this->weight = newWeight;
 }
 
-void Vehicle::setFuelConsumption(double newFuelConsumption) {
+void Vehicle::set_fuel_consumption(double newFuelConsumption) {
     this->fuel_consumption = newFuelConsumption;
 }
 
-void Vehicle::setMileage(int newMileage) {
+void Vehicle::set_mileage(int newMileage) {
     this->mileage = newMileage;
 }
 
-void Vehicle::setColor(const string& newColor) {
+void Vehicle::set_color(const string& newColor) {
     this->color = newColor;
 }
 
-void Vehicle::setBrand(const string& newBrand) {
+void Vehicle::set_brand(const string& newBrand) {
     this->brand = newBrand;
 }
 
-void Vehicle::setModel(const string& newModel) {
+void Vehicle::set_model(const string& newModel) {
     this->model = newModel;
 }
 
-void Vehicle::setYear(int newYear) {
+void Vehicle::set_year(int newYear) {
     this->year = newYear;
 }
 
-void Vehicle::setLocation(const string& newLocation) {
+void Vehicle::set_location(const string& newLocation) {
     this->location = newLocation;
 }
 
-void Vehicle::setPrice(int newPrice) {
+void Vehicle::set_price(int newPrice) {
     *this->price = newPrice;
 }
 
 
-Engine Vehicle::getEngine() const{
+Engine Vehicle::get_engine() const{
     return engine;
 }
 
-int Vehicle::getWeight() const {
+int Vehicle::get_weight() const {
     return weight;
 }
 
-double Vehicle::getFuelConsumption() const {
+double Vehicle::get_fuel_consumption() const {
     return fuel_consumption;
 }
 
-int Vehicle::getMileage() const {
+int Vehicle::get_mileage() const {
     return mileage;
 }
 
-string Vehicle::getColor() const {
+string Vehicle::get_color() const {
     return color;
 }
 
-string Vehicle::getBrand() const {
+string Vehicle::get_brand() const {
     return brand;
 }
 
-string Vehicle::getModel() const {
+string Vehicle::get_model() const {
     return model;
 }
 
-int Vehicle::getYear() const {
+int Vehicle::get_year() const {
     return year;
 }
 
-string Vehicle::getLocation() const {
+string Vehicle::get_location() const {
     return location;
 }
 
-int Vehicle::getPrice() const {
+int Vehicle::get_price() const {
     return *price;
 }
 

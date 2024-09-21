@@ -50,29 +50,29 @@ public:
     [[nodiscard]] bool sort_price_l(int pric) const;
     [[nodiscard]] bool sort_price_h(int pric) const;
 
-    [[maybe_unused]] void setEngine(const Engine& newEngine);
-    [[maybe_unused]] void setWeight(int newWeight);
-    [[maybe_unused]] void setFuelConsumption(double newFuelConsumption);
-    [[maybe_unused]] void setMileage(int newMileage);
-    [[maybe_unused]] void setColor(const string& newColor);
-    [[maybe_unused]] void setBrand(const string& newBrand);
-    [[maybe_unused]] void setModel(const string& newModel);
-    [[maybe_unused]] void setYear(int newYear);
-    [[maybe_unused]] void setLocation(const string& newLocation);
-    [[maybe_unused]] void setPrice(int newPrice);
+    [[maybe_unused]] void set_engine(const Engine& newEngine);
+    [[maybe_unused]] void set_weight(int newWeight);
+    [[maybe_unused]] void set_fuel_consumption(double newFuelConsumption);
+    [[maybe_unused]] void set_mileage(int newMileage);
+    [[maybe_unused]] void set_color(const string& newColor);
+    [[maybe_unused]] void set_brand(const string& newBrand);
+    [[maybe_unused]] void set_model(const string& newModel);
+    [[maybe_unused]] void set_year(int newYear);
+    [[maybe_unused]] void set_location(const string& newLocation);
+    [[maybe_unused]] void set_price(int newPrice);
 
-    [[maybe_unused]][[nodiscard]] Engine getEngine() const;
-    [[nodiscard]] int getWeight() const;
-    [[nodiscard]] double getFuelConsumption() const;
-    [[nodiscard]] int getMileage() const;
-    [[maybe_unused]][[nodiscard]] string getColor() const;
-    [[maybe_unused]][[nodiscard]] string getBrand() const;
-    [[maybe_unused]][[nodiscard]] string getModel() const;
-    [[nodiscard]] int getYear() const;
-    [[maybe_unused]][[nodiscard]] string getLocation() const;
-    [[nodiscard]] int getPrice() const;
+    [[maybe_unused]][[nodiscard]] Engine get_engine() const;
+    [[nodiscard]] int get_weight() const;
+    [[nodiscard]] double get_fuel_consumption() const;
+    [[nodiscard]] int get_mileage() const;
+    [[maybe_unused]][[nodiscard]] string get_color() const;
+    [[maybe_unused]][[nodiscard]] string get_brand() const;
+    [[maybe_unused]][[nodiscard]] string get_model() const;
+    [[nodiscard]] int get_year() const;
+    [[maybe_unused]][[nodiscard]] string get_location() const;
+    [[nodiscard]] int get_price() const;
 
-    virtual void getVehicle() const =0;
+    virtual void get_vehicle() const =0;
 };
 
 #endif //DIRECTORY_OF_CARS_VEHICLE_H

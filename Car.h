@@ -15,21 +15,21 @@ public:
         string& bran, string& mod, int new_year, string& loc, int new_price, string& wh_dr, string& tran);
     friend ostream &operator<<(ostream &os, const Car &obj);
     friend istream &operator>>(istream &is, Car &obj);
-    void getVehicle() const override;
+    void get_vehicle() const override;
     ~Car() override;
     Car(const Car& other);
     Car(Car&& other) noexcept;
     Car& operator=(const Car& other);
     Car& operator=(Car&& other) noexcept;
 
-    [[maybe_unused]] [[nodiscard]] string getwheel_drive() const;
-    [[maybe_unused]][[nodiscard]] string gettransmission() const;
+    [[maybe_unused]] [[nodiscard]] string get_wheel_drive() const;
+    [[maybe_unused]][[nodiscard]] string get_transmission() const;
 
-    [[maybe_unused]]void setwheel_drive(string& newwheel_drive);
-    [[maybe_unused]] void settransmission(string& newtransmission);
+    [[maybe_unused]]void set_wheel_drive(string &new_wheel_drive);
+    [[maybe_unused]] void set_transmission(string &new_transmission);
 
-    bool sort_transmission(string& newtransmission);
-    bool sort_wheel_drive(string& newwheel_drive);
+    bool sort_transmission(string& new_transmission);
+    bool sort_wheel_drive(string& new_wheel_drive);
 
 };
 

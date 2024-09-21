@@ -1,7 +1,7 @@
 
 #include "Admin.h"
 #include <fstream>
-#include "NotFoundEx.h"
+#include "Client_not_found.h"
 
 
 Admin::Admin(std::string &new_name, std::string &new_surname, std::string &new_password)
@@ -39,28 +39,28 @@ Admin &Admin::operator=(const Admin &other) {
     return *this;
 }
 
-void Admin::addBus() {
-    Person::addBus();
+void Admin::add_bus() {
+    Person::add_bus();
 }
 
-void Admin::addTruck() {
-    Person::addTruck();
+void Admin::add_truck() {
+    Person::add_truck();
 }
 
-void Admin::addCar() {
-    Person::addCar();
+void Admin::add_car() {
+    Person::add_car();
 }
 
-string Admin::getname() {
-    return Person::getname();
+string Admin::get_name() {
+    return Person::get_name();
 }
 
-string Admin::getsurname() {
-    return Person::getsurname();
+string Admin::get_surname() {
+    return Person::get_surname();
 }
 
-string Admin::getpassword() {
-    return Person::getpassword();
+string Admin::get_password() {
+    return Person::get_password();
 }
 
 bool Admin::search() {
@@ -68,14 +68,14 @@ bool Admin::search() {
     Admin A;
     while(fin >> A){
         try {
-            if (A.getname() == Person::getname() && A.getsurname() == Person::getsurname()
-                && A.getpassword() == Person::getpassword()) {
+            if (A.get_name() == Person::get_name() && A.get_surname() == Person::get_surname()
+                && A.get_password() == Person::get_password()) {
                 fin.close();
                 return true;
             } else {
-                throw NotFoundEx();
+                throw Client_not_found();
             }
-        }catch (NotFoundEx& e){
+        }catch (Client_not_found& e){
             fin.close();
             cerr<<"Admin "<<e.what()<<endl;
         }
@@ -86,7 +86,7 @@ bool Admin::search() {
 
 void Admin::write_to_file() {
     ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)", ios_base::app);
-    fout << getname() << "\t" << getsurname() << "\t" << getpassword() << endl;
+    fout << get_name() << "\t" << get_surname() << "\t" << get_password() << endl;
     fout.close();
 }
 
@@ -116,14 +116,14 @@ Admin::~Admin() noexcept {
     fout.close();
 }
 
-void Admin::setsurname(std::string &newsurname) {
-    Person::setsurname(newsurname);
+void Admin::set_surname(string &newsurname) {
+    Person::set_surname(newsurname);
 }
 
-void Admin::setname(std::string &newname) {
-    Person::setname(newname);
+void Admin::set_name(string &newname) {
+    Person::set_name(newname);
 }
 
-void Admin::setpassword(std::string &newpassword) {
-    Person::setpassword(newpassword);
+void Admin::set_password(string &newpassword) {
+    Person::set_password(newpassword);
 }

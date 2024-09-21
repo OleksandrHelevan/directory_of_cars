@@ -6,9 +6,9 @@
 #include "Car.h"
 #include "Bus.h"
 #include <memory>
-#include "WrongTypeEx.h"
-#include "WrongChoiceEx.h"
-
+#include "Wrong_type.h"
+#include "Wrong_choice.h"
+#include "Client_not_found.h"
 #include <algorithm>
 #include <limits>
 
@@ -34,7 +34,7 @@ int main() {
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw WrongTypeEx();
+                throw Wrong_type();
             }
             switch (*choice) {
                 case 1: {
@@ -51,7 +51,7 @@ int main() {
                     line();
                     Admin admin(*name, *surname, *password);
                     if (admin.search()) {
-                        cout << "Hello" << " " << admin.getname() << endl;
+                        cout << "Hello" << " " << admin.get_name() << endl;
                         while (true) {
                             try {
                                 cout << "Choose what do you want" << endl;
@@ -68,25 +68,25 @@ int main() {
                                 if (cin.fail()) {
                                     cin.clear();
                                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                    throw WrongTypeEx();
+                                    throw Wrong_type();
                                 }
                                 switch (*choice1) {
                                     case 1: {
-                                        admin.addCar();
+                                        admin.add_car();
                                         break;
                                     }
                                     case 2: {
-                                        admin.addTruck();
+                                        admin.add_truck();
                                         break;
                                     }
                                     case 3: {
-                                        admin.addBus();
+                                        admin.add_bus();
                                         break;
                                     }
                                     case 4: {
                                         list<Car> cars = admin.cars_from_file();
                                         for_each(cars.begin(), cars.end(), [](Car &car) {
-                                            car.getVehicle();
+                                            car.get_vehicle();
                                             line();
                                         });
                                         break;
@@ -94,7 +94,8 @@ int main() {
                                     case 5: {
                                         list<Truck> trucks = admin.trucks_from_file();
                                         for_each(trucks.begin(), trucks.end(),
-                                                 [](Truck &truck) { truck.getVehicle();
+                                                 [](Truck &truck) {
+                                                     truck.get_vehicle();
                                         line();
                                         });
                                         break;
@@ -102,27 +103,28 @@ int main() {
                                     case 6: {
                                         list<Bus> buses = admin.buses_from_file();
                                         for_each(buses.begin(), buses.end(),
-                                                 [](Bus &bus) { bus.getVehicle();
+                                                 [](Bus &bus) {
+                                                     bus.get_vehicle();
                                         line();
                                         });
                                         break;
                                     }
                                     case 0: {
-                                        return 0;
+                                        break;
                                     }
                                     default: {
-                                        throw WrongChoiceEx();
+                                        throw Wrong_choice();
                                     }
                                 }
-                            }catch (const WrongChoiceEx& e) {
+                            }catch (const Wrong_choice& e) {
                                 cerr << e.what() << endl;
-                            }catch (const WrongTypeEx& e){
+                            }catch (const Wrong_type& e){
                                 cerr << e.what() << endl;
                             }
                         }
-
+                    }else{
+                        throw Client_not_found();
                     }
-                    break;
                 }
                 case 2: {
                     line();
@@ -138,7 +140,7 @@ int main() {
                     line();
                     User user(*name, *surname, *password);
                     if (user.search()) {
-                        cout << "Hello" << " " << user.getname() << endl;
+                        cout << "Hello" << " " << user.get_name() << endl;
                         while (true) {
                             try {
                                 cout << "Choose what do you want" << endl;
@@ -146,7 +148,8 @@ int main() {
                                 cout << "2 - to view all TRUCKS" << endl;
                                 cout << "3 - to view all BUSES" << endl;
                                 cout << "4 - to use some filter for CARS" << endl;
-                                cout << "4 - to use some filter for TRUCKS" << endl;
+                                cout << "5 - to use some filter for TRUCKS" << endl;
+                                cout << "6 - to use some filter for BUSES" << endl;
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
@@ -154,13 +157,13 @@ int main() {
                                 if (cin.fail()) {
                                     cin.clear();
                                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                    throw WrongTypeEx();
+                                    throw Wrong_type();
                                 }
                                 switch (*choice1) {
                                     case 1:{
                                         list<Car> cars = user.cars_from_file();
                                         for_each(cars.begin(), cars.end(), [](Car &car) {
-                                            car.getVehicle();
+                                            car.get_vehicle();
                                             line();
                                         });
                                         break;
@@ -168,7 +171,8 @@ int main() {
                                     case 2:{
                                         list<Truck> trucks = user.trucks_from_file();
                                         for_each(trucks.begin(), trucks.end(),
-                                                 [](Truck &truck) { truck.getVehicle();
+                                                 [](Truck &truck) {
+                                                     truck.get_vehicle();
                                                      line();
                                                  });
                                         break;
@@ -176,7 +180,8 @@ int main() {
                                     case 3:{
                                         list<Bus> buses = user.buses_from_file();
                                         for_each(buses.begin(), buses.end(),
-                                                 [](Bus &bus) { bus.getVehicle();
+                                                 [](Bus &bus) {
+                                                     bus.get_vehicle();
                                                      line();
                                                  });
                                         break;
@@ -194,18 +199,20 @@ int main() {
                                         break;
                                     }
                                     case 0:{
-                                        return 0;
+                                        break;
                                     }
                                     default: {
-                                        throw WrongChoiceEx();
+                                        throw Wrong_choice();
                                     }
                                 }
-                            } catch (const WrongChoiceEx &e) {
+                            } catch (const Wrong_choice &e) {
                                 cerr << e.what() << endl;
-                            } catch (const WrongTypeEx &e) {
+                            } catch (const Wrong_type &e) {
                                 cerr << e.what() << endl;
                             }
                         }
+                    } else{
+                        throw Client_not_found();
                     }
                 }
                 case 3: {
@@ -213,15 +220,18 @@ int main() {
                     break;
                 }
                 default: {
-                    throw WrongChoiceEx();
+                    throw Wrong_choice();
                 }
 
             }
-        }catch (const WrongChoiceEx& e) {
+        }catch (const Wrong_choice& e) {
             cerr << e.what() << endl;
-        }catch (const WrongTypeEx& e){
+        }catch (const Wrong_type& e){
             cerr << e.what() << endl;
+        }catch(const Client_not_found &e){
+            cerr<< e.what()<<endl;
         }
+
     }
 }
 
