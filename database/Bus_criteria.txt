@@ -1,13 +1,13 @@
-1 - by YEAR of bus
-2 - by WEIGHT of bus
-3 - by engine`s POWER
-4 - by engine`s CAPACITY
-5 - by engine`s FUEL
-6 - by FUEL CONSUMPTION of bus
-7 - by MILEAGE of bus
-8 - by BRAND of bus
-9 - by MODEL of bus
-10 - by COLOR of bus
-11 - by LOCATION of bus
-12 - by PRICE of bus
-13 - by PASSENGER CAPACITY of bus
+1 - YEAR of bus
+2 - WEIGHT of bus
+3 - engine`s POWER
+4 - engine`s CAPACITY
+5 - engine`s FUEL
+6 - FUEL CONSUMPTION of bus
+7 - MILEAGE of bus
+8 - BRAND of bus
+9 - MODEL of bus
+10 - COLOR of bus
+11 - LOCATION of bus
+12 - PRICE of bus
+13 - PASSENGER CAPACITY of bus

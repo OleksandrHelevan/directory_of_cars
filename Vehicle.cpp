@@ -8,6 +8,7 @@ Vehicle::Vehicle() : engine{Engine()}, weight{0}, fuel_consumption{0},
                      mileage{0}, color{"none"}, brand{"none"}, model{"none"},
                      year{0}, location{"none"}, price{make_unique<int>(0)} {}
 
+
 Vehicle::Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
     string& bran, string& mod, int new_year, string& loc, int new_price) : engine{new_engine},
     weight{weigh}, fuel_consumption{consumption}, mileage{new_mileage}, color{col},
@@ -39,6 +40,13 @@ Vehicle& Vehicle::operator=(const Vehicle& other) {
     price = make_unique<int>(*other.price);
 
     return *this;
+}
+
+Vehicle::Vehicle(int year, std::string &brand, std::string &model, std::string &color) {
+    this->brand = brand;
+    this->year = year;
+    this->model = model;
+    this->color = color;
 }
 
 Vehicle& Vehicle::operator=(Vehicle&& other) noexcept {

@@ -1,5 +1,6 @@
 #include "Car.h"
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -79,4 +80,15 @@ bool Car::sort_transmission(std::string &newtransmission) {
 bool Car::sort_wheel_drive(std::string &newwheel_drive) {
     return wheel_drive == newwheel_drive;
 }
+Car::Car(int year, std::string &brand, std::string &model, std::string &color)
+    :Vehicle(year, brand,model,color){}
 
+bool Car::if_exists(const list<Car>& cars) {
+    return std::any_of(cars.begin(), cars.end(), [this](const Car &c) {
+        return this->get_year() == c.get_year() &&
+               this->get_model() == c.get_model() &&
+               this->get_brand() == c.get_brand() &&
+               this->get_color() == c.get_color();
+    });
+
+}

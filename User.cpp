@@ -2,6 +2,7 @@
 #include "User.h"
 #include <fstream>
 #include "Wrong_choice.h"
+#include "FileReader.h"
 
 User::User(std::string &new_name, std::string &new_surname, std::string &new_password)
 : Person(new_name,new_surname,new_password){}
@@ -52,19 +53,6 @@ void User::write_to_file() {
     Person::write_to_file();
 }
 
-
-list<Truck> User::trucks_from_file() {
-    return Person::trucks_from_file();
-}
-
-list<Bus> User::buses_from_file() {
-    return Person::buses_from_file();
-}
-
-list <Car> User::cars_from_file() {
-    return Person::cars_from_file();
-}
-
 string User::get_name() {
     return Person::get_name();
 }
@@ -91,12 +79,9 @@ void User::set_password(string &newpassword) {
 
 
 void User::car_menu() {
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)");
-    char ch;
-    while (fin.get(ch)) {
-        cout << ch;
-    }
-    fin.close();
+    cout<<"Sort CARS by:"<<endl;
+    string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
+    FileReader::read_file(file);
     cout<<endl;
 
     unique_ptr<int> choice{new int};
@@ -484,12 +469,11 @@ void User::car_menu() {
 }
 
 void User::truck_menu() {
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)");
-    char ch;
-    while (fin.get(ch)) {
-        cout << ch;
-    }
-    fin.close();
+    cout<<"Sort TRUCKS by:"<<endl;
+    string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
+    FileReader::read_file(file);
+    cout<<endl;
+
     cout<<endl;
 
     unique_ptr<int> choice{new int};
@@ -886,12 +870,11 @@ void User::truck_menu() {
 }
 
 void User::bus_menu() {
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)");
-    char ch;
-    while (fin.get(ch)) {
-        cout << ch;
-    }
-    fin.close();
+    cout<<"Sort BUSES by:"<<endl;
+    string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
+    FileReader::read_file(file);
+    cout<<endl;
+
     cout<<endl;
 
     unique_ptr<int> choice{new int};

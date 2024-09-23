@@ -7,6 +7,7 @@
 #include "Truck.h"
 #include "Bus.h"
 #include <vector>
+#include <limits>
 #include "list"
 
 using namespace std;
@@ -36,15 +37,40 @@ public:
     virtual void set_surname(string& newsurname);
     virtual void set_password(string& newpassword);
 
-    virtual list <Car> cars_from_file()=0;
-    virtual list <Truck> trucks_from_file()=0;
-    virtual list <Bus> buses_from_file()=0;
-    virtual void add_car()=0;
-    virtual void add_truck()=0;
-    virtual void add_bus()=0;
+    static list <Car> cars_from_file();
+    static list <Truck> trucks_from_file();
+    static list <Bus> buses_from_file();
     virtual void write_to_file()=0;
     virtual bool search()=0;
 
+
+    static void line(){
+        cout<<"------------------------------------------------------------"
+              "------------------------------------------------------------";
+    }
+    template <typename T>
+    static T getInput(const string& prompt) {
+        T value;
+        while (true) {
+            cout << prompt << endl;
+            cin >> value;
+            if (cin.fail()) {
+                cin.clear(); // Clear error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cerr << "Invalid input. Please enter a value of the correct type." << endl;
+            } else {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return value;
+            }
+        }
+    }
+
+    static unique_ptr<string> getStringInput(const string& prompt) {
+        unique_ptr<string> value = make_unique<string>();
+        cout << prompt << endl;
+        cin >> *value;
+        return value;
+    }
 };
 
 

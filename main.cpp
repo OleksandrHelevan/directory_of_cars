@@ -11,6 +11,7 @@
 #include "Client_not_found.h"
 #include <algorithm>
 #include <limits>
+#include "FileReader.h"
 
 
 using namespace std;
@@ -72,19 +73,19 @@ int main() {
                                 }
                                 switch (*choice1) {
                                     case 1: {
-                                        admin.add_car();
+                                        Admin::add_car();
                                         break;
                                     }
                                     case 2: {
-                                        admin.add_truck();
+                                        Admin::add_truck();
                                         break;
                                     }
                                     case 3: {
-                                        admin.add_bus();
+                                        Admin::add_bus();
                                         break;
                                     }
                                     case 4: {
-                                        list<Car> cars = admin.cars_from_file();
+                                        list<Car> cars = Admin::cars_from_file();
                                         for_each(cars.begin(), cars.end(), [](Car &car) {
                                             car.get_vehicle();
                                             line();
@@ -92,7 +93,7 @@ int main() {
                                         break;
                                     }
                                     case 5: {
-                                        list<Truck> trucks = admin.trucks_from_file();
+                                        list<Truck> trucks = Admin::trucks_from_file();
                                         for_each(trucks.begin(), trucks.end(),
                                                  [](Truck &truck) {
                                                      truck.get_vehicle();
@@ -101,7 +102,7 @@ int main() {
                                         break;
                                     }
                                     case 6: {
-                                        list<Bus> buses = admin.buses_from_file();
+                                        list<Bus> buses = Admin::buses_from_file();
                                         for_each(buses.begin(), buses.end(),
                                                  [](Bus &bus) {
                                                      bus.get_vehicle();
@@ -161,7 +162,7 @@ int main() {
                                 }
                                 switch (*choice1) {
                                     case 1:{
-                                        list<Car> cars = user.cars_from_file();
+                                        list<Car> cars = User::cars_from_file();
                                         for_each(cars.begin(), cars.end(), [](Car &car) {
                                             car.get_vehicle();
                                             line();
@@ -169,7 +170,7 @@ int main() {
                                         break;
                                     }
                                     case 2:{
-                                        list<Truck> trucks = user.trucks_from_file();
+                                        list<Truck> trucks = User::trucks_from_file();
                                         for_each(trucks.begin(), trucks.end(),
                                                  [](Truck &truck) {
                                                      truck.get_vehicle();
@@ -178,7 +179,7 @@ int main() {
                                         break;
                                     }
                                     case 3:{
-                                        list<Bus> buses = user.buses_from_file();
+                                        list<Bus> buses = User::buses_from_file();
                                         for_each(buses.begin(), buses.end(),
                                                  [](Bus &bus) {
                                                      bus.get_vehicle();
@@ -187,15 +188,15 @@ int main() {
                                         break;
                                     }
                                     case 4:{
-                                        user.car_menu();
+                                        User::car_menu();
                                         break;
                                     }
                                     case 5:{
-                                        user.truck_menu();
+                                        User::truck_menu();
                                         break;
                                     }
                                     case 6:{
-                                        user.bus_menu();
+                                        User::bus_menu();
                                         break;
                                     }
                                     case 0:{
@@ -216,6 +217,10 @@ int main() {
                     }
                 }
                 case 3: {
+                    line();
+                    string instruction_file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\instruction.txt)";
+                    FileReader::read_file(instruction_file);
+                    cout<<endl;
                     line();
                     break;
                 }

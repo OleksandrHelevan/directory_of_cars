@@ -25,14 +25,15 @@ public:
     void set_surname(string& newsurname) override;
     void set_password(string& newpassword) override;
 
-    list <Car> cars_from_file() override;
-    list <Truck> trucks_from_file() override;
-    list <Bus> buses_from_file() override;
-    void add_car() override;
-    void add_truck() override;
-    void add_bus() override;
+    static void add_car();
+    static void add_truck();
+    static void add_bus();
     void write_to_file() override;
     bool search() override;
+
+    static void set_car();
+
+    void set_car(const list<Car>& cars);
 };
 
 

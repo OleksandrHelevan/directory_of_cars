@@ -23,6 +23,7 @@ public:
     Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
             string& bran, string& mod, int new_year, string& loc, int new_price);
     Vehicle(const Vehicle& other);
+    Vehicle(int year, string &brand, string &model, string &color);
     Vehicle(Vehicle&& other) noexcept;
     Vehicle& operator=(const Vehicle& other);
     Vehicle& operator=(Vehicle&& other) noexcept;

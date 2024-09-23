@@ -23,4 +23,5 @@ add_executable(directory_of_cars main.cpp
         Admin.h
         Wrong_choice.h
         Client_not_found.h
+        FileReader.h
 )
