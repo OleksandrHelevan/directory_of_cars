@@ -237,7 +237,7 @@ void Admin::set_car() {
         Admin::line();
     });
 
-    cout<<"Enter the brand, model, year and color of Car which you would like to change"<<endl;
+    cout<<"Enter the brand, model, year and color of CAR which you would like to change"<<endl;
     unique_ptr<string> brand =
             getStringInput("Enter BRAND of car:");
     unique_ptr<string> model =
@@ -253,6 +253,7 @@ void Admin::set_car() {
 
         string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
         FileReader::read_file(file);
+        Admin::line();
         cout<<endl;
 
         cout<<"Enter the choice for changing"<<endl;
@@ -378,7 +379,7 @@ void Admin::set_truck() {
         Admin::line();
     });
 
-    cout<<"Enter the brand, model, year and color of Car which you would like to change"<<endl;
+    cout<<"Enter the brand, model, year and color of TRUCK which you would like to change"<<endl;
     unique_ptr<string> brand =
             getStringInput("Enter BRAND of truck:");
     unique_ptr<string> model =
@@ -508,7 +509,7 @@ void Admin::set_bus() {
         Admin::line();
     });
 
-    cout<<"Enter the brand, model, year and color of Car which you would like to change"<<endl;
+    cout<<"Enter the brand, model, year and color of BUS which you would like to change"<<endl;
     unique_ptr<string> brand =
             getStringInput("Enter BRAND of bus:");
     unique_ptr<string> model =
@@ -632,6 +633,132 @@ void Admin::set_bus() {
         cerr<<e.what()<<endl;
     }
 }
+
+void Admin::delete_vehicle() {
+    cout << "Make choice what do you want to delete:" << endl;
+    cout << "1 - CAR" << endl;
+    cout << "2 - TRUCK " << endl;
+    cout << "3 - BUS" << endl;
+
+    unique_ptr<int> choice{new int};
+    cin >> *choice;
+    try {
+        switch (*choice) {
+            case 1: {
+                list<Car> cars = Admin::cars_from_file();
+                std::for_each(cars.begin(), cars.end(), [](Car &car) {
+                    car.get_vehicle();
+                    Admin::line();
+                });
+
+
+                cout << "Enter the brand, model, year and color of CAR which you would like to delete" << endl;
+                unique_ptr<string> brand =
+                        getStringInput("Enter BRAND of car:");
+                unique_ptr<string> model =
+                        getStringInput("Enter MODEL of car:");
+                unique_ptr<int> year =
+                        make_unique<int>(getInput<int>("Enter YEAR of car:"));
+                unique_ptr<string> color =
+                        getStringInput("Enter COLOR of car:");
+
+
+                Car car1(*year, *brand, *model, *color);
+                if (!car1.if_exists(cars))
+                    throw runtime_error("Truck was not found!");
+                ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+                for (Car &car: cars) {
+                    if (car.get_brand() == *brand && car.get_model()
+                    == *model && car.get_year() == *year && car.get_color() == *color) {
+                    }
+                    else{
+                        fout<<car;
+                    }
+                }
+                fout.close();
+                break;
+            }
+            case 2: {
+                list<Truck> trucks = Admin::trucks_from_file();
+                std::for_each(trucks.begin(), trucks.end(), [](Truck &truck) {
+                    truck.get_vehicle();
+                    Admin::line();
+                });
+
+
+                cout << "Enter the brand, model, year and color of TRUCK which you would like to delete" << endl;
+                unique_ptr<string> brand =
+                        getStringInput("Enter BRAND of truck:");
+                unique_ptr<string> model =
+                        getStringInput("Enter MODEL of truck:");
+                unique_ptr<int> year =
+                        make_unique<int>(getInput<int>("Enter YEAR of truck:"));
+                unique_ptr<string> color =
+                        getStringInput("Enter COLOR of truck:");
+
+
+                Truck truck1(*year, *brand, *model, *color);
+                if (!truck1.if_exists(trucks))
+                    throw runtime_error("Truck was not found!");
+                ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+                for (Truck &truck: trucks) {
+                    if (truck.get_brand() == *brand && truck.get_model()
+                                                     == *model && truck.get_year() == *year && truck.get_color() == *color) {
+                    }
+                    else{
+                        fout<<truck;
+                    }
+                }
+                fout.close();
+                break;
+
+            }
+            case 3: {
+                list<Bus> buses = Admin::buses_from_file();
+                std::for_each(buses.begin(), buses.end(), [](Bus &bus) {
+                    bus.get_vehicle();
+                    Admin::line();
+                });
+
+
+                cout << "Enter the brand, model, year and color of BUS which you would like to delete" << endl;
+                unique_ptr<string> brand =
+                        getStringInput("Enter BRAND of bus:");
+                unique_ptr<string> model =
+                        getStringInput("Enter MODEL of bus:");
+                unique_ptr<int> year =
+                        make_unique<int>(getInput<int>("Enter YEAR of bus:"));
+                unique_ptr<string> color =
+                        getStringInput("Enter COLOR of bus:");
+
+
+                Bus bus1(*year, *brand, *model, *color);
+                if (!bus1.if_exists(buses))
+                    throw runtime_error("Truck was not found!");
+                ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+                for (Bus &bus: buses) {
+                    if (bus.get_brand() == *brand && bus.get_model()
+                    == *model && bus.get_year() == *year && bus.get_color() == *color) {
+                    }
+                    else{
+                        fout<<bus;
+                    }
+                }
+                fout.close();
+                break;
+            }
+            default: {
+                throw Wrong_choice();
+            }
+        }
+    }catch (Wrong_choice &e){
+        cerr << e.what()<<endl;
+    }catch (exception &e) {
+        cerr << e.what() << endl;
+    }
+}
+
+
 
 
 

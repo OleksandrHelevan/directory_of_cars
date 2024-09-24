@@ -34,6 +34,8 @@ public:
     static void set_car();
     static void set_truck();
     static void set_bus();
+
+    static void delete_vehicle();
 };
 
 

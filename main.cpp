@@ -65,6 +65,7 @@ int main() {
                                 cout << "7 - to change some criteria of CAR" << endl;
                                 cout << "8 - to change some criteria of TRUCK" << endl;
                                 cout << "9 - to change some criteria of BUS" << endl;
+                                cout << "9 - to delete some VEHICLE" << endl;
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
@@ -125,6 +126,11 @@ int main() {
                                         Admin::set_bus();
                                         break;
                                     }
+                                    case 10:
+                                    {
+                                        Admin::delete_vehicle();
+                                        break;
+                                    }
                                     case 0: {
                                         break;
                                     }
@@ -154,9 +160,16 @@ int main() {
                     cout << "Enter your password:" << endl;
                     cin >> *password;
                     line();
+
                     User user(*name, *surname, *password);
-                    if (user.search()) {
-                        cout << "Hello" << " " << user.get_name() << endl;
+                    if(user.search()){
+                        cout << "Hello " << user.get_name() <<"!" << endl;
+                    }
+                    else {
+                        user.write_to_file();
+                        cout << "Hello new client: " << user.get_name() <<"!" << endl;
+                    }
+
                         while (true) {
                             try {
                                 cout << "Choose what do you want" << endl;
@@ -227,9 +240,7 @@ int main() {
                                 cerr << e.what() << endl;
                             }
                         }
-                    } else{
-                        throw Client_not_found();
-                    }
+
                 }
                 case 3: {
                     line();
