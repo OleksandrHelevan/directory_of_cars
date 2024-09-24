@@ -1,5 +1,6 @@
 #include "Bus.h"
 #include "fstream"
+#include <algorithm>
 using namespace std;
 
 Bus::Bus():Vehicle(),passenger_capacity{0} {}
@@ -18,6 +19,9 @@ istream &operator>>(istream  &is, Bus &obj){
     is>>obj.passenger_capacity;
     return is;
 }
+
+Bus::Bus(int year, std::string &brand, std::string &model, std::string &color)
+:Vehicle(year, brand, model, color){}
 
 Bus::Bus(const Bus& other) : Vehicle(other), passenger_capacity{other.passenger_capacity} {}
 
@@ -67,3 +71,13 @@ bool Bus::sort_passenger_capacity_h(int newcap) const {
 bool Bus::sort_passenger_capacity_l(int newcap) const {
     return passenger_capacity <= newcap;
 }
+
+bool Bus::if_exists(const list<Bus> buses) {
+    return std::any_of(buses.begin(), buses.end(), [this](const Bus &b) {
+        return this->get_year() == b.get_year() &&
+               this->get_model() == b.get_model() &&
+               this->get_brand() == b.get_brand() &&
+               this->get_color() == b.get_color();
+    });
+}
+

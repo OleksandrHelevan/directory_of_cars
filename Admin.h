@@ -32,8 +32,8 @@ public:
     bool search() override;
 
     static void set_car();
-
-    void set_car(const list<Car>& cars);
+    static void set_truck();
+    static void set_bus();
 };
 
 

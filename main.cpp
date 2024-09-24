@@ -62,6 +62,9 @@ int main() {
                                 cout << "4 - to view all CARS" << endl;
                                 cout << "5 - to view all TRUCKS" << endl;
                                 cout << "6 - to view all BUSES" << endl;
+                                cout << "7 - to change some criteria of CAR" << endl;
+                                cout << "8 - to change some criteria of TRUCK" << endl;
+                                cout << "9 - to change some criteria of BUS" << endl;
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
@@ -108,6 +111,18 @@ int main() {
                                                      bus.get_vehicle();
                                         line();
                                         });
+                                        break;
+                                    }
+                                    case 7: {
+                                        Admin::set_car();
+                                        break;
+                                    }
+                                    case 8:{
+                                        Admin::set_truck();
+                                        break;
+                                    }
+                                    case 9:{
+                                        Admin::set_bus();
                                         break;
                                     }
                                     case 0: {

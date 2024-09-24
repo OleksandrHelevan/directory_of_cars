@@ -1,5 +1,7 @@
 #include "Truck.h"
 #include <fstream>
+#include <list>
+#include <algorithm>
 
 Truck::Truck():Vehicle(),cargo_capacity{0}{}
 
@@ -19,6 +21,9 @@ istream &operator>>(istream &is, Truck &obj){
     return is;
 }
 Truck::Truck(const Truck& other) : Vehicle(other), cargo_capacity{other.cargo_capacity} {}
+
+Truck::Truck(int year, std::string &brand, std::string &model, std::string &color)
+    :Vehicle(year, brand, model, color){}
 
 Truck::Truck(Truck&& other) noexcept : Vehicle(std::move(other)), cargo_capacity{other.cargo_capacity} {}
 
@@ -64,4 +69,14 @@ Truck::~Truck() noexcept {
     ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)",ios_base::app);
     fout << "truck"<< " destructor"<<endl;
     fout.close();
+}
+
+bool Truck::if_exists(const list<Truck>& trucks) {
+    return std::any_of(trucks.begin(), trucks.end(), [this](const Truck &t) {
+        return this->get_year() == t.get_year() &&
+               this->get_model() == t.get_model() &&
+               this->get_brand() == t.get_brand() &&
+               this->get_color() == t.get_color();
+    });
+
 }
