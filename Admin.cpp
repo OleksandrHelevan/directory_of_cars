@@ -85,18 +85,11 @@ void Admin::set_password(string &newpassword) {
 bool Admin::search() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)");
     Admin A;
-    while(fin >> A){
-        try {
-            if (A.get_name() == Person::get_name() && A.get_surname() == Person::get_surname()
-                && A.get_password() == Person::get_password()) {
-                fin.close();
-                return true;
-            } else {
-                throw Client_not_found();
-            }
-        }catch (Client_not_found& e){
+    while (fin >> A) {
+        if (A.get_name() == Person::get_name() && A.get_surname() == Person::get_surname()
+            && A.get_password() == Person::get_password()) {
             fin.close();
-            cerr<<"Admin "<<e.what()<<endl;
+            return true;
         }
     }
     fin.close();
@@ -119,24 +112,24 @@ void Admin::add_car() {
     unique_ptr<string> fuel =
             getStringInput("Enter FUEL of car's engine:");
     unique_ptr<double> power =
-            make_unique<double>(getInput<double>("Enter POWER of car's engine:"));
+            make_unique<double>(getInput<double>("Enter POWER of car's engine (kW):"));
 
     Engine engine(*capacity, *fuel, *power);
 
     unique_ptr<int> weight =
-            make_unique<int>(getInput<int>("Enter WEIGHT of car:"));
+            make_unique<int>(getInput<int>("Enter WEIGHT of car (kg):"));
     unique_ptr<double> fuelConsumption =
-            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of car liters/100km:"));
+            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of car (liters/100km):"));
     unique_ptr<int> mileage =
-            make_unique<int>(getInput<int>("Enter MILEAGE of car in thousands of km:"));
+            make_unique<int>(getInput<int>("Enter MILEAGE of car (thousands of km):"));
     unique_ptr<string> location =
             getStringInput("Enter LOCATION of car:");
     unique_ptr<string> wheelDrive =
-            getStringInput("Enter WHEEL DRIVE of car (full/back/front):");
+            getStringInput("Enter WHEEL DRIVE of car (full/back/front or other):");
     unique_ptr<string> transmission =
-            getStringInput("Enter TRANSMISSION of car (automatic/mechanics):");
+            getStringInput("Enter TRANSMISSION of car (automatic/mechanics or other):");
     unique_ptr<int> price =
-            make_unique<int>(getInput<int>("Enter PRICE of car:"));
+            make_unique<int>(getInput<int>("Enter PRICE of car ($):"));
 
     Car car(engine, *weight, *fuelConsumption, *mileage,
             *color, *brand, *model, *year, *location,
@@ -493,6 +486,7 @@ void Admin::set_truck() {
                     }
                 }
             }
+            fout<<truck;
         }
        fout.close();
     }catch (Wrong_choice &e){
@@ -625,6 +619,7 @@ void Admin::set_bus() {
                     }
                 }
             }
+            fout<<bus;
         }
         fout.close();
     }catch (Wrong_choice &e){

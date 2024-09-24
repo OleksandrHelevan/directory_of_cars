@@ -144,7 +144,8 @@ int main() {
                                 cerr << e.what() << endl;
                             }
                         }
-                    }else{
+                    }
+                    else{
                         throw Client_not_found();
                     }
                 }
