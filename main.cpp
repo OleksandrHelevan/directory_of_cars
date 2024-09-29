@@ -29,7 +29,7 @@ int main() {
     while (true) {
         try {
             cout<<"MAKE YOUR CHOICE:"<<endl;
-            cout<<"1 - ADMIN"<<endl<<"2 - USER"<<endl<<"3 - VIEW THE INSTRUCTIONS"<<endl;
+            cout<<"1 - ADMIN"<<endl<<"2 - CLIENT"<<endl<<"3 - VIEW THE INSTRUCTIONS"<<endl;
             line();
             cin>>*choice;
             if (cin.fail()) {
@@ -65,7 +65,7 @@ int main() {
                                 cout << "7 - to change some criteria of CAR" << endl;
                                 cout << "8 - to change some criteria of TRUCK" << endl;
                                 cout << "9 - to change some criteria of BUS" << endl;
-                                cout << "9 - to delete some VEHICLE" << endl;
+                                cout << "10 - to delete some VEHICLE" << endl;
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
@@ -132,7 +132,7 @@ int main() {
                                         break;
                                     }
                                     case 0: {
-                                        break;
+                                        return 0;
                                     }
                                     default: {
                                         throw Wrong_choice();
@@ -229,7 +229,7 @@ int main() {
                                         break;
                                     }
                                     case 0:{
-                                        break;
+                                        return 0;
                                     }
                                     default: {
                                         throw Wrong_choice();

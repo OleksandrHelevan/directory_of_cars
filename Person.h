@@ -55,7 +55,7 @@ public:
             cout << prompt << endl;
             cin >> value;
             if (cin.fail()) {
-                cin.clear(); // Clear error flag
+                cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cerr << "Invalid input. Please enter a value of the correct type." << endl;
             } else {
@@ -65,7 +65,7 @@ public:
         }
     }
 
-    static unique_ptr<string> getStringInput(const string& prompt) {
+    static unique_ptr<string> getStringInput(const string &prompt) {
         unique_ptr<string> value = make_unique<string>();
         cout << prompt << endl;
         cin >> *value;

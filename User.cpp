@@ -79,7 +79,7 @@ void User::set_password(string &newpassword) {
 
 
 void User::car_menu() {
-    cout<<"Sort CARS by:"<<endl;
+    cout<<"CARS filter by:"<<endl;
     string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
     FileReader::read_file(file);
     cout<<endl;
@@ -94,6 +94,7 @@ void User::car_menu() {
                 make_unique<int>(User::getInput<int>("Enter the year you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                     ("1 - lower year \n2 - higher year"));
@@ -133,6 +134,7 @@ void User::car_menu() {
                                 ("Enter the weight of car you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                     ("1 - lower weight \n2 - higher weight"));
@@ -170,6 +172,7 @@ void User::car_menu() {
                 make_unique<double>(User::getInput<double>("Enter the power of car`s engine you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower power \n2 - higher power"));
                     User::line();
@@ -203,6 +206,7 @@ void User::car_menu() {
                 make_unique<double>(User::getInput<double>("Enter the capacity of car`s engine you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
@@ -252,6 +256,7 @@ void User::car_menu() {
                         ("Enter the consumption of car you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                 ("1 - lower consumption \n2 - higher consumption"));
@@ -290,6 +295,7 @@ void User::car_menu() {
                         make_unique<int>(User::getInput<int>("Enter the mileage you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower mileage \n2 - higher mileage"));
                     User::line();
@@ -392,6 +398,7 @@ void User::car_menu() {
                         make_unique<int>(User::getInput<int>("Enter the price you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower price \n2 - higher price"));
                     User::line();
@@ -469,7 +476,7 @@ void User::car_menu() {
 }
 
 void User::truck_menu() {
-    cout<<"Sort TRUCKS by:"<<endl;
+    cout<<"TRUCKS filter by:"<<endl;
     string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
     FileReader::read_file(file);
     cout<<endl;
@@ -486,6 +493,7 @@ void User::truck_menu() {
                         make_unique<int>(User::getInput<int>("Enter the year you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower year \n2 - higher year"));
@@ -525,6 +533,7 @@ void User::truck_menu() {
                                                   ("Enter the weight of truck you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower weight \n2 - higher weight"));
@@ -562,6 +571,7 @@ void User::truck_menu() {
                         make_unique<double>(User::getInput<double>("Enter the power of truck`s engine you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower power \n2 - higher power"));
                     User::line();
@@ -595,6 +605,7 @@ void User::truck_menu() {
                         make_unique<double>(User::getInput<double>("Enter the capacity of truck`s engine you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
@@ -644,6 +655,7 @@ void User::truck_menu() {
                                                     ("Enter the consumption of truck you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower consumption \n2 - higher consumption"));
@@ -682,6 +694,7 @@ void User::truck_menu() {
                         make_unique<int>(User::getInput<int>("Enter the mileage you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower mileage \n2 - higher mileage"));
                     User::line();
@@ -784,6 +797,7 @@ void User::truck_menu() {
                         make_unique<int>(User::getInput<int>("Enter the price you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower price \n2 - higher price"));
                     User::line();
@@ -824,6 +838,7 @@ void User::truck_menu() {
                                 ("Enter the cargo capacity you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower year \n2 - higher year"));
@@ -870,7 +885,7 @@ void User::truck_menu() {
 }
 
 void User::bus_menu() {
-    cout<<"Sort BUSES by:"<<endl;
+    cout<<"BUSES filter by:"<<endl;
     string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
     FileReader::read_file(file);
     cout<<endl;
@@ -887,6 +902,7 @@ void User::bus_menu() {
                         make_unique<int>(User::getInput<int>("Enter the year you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower year \n2 - higher year"));
@@ -926,6 +942,7 @@ void User::bus_menu() {
                                                   ("Enter the weight of truck you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower weight \n2 - higher weight"));
@@ -963,6 +980,7 @@ void User::bus_menu() {
                         make_unique<double>(User::getInput<double>("Enter the power of truck`s engine you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower power \n2 - higher power"));
                     User::line();
@@ -996,6 +1014,7 @@ void User::bus_menu() {
                         make_unique<double>(User::getInput<double>("Enter the capacity of truck`s engine you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
@@ -1045,6 +1064,7 @@ void User::bus_menu() {
                                                     ("Enter the consumption of truck you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower consumption \n2 - higher consumption"));
@@ -1083,6 +1103,7 @@ void User::bus_menu() {
                         make_unique<int>(User::getInput<int>("Enter the mileage you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower mileage \n2 - higher mileage"));
                     User::line();
@@ -1185,6 +1206,7 @@ void User::bus_menu() {
                         make_unique<int>(User::getInput<int>("Enter the price you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>("1 - lower price \n2 - higher price"));
                     User::line();
@@ -1225,6 +1247,7 @@ void User::bus_menu() {
                                                  ("Enter the cargo capacity you want to start from"));
                 try {
                     User::line();
+                    cout<<"Enter what do you want to get"<<endl;
                     unique_ptr<int> choice1 =
                             make_unique<int> (User::getInput<int>
                                                       ("1 - lower year \n2 - higher year"));
