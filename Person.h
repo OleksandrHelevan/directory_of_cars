@@ -33,9 +33,9 @@ public:
     virtual string get_surname()=0;
     virtual string get_password()=0;
 
-    virtual void set_name(string& newname);
-    virtual void set_surname(string& newsurname);
-    virtual void set_password(string& newpassword);
+    virtual void set_name(string& new_name);
+    virtual void set_surname(string& new_surname);
+    virtual void set_password(string& new_password);
 
     static list <Car> cars_from_file();
     static list <Truck> trucks_from_file();
@@ -49,7 +49,7 @@ public:
               "------------------------------------------------------------";
     }
     template <typename T>
-    static T getInput(const string& prompt) {
+    static T get_input(const string& prompt) {
         T value;
         while (true) {
             cout << prompt << endl;
@@ -65,7 +65,7 @@ public:
         }
     }
 
-    static unique_ptr<string> getStringInput(const string &prompt) {
+    static unique_ptr<string> get_string_input(const string &prompt) {
         unique_ptr<string> value = make_unique<string>();
         cout << prompt << endl;
         cin >> *value;

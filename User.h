@@ -22,9 +22,9 @@ public:
     string get_surname() override;
     string get_password() override;
 
-    void set_name(string& newname) override;
-    void set_surname(string& newsurname) override;
-    void set_password(string& newpassword) override;
+    void set_name(string& new_name) override;
+    void set_surname(string& new_surname) override;
+    void set_password(string& new_password) override;
 
     void write_to_file() override;
     bool search() override;

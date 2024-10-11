@@ -99,36 +99,36 @@ bool Admin::search() {
 
 void Admin::add_car() {
     unique_ptr<string> brand =
-            getStringInput("Enter BRAND of car:");
+            get_string_input("Enter BRAND of car:");
     unique_ptr<string> model =
-            getStringInput("Enter MODEL of car:");
+            get_string_input("Enter MODEL of car:");
     unique_ptr<int> year =
-            make_unique<int>(getInput<int>("Enter YEAR of car:"));
+            make_unique<int>(get_input<int>("Enter YEAR of car:"));
     unique_ptr<string> color =
-            getStringInput("Enter COLOR of car:");
+            get_string_input("Enter COLOR of car:");
     unique_ptr<double> capacity =
-            make_unique<double>(getInput<double>("Enter CAPACITY of car's engine (cubic decimeters):"));
+            make_unique<double>(get_input<double>("Enter CAPACITY of car's engine (cubic decimeters):"));
     unique_ptr<string> fuel =
-            getStringInput("Enter FUEL of car's engine:");
+            get_string_input("Enter FUEL of car's engine:");
     unique_ptr<double> power =
-            make_unique<double>(getInput<double>("Enter POWER of car's engine (kW):"));
+            make_unique<double>(get_input<double>("Enter POWER of car's engine (kW):"));
 
     Engine engine(*capacity, *fuel, *power);
 
     unique_ptr<int> weight =
-            make_unique<int>(getInput<int>("Enter WEIGHT of car (kg):"));
+            make_unique<int>(get_input<int>("Enter WEIGHT of car (kg):"));
     unique_ptr<double> fuelConsumption =
-            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of car (liters/100km):"));
+            make_unique<double>(get_input<double>("Enter FUEL CONSUMPTION of car (liters/100km):"));
     unique_ptr<int> mileage =
-            make_unique<int>(getInput<int>("Enter MILEAGE of car (thousands of km):"));
+            make_unique<int>(get_input<int>("Enter MILEAGE of car (thousands of km):"));
     unique_ptr<string> location =
-            getStringInput("Enter LOCATION of car:");
+            get_string_input("Enter LOCATION of car:");
     unique_ptr<string> wheelDrive =
-            getStringInput("Enter WHEEL DRIVE of car (full/back/front or other):");
+            get_string_input("Enter WHEEL DRIVE of car (full/back/front or other):");
     unique_ptr<string> transmission =
-            getStringInput("Enter TRANSMISSION of car (automatic/mechanics or other):");
+            get_string_input("Enter TRANSMISSION of car (automatic/mechanics or other):");
     unique_ptr<int> price =
-            make_unique<int>(getInput<int>("Enter PRICE of car ($):"));
+            make_unique<int>(get_input<int>("Enter PRICE of car ($):"));
 
     Car car(engine, *weight, *fuelConsumption, *mileage,
             *color, *brand, *model, *year, *location,
@@ -142,34 +142,34 @@ void Admin::add_car() {
 
 void Admin::add_truck() {
     unique_ptr<string> brand =
-            getStringInput("Enter BRAND of truck:");
+            get_string_input("Enter BRAND of truck:");
     unique_ptr<string> model =
-            getStringInput("Enter MODEL of truck:");
+            get_string_input("Enter MODEL of truck:");
     unique_ptr<int> year =
-            make_unique<int>(getInput<int>("Enter YEAR of truck:"));
+            make_unique<int>(get_input<int>("Enter YEAR of truck:"));
     unique_ptr<string> color =
-            getStringInput("Enter COLOR of truck:");
+            get_string_input("Enter COLOR of truck:");
     unique_ptr<double> capacity =
-            make_unique<double>(getInput<double>("Enter CAPACITY of truck's engine (cubic decimeters):"));
+            make_unique<double>(get_input<double>("Enter CAPACITY of truck's engine (cubic decimeters):"));
     unique_ptr<string> fuel =
-            getStringInput("Enter FUEL of truck's engine:");
+            get_string_input("Enter FUEL of truck's engine:");
     unique_ptr<double> power =
-            make_unique<double>(getInput<double>("Enter POWER of truck's engine (kW):"));
+            make_unique<double>(get_input<double>("Enter POWER of truck's engine (kW):"));
 
     Engine engine(*capacity, *fuel, *power);
 
     unique_ptr<int> weight =
-            make_unique<int>(getInput<int>("Enter WEIGHT of truck (kg):"));
+            make_unique<int>(get_input<int>("Enter WEIGHT of truck (kg):"));
     unique_ptr<double> fuelConsumption =
-            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of truck (liters/100km):"));
+            make_unique<double>(get_input<double>("Enter FUEL CONSUMPTION of truck (liters/100km):"));
     unique_ptr<int> mileage =
-            make_unique<int>(getInput<int>("Enter MILEAGE of truck (thousands of km):"));
+            make_unique<int>(get_input<int>("Enter MILEAGE of truck (thousands of km):"));
     unique_ptr<string> location =
-            getStringInput("Enter LOCATION of truck:");
+            get_string_input("Enter LOCATION of truck:");
     unique_ptr<int> cargoCapacity =
-            make_unique<int>(getInput<int>("Enter CARGO CAPACITY of truck (kg):"));
+            make_unique<int>(get_input<int>("Enter CARGO CAPACITY of truck (kg):"));
     unique_ptr<int> price =
-            make_unique<int>(getInput<int>("Enter PRICE of truck ($):"));
+            make_unique<int>(get_input<int>("Enter PRICE of truck ($):"));
 
     Truck truck(engine, *weight, *fuelConsumption, *mileage,
                 *color, *brand, *model, *year, *location,
@@ -183,34 +183,34 @@ void Admin::add_truck() {
 
 void Admin::add_bus() {
     unique_ptr<string> brand =
-            getStringInput("Enter BRAND of bus:");
+            get_string_input("Enter BRAND of bus:");
     unique_ptr<string> model =
-            getStringInput("Enter MODEL of bus:");
+            get_string_input("Enter MODEL of bus:");
     unique_ptr<int> year =
-            make_unique<int>(getInput<int>("Enter YEAR of bus:"));
+            make_unique<int>(get_input<int>("Enter YEAR of bus:"));
     unique_ptr<string> color =
-            getStringInput("Enter COLOR of bus:");
+            get_string_input("Enter COLOR of bus:");
     unique_ptr<double> capacity =
-            make_unique<double>(getInput<double>("Enter CAPACITY of bus's engine (cubic decimeters):"));
+            make_unique<double>(get_input<double>("Enter CAPACITY of bus's engine (cubic decimeters):"));
     unique_ptr<string> fuel =
-            getStringInput("Enter FUEL of bus's engine:");
+            get_string_input("Enter FUEL of bus's engine:");
     unique_ptr<double> power =
-            make_unique<double>(getInput<double>("Enter POWER of bus's engine (kW):"));
+            make_unique<double>(get_input<double>("Enter POWER of bus's engine (kW):"));
 
     Engine engine(*capacity, *fuel, *power);
 
     unique_ptr<int> weight =
-            make_unique<int>(getInput<int>("Enter WEIGHT of bus (kg):"));
+            make_unique<int>(get_input<int>("Enter WEIGHT of bus (kg):"));
     unique_ptr<double> fuelConsumption =
-            make_unique<double>(getInput<double>("Enter FUEL CONSUMPTION of bus (liters/100km):"));
+            make_unique<double>(get_input<double>("Enter FUEL CONSUMPTION of bus (liters/100km):"));
     unique_ptr<int> mileage =
-            make_unique<int>(getInput<int>("Enter MILEAGE of bus (thousands of km):"));
+            make_unique<int>(get_input<int>("Enter MILEAGE of bus (thousands of km):"));
     unique_ptr<string> location =
-            getStringInput("Enter LOCATION of bus:");
+            get_string_input("Enter LOCATION of bus:");
     unique_ptr<int> passengerCapacity =
-            make_unique<int>(getInput<int>("Enter PASSENGER CAPACITY of bus (persons):"));
+            make_unique<int>(get_input<int>("Enter PASSENGER CAPACITY of bus (persons):"));
     unique_ptr<int> price =
-            make_unique<int>(getInput<int>("Enter PRICE of bus ($):"));
+            make_unique<int>(get_input<int>("Enter PRICE of bus ($):"));
 
     Bus bus(engine, *weight, *fuelConsumption, *mileage,
             *color, *brand, *model, *year, *location,
@@ -231,13 +231,13 @@ void Admin::set_car() {
 
     cout << "Enter the brand, model, year and color of CAR which you would like to change" << endl;
     unique_ptr<string> brand =
-            getStringInput("Enter BRAND of car:");
+            get_string_input("Enter BRAND of car:");
     unique_ptr<string> model =
-            getStringInput("Enter MODEL of car:");
+            get_string_input("Enter MODEL of car:");
     unique_ptr<int> year =
-            make_unique<int>(getInput<int>("Enter YEAR of car:"));
+            make_unique<int>(get_input<int>("Enter YEAR of car:"));
     unique_ptr<string> color =
-            getStringInput("Enter COLOR of car:");
+            get_string_input("Enter COLOR of car:");
     try {
         Car car1(*year, *brand, *model, *color);
         if (!car1.if_exists(cars))
@@ -259,20 +259,20 @@ void Admin::set_car() {
                 switch (*choice) {
                     case 1: {
                         unique_ptr<int> year1 = make_unique<int>
-                                (getInput<int>("Enter YEAR of car would you like to change:"));
+                                (get_input<int>("Enter YEAR of car would you like to change:"));
                         car.set_year(*year1);
                         break;
                     }
                     case 2: {
                         unique_ptr<int> weight =
-                                make_unique<int>(getInput<int>("Enter WEIGHT of car would you like to change:"));
+                                make_unique<int>(get_input<int>("Enter WEIGHT of car would you like to change:"));
                         car.set_weight(*weight);
                         break;
                     }
                     case 3: {
                         unique_ptr<double> power =
                                 make_unique<double>(
-                                        getInput<double>("Enter POWER of car's engine would you like to change:"));
+                                        get_input<double>("Enter POWER of car's engine would you like to change:"));
                         Engine engine = car.get_engine();
                         engine.set_power(*power);
                         car.set_engine(engine);
@@ -281,7 +281,7 @@ void Admin::set_car() {
                     case 4: {
                         unique_ptr<double> capacity =
                                 make_unique<double>(
-                                        getInput<double>("Enter CAPACITY of car's engine would you like to change:"));
+                                        get_input<double>("Enter CAPACITY of car's engine would you like to change:"));
                         Engine engine = car.get_engine();
                         engine.set_capacity(*capacity);
                         car.set_engine(engine);
@@ -289,7 +289,7 @@ void Admin::set_car() {
                     }
                     case 5: {
                         unique_ptr<string> fuel =
-                                getStringInput("Enter FUEL of car's engine would you like to change:");
+                                get_string_input("Enter FUEL of car's engine would you like to change:");
                         Engine engine = car.get_engine();
                         engine.set_fuel(*fuel);
                         car.set_engine(engine);
@@ -297,58 +297,58 @@ void Admin::set_car() {
                     }
                     case 6: {
                         unique_ptr<double> fuelConsumption =
-                                make_unique<double>(getInput<double>
+                                make_unique<double>(get_input<double>
                                                             ("Enter FUEL CONSUMPTION of car liters/100km would you like to change:"));
                         car.set_fuel_consumption(*fuelConsumption);
                         break;
                     }
                     case 7: {
                         unique_ptr<int> mileage =
-                                make_unique<int>(getInput<int>(
+                                make_unique<int>(get_input<int>(
                                         "Enter MILEAGE of car in thousands of km would you like to change:"));
                         car.set_mileage(*mileage);
                         break;
                     }
                     case 8: {
-                        unique_ptr<string> brand1 = getStringInput("Enter BRAND of car would you like to change:");
+                        unique_ptr<string> brand1 = get_string_input("Enter BRAND of car would you like to change:");
                         car.set_brand(*brand1);
 
                         break;
                     }
                     case 9: {
                         unique_ptr<string> model1 =
-                                getStringInput("Enter MODEL of car would you like to change:");
+                                get_string_input("Enter MODEL of car would you like to change:");
                         car.set_model(*model1);
                         break;
                     }
                     case 10: {
                         unique_ptr<string> color1 =
-                                getStringInput("Enter COLOR of car would you like to change:");
+                                get_string_input("Enter COLOR of car would you like to change:");
                         car.set_color(*color1);
                         break;
                     }
                     case 11: {
                         unique_ptr<string> location =
-                                getStringInput("Enter LOCATION of car would you like to change:");
+                                get_string_input("Enter LOCATION of car would you like to change:");
                         car.set_location(*location);
                         break;
                     }
                     case 12: {
                         unique_ptr<int> price =
-                                make_unique<int>(getInput<int>("Enter PRICE of car would you like to change:"));
+                                make_unique<int>(get_input<int>("Enter PRICE of car would you like to change:"));
                         car.set_price(*price);
                         break;
                     }
                     case 13: {
                         unique_ptr<string> transmission =
-                                getStringInput(
+                                get_string_input(
                                         "Enter TRANSMISSION of car (automatic/mechanics) would you like to change:");
                         car.set_transmission(*transmission);
                         break;
                     }
                     case 14: {
                         unique_ptr<string> wheelDrive =
-                                getStringInput("Enter WHEEL DRIVE of car (full/back/front) would you like to change:");
+                                get_string_input("Enter WHEEL DRIVE of car (full/back/front) would you like to change:");
                         car.set_wheel_drive(*wheelDrive);
                         break;
                     }
@@ -377,13 +377,13 @@ void Admin::set_truck() {
 
     cout << "Enter the brand, model, year and color of TRUCK which you would like to change" << endl;
     unique_ptr<string> brand =
-            getStringInput("Enter BRAND of truck:");
+            get_string_input("Enter BRAND of truck:");
     unique_ptr<string> model =
-            getStringInput("Enter MODEL of truck:");
+            get_string_input("Enter MODEL of truck:");
     unique_ptr<int> year =
-            make_unique<int>(getInput<int>("Enter YEAR of truck:"));
+            make_unique<int>(get_input<int>("Enter YEAR of truck:"));
     unique_ptr<string> color =
-            getStringInput("Enter COLOR of truck:");
+            get_string_input("Enter COLOR of truck:");
     try {
         Truck truck1(*year, *brand, *model, *color);
         if (!truck1.if_exists(trucks))
@@ -401,20 +401,20 @@ void Admin::set_truck() {
                 switch (*choice) {
                     case 1: {
                         unique_ptr<int> year1 = make_unique<int>
-                                (getInput<int>("Enter YEAR of truck would you like to change:"));
+                                (get_input<int>("Enter YEAR of truck would you like to change:"));
                         truck.set_year(*year1);
                         break;
                     }
                     case 2: {
                         unique_ptr<int> weight =
-                                make_unique<int>(getInput<int>("Enter WEIGHT of truck would you like to change:"));
+                                make_unique<int>(get_input<int>("Enter WEIGHT of truck would you like to change:"));
                         truck.set_weight(*weight);
                         break;
                     }
                     case 3: {
                         unique_ptr<double> power =
                                 make_unique<double>(
-                                        getInput<double>("Enter POWER of truck's engine would you like to change:"));
+                                        get_input<double>("Enter POWER of truck's engine would you like to change:"));
                         Engine engine = truck.get_engine();
                         engine.set_power(*power);
                         truck.set_engine(engine);
@@ -423,7 +423,7 @@ void Admin::set_truck() {
                     case 4: {
                         unique_ptr<double> capacity =
                                 make_unique<double>(
-                                        getInput<double>("Enter CAPACITY of truck's engine would you like to change:"));
+                                        get_input<double>("Enter CAPACITY of truck's engine would you like to change:"));
                         Engine engine = truck.get_engine();
                         engine.set_capacity(*capacity);
                         truck.set_engine(engine);
@@ -431,7 +431,7 @@ void Admin::set_truck() {
                     }
                     case 5: {
                         unique_ptr<string> fuel =
-                                getStringInput("Enter FUEL of truck's engine would you like to change:");
+                                get_string_input("Enter FUEL of truck's engine would you like to change:");
                         Engine engine = truck.get_engine();
                         engine.set_fuel(*fuel);
                         truck.set_engine(engine);
@@ -439,52 +439,52 @@ void Admin::set_truck() {
                     }
                     case 6: {
                         unique_ptr<double> fuelConsumption =
-                                make_unique<double>(getInput<double>
+                                make_unique<double>(get_input<double>
                                                             ("Enter FUEL CONSUMPTION of truck liters/100km would you like to change:"));
                         truck.set_fuel_consumption(*fuelConsumption);
                         break;
                     }
                     case 7: {
                         unique_ptr<int> mileage =
-                                make_unique<int>(getInput<int>(
+                                make_unique<int>(get_input<int>(
                                         "Enter MILEAGE of truck in thousands of km would you like to change:"));
                         truck.set_mileage(*mileage);
                         break;
                     }
                     case 8: {
-                        unique_ptr<string> brand1 = getStringInput("Enter BRAND of truck would you like to change:");
+                        unique_ptr<string> brand1 = get_string_input("Enter BRAND of truck would you like to change:");
                         truck.set_brand(*brand1);
 
                         break;
                     }
                     case 9: {
                         unique_ptr<string> model1 =
-                                getStringInput("Enter MODEL of truck would you like to change:");
+                                get_string_input("Enter MODEL of truck would you like to change:");
                         truck.set_model(*model1);
                         break;
                     }
                     case 10: {
                         unique_ptr<string> color1 =
-                                getStringInput("Enter COLOR of truck would you like to change:");
+                                get_string_input("Enter COLOR of truck would you like to change:");
                         truck.set_color(*color1);
                         break;
                     }
                     case 11: {
                         unique_ptr<string> location =
-                                getStringInput("Enter LOCATION of truck would you like to change:");
+                                get_string_input("Enter LOCATION of truck would you like to change:");
                         truck.set_location(*location);
                         break;
                     }
                     case 12: {
                         unique_ptr<int> price =
-                                make_unique<int>(getInput<int>("Enter PRICE of truck would you like to change:"));
+                                make_unique<int>(get_input<int>("Enter PRICE of truck would you like to change:"));
                         truck.set_price(*price);
                         break;
                     }
                     case 13: {
                         unique_ptr<int> cargo =
                                 make_unique<int>(
-                                        getInput<int>("Enter CARGO CAPACITY of truck would you like to change:"));
+                                        get_input<int>("Enter CARGO CAPACITY of truck would you like to change:"));
                         truck.set_cargo_capacity(*cargo);
                         break;
                     }
@@ -512,13 +512,13 @@ void Admin::set_bus() {
 
     cout << "Enter the brand, model, year and color of BUS which you would like to change" << endl;
     unique_ptr<string> brand =
-            getStringInput("Enter BRAND of bus:");
+            get_string_input("Enter BRAND of bus:");
     unique_ptr<string> model =
-            getStringInput("Enter MODEL of bus:");
+            get_string_input("Enter MODEL of bus:");
     unique_ptr<int> year =
-            make_unique<int>(getInput<int>("Enter YEAR of bus:"));
+            make_unique<int>(get_input<int>("Enter YEAR of bus:"));
     unique_ptr<string> color =
-            getStringInput("Enter COLOR of bus:");
+            get_string_input("Enter COLOR of bus:");
     try {
         Bus bus1(*year, *brand, *model, *color);
         if (!bus1.if_exists(buses))
@@ -538,20 +538,20 @@ void Admin::set_bus() {
                 switch (*choice) {
                     case 1: {
                         unique_ptr<int> year1 = make_unique<int>
-                                (getInput<int>("Enter YEAR of bus would you like to change:"));
+                                (get_input<int>("Enter YEAR of bus would you like to change:"));
                         bus.set_year(*year1);
                         break;
                     }
                     case 2: {
                         unique_ptr<int> weight =
-                                make_unique<int>(getInput<int>("Enter WEIGHT of bus would you like to change:"));
+                                make_unique<int>(get_input<int>("Enter WEIGHT of bus would you like to change:"));
                         bus.set_weight(*weight);
                         break;
                     }
                     case 3: {
                         unique_ptr<double> power =
                                 make_unique<double>(
-                                        getInput<double>("Enter engine`s POWER of bus would you like to change:"));
+                                        get_input<double>("Enter engine`s POWER of bus would you like to change:"));
                         Engine engine = bus.get_engine();
                         engine.set_power(*power);
                         bus.set_engine(engine);
@@ -560,7 +560,7 @@ void Admin::set_bus() {
                     case 4: {
                         unique_ptr<double> capacity =
                                 make_unique<double>(
-                                        getInput<double>("Enter engine`s CAPACITY of bus would you like to change:"));
+                                        get_input<double>("Enter engine`s CAPACITY of bus would you like to change:"));
                         Engine engine = bus.get_engine();
                         engine.set_capacity(*capacity);
                         bus.set_engine(engine);
@@ -568,7 +568,7 @@ void Admin::set_bus() {
                     }
                     case 5: {
                         unique_ptr<string> fuel =
-                                getStringInput("Enter engine`s FUEL of bus would you like to change:");
+                                get_string_input("Enter engine`s FUEL of bus would you like to change:");
                         Engine engine = bus.get_engine();
                         engine.set_fuel(*fuel);
                         bus.set_engine(engine);
@@ -576,52 +576,52 @@ void Admin::set_bus() {
                     }
                     case 6: {
                         unique_ptr<double> fuelConsumption =
-                                make_unique<double>(getInput<double>
+                                make_unique<double>(get_input<double>
                                                             ("Enter FUEL CONSUMPTION of bus liters/100km would you like to change:"));
                         bus.set_fuel_consumption(*fuelConsumption);
                         break;
                     }
                     case 7: {
                         unique_ptr<int> mileage =
-                                make_unique<int>(getInput<int>(
+                                make_unique<int>(get_input<int>(
                                         "Enter MILEAGE of bus in thousands of km would you like to change:"));
                         bus.set_mileage(*mileage);
                         break;
                     }
                     case 8: {
-                        unique_ptr<string> brand1 = getStringInput("Enter BRAND of bus would you like to change:");
+                        unique_ptr<string> brand1 = get_string_input("Enter BRAND of bus would you like to change:");
                         bus.set_brand(*brand1);
 
                         break;
                     }
                     case 9: {
                         unique_ptr<string> model1 =
-                                getStringInput("Enter MODEL of bus would you like to change:");
+                                get_string_input("Enter MODEL of bus would you like to change:");
                         bus.set_model(*model1);
                         break;
                     }
                     case 10: {
                         unique_ptr<string> color1 =
-                                getStringInput("Enter COLOR of bus would you like to change:");
+                                get_string_input("Enter COLOR of bus would you like to change:");
                         bus.set_color(*color1);
                         break;
                     }
                     case 11: {
                         unique_ptr<string> location =
-                                getStringInput("Enter LOCATION of bus would you like to change:");
+                                get_string_input("Enter LOCATION of bus would you like to change:");
                         bus.set_location(*location);
                         break;
                     }
                     case 12: {
                         unique_ptr<int> price =
-                                make_unique<int>(getInput<int>("Enter PRICE of bus would you like to change:"));
+                                make_unique<int>(get_input<int>("Enter PRICE of bus would you like to change:"));
                         bus.set_price(*price);
                         break;
                     }
                     case 13: {
                         unique_ptr<int> passenger =
                                 make_unique<int>(
-                                        getInput<int>("Enter PASSENGER CAPACITY of bus would you like to change:"));
+                                        get_input<int>("Enter PASSENGER CAPACITY of bus would you like to change:"));
                         bus.set_passenger_capacity(*passenger);
                         break;
                     }
@@ -660,13 +660,13 @@ void Admin::delete_vehicle() {
 
                 cout << "Enter the brand, model, year and color of CAR which you would like to delete" << endl;
                 unique_ptr<string> brand =
-                        getStringInput("Enter BRAND of car:");
+                        get_string_input("Enter BRAND of car:");
                 unique_ptr<string> model =
-                        getStringInput("Enter MODEL of car:");
+                        get_string_input("Enter MODEL of car:");
                 unique_ptr<int> year =
-                        make_unique<int>(getInput<int>("Enter YEAR of car:"));
+                        make_unique<int>(get_input<int>("Enter YEAR of car:"));
                 unique_ptr<string> color =
-                        getStringInput("Enter COLOR of car:");
+                        get_string_input("Enter COLOR of car:");
 
 
                 Car car1(*year, *brand, *model, *color);
@@ -696,13 +696,13 @@ void Admin::delete_vehicle() {
 
                 cout << "Enter the brand, model, year and color of TRUCK which you would like to delete" << endl;
                 unique_ptr<string> brand =
-                        getStringInput("Enter BRAND of truck:");
+                        get_string_input("Enter BRAND of truck:");
                 unique_ptr<string> model =
-                        getStringInput("Enter MODEL of truck:");
+                        get_string_input("Enter MODEL of truck:");
                 unique_ptr<int> year =
-                        make_unique<int>(getInput<int>("Enter YEAR of truck:"));
+                        make_unique<int>(get_input<int>("Enter YEAR of truck:"));
                 unique_ptr<string> color =
-                        getStringInput("Enter COLOR of truck:");
+                        get_string_input("Enter COLOR of truck:");
 
 
                 Truck truck1(*year, *brand, *model, *color);
@@ -733,13 +733,13 @@ void Admin::delete_vehicle() {
 
                 cout << "Enter the brand, model, year and color of BUS which you would like to delete" << endl;
                 unique_ptr<string> brand =
-                        getStringInput("Enter BRAND of bus:");
+                        get_string_input("Enter BRAND of bus:");
                 unique_ptr<string> model =
-                        getStringInput("Enter MODEL of bus:");
+                        get_string_input("Enter MODEL of bus:");
                 unique_ptr<int> year =
-                        make_unique<int>(getInput<int>("Enter YEAR of bus:"));
+                        make_unique<int>(get_input<int>("Enter YEAR of bus:"));
                 unique_ptr<string> color =
-                        getStringInput("Enter COLOR of bus:");
+                        get_string_input("Enter COLOR of bus:");
 
 
                 Bus bus1(*year, *brand, *model, *color);

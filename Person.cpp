@@ -108,14 +108,14 @@ string Person::get_password() {
     return *password;
 }
 
-void Person::set_name(string &newname) {
-    this->name = newname;
+void Person::set_name(string &new_name) {
+    this->name = new_name;
 }
 
-void Person::set_password(string &newpassword) {
-    *this->password = newpassword;
+void Person::set_password(string &new_password) {
+    *this->password = new_password;
 }
 
-void Person::set_surname(string &newsurname) {
-    this->surname = newsurname;
+void Person::set_surname(string &new_surname) {
+    this->surname = new_surname;
 }
