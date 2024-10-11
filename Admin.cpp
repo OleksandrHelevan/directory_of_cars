@@ -2,8 +2,8 @@
 #include "Admin.h"
 #include <fstream>
 #include "ClientNotFound.h"
-#include "FileReader.h"
 #include "WrongChoice.h"
+#include "CriteriaReader.h"
 #include <list>
 #include <algorithm>
 
@@ -244,7 +244,8 @@ void Admin::set_car() {
             throw runtime_error("Car was not found!");
 
         string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
-        FileReader::read_file(file);
+        CriteriaReader reader(file);
+        reader.read_file();
         Admin::line();
 
          unique_ptr<int> choice {new int{0}};
@@ -401,7 +402,8 @@ void Admin::set_truck() {
             throw runtime_error("Truck was not found!");
 
         string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
-        FileReader::read_file(file);
+        CriteriaReader reader(file);
+        reader.read_file();
 
         unique_ptr<int> choice {new int{0}};
         while(unique_ptr<int> choice1 =
@@ -550,7 +552,8 @@ void Admin::set_bus() {
             throw runtime_error("Truck was not found!");
 
         string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
-        FileReader::read_file(file);
+        CriteriaReader reader(file);
+        reader.read_file();
 
         unique_ptr<int> choice {new int{0}};
         while(unique_ptr<int> choice1 =

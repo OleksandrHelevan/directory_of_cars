@@ -2,7 +2,7 @@
 #include "User.h"
 #include <fstream>
 #include "WrongChoice.h"
-#include "FileReader.h"
+#include "CriteriaReader.h"
 
 User::User(std::string &new_name, std::string &new_surname, std::string &new_password)
 : Person(new_name,new_surname,new_password){}
@@ -81,7 +81,8 @@ void User::set_password(string &newpassword) {
 void User::car_menu() {
     cout<<"CARS filter by:"<<endl;
     string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
-    FileReader::read_file(file);
+    CriteriaReader reader(file);
+    reader.read_file();
     cout<<endl;
 
     unique_ptr<int> choice{new int};
@@ -478,7 +479,8 @@ void User::car_menu() {
 void User::truck_menu() {
     cout<<"TRUCKS filter by:"<<endl;
     string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
-    FileReader::read_file(file);
+    CriteriaReader reader(file);
+    reader.read_file();
     cout<<endl;
 
     cout<<endl;
@@ -889,7 +891,8 @@ void User::truck_menu() {
 void User::bus_menu() {
     cout<<"BUSES filter by:"<<endl;
     string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
-    FileReader::read_file(file);
+    CriteriaReader reader(file);
+    reader.read_file();
     cout<<endl;
 
     cout<<endl;
