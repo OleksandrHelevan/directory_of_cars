@@ -21,9 +21,9 @@ public:
     friend ostream &operator<<(ostream& os, const Engine& obj);
     friend istream &operator>>(istream& is, Engine& engine);
 
-    void set_capacity(double newCapacity);
-    void set_fuel(string& newFuel);
-    void set_power(double newPower);
+    void set_capacity(double new_capacity);
+    void set_fuel(string& new_fuel);
+    void set_power(double new_power);
 
     [[maybe_unused]]double get_capacity();
     [[maybe_unused]]string get_fuel();
@@ -34,7 +34,7 @@ public:
     [[nodiscard]] bool sort_power_l(double pow) const;
     bool sort_capacity_h(double cap);
     [[nodiscard]] bool sort_power_h(double pow) const;
-    bool sort_fuel(string &fuel1);
+    bool sort_fuel(string &new_fuel );
 };
 
 

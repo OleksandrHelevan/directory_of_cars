@@ -45,7 +45,7 @@ Admin &Admin::operator=(const Admin &other) {
 
 
 void Admin::write_to_file() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)", ios_base::app);
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)", ios_base::app);
     fout << get_name() << "\t" << get_surname() << "\t" << get_password() << endl;
     fout.close();
 }

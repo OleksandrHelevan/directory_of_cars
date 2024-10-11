@@ -35,11 +35,11 @@ bool Engine::sort_power_h(double pow) const{
     return this->power >= pow;
 }
 
-bool Engine::sort_fuel(std::string &fuel1) {
-    transform(fuel1.begin(), fuel1.end(), fuel1.begin(), [](char c) {
+bool Engine::sort_fuel(std::string &new_fuel) {
+    transform(new_fuel.begin(), new_fuel.end(), new_fuel.begin(), [](char c) {
         return std::tolower(c);});
-    cout<<fuel1;
-    return this->fuel==fuel1;
+    cout << new_fuel;
+    return this->fuel == new_fuel;
 
 }
 
@@ -85,16 +85,16 @@ Engine::~Engine() {
     fout<<*capacity<<" "<<fuel<<" destructor"<<endl;
     fout.close();
 }
-void Engine::set_capacity(double newCapacity) {
-    *this->capacity = newCapacity;
+void Engine::set_capacity(double new_capacity) {
+    *this->capacity = new_capacity;
 }
 
-void Engine::set_fuel(string& newFuel) {
-    this->fuel = newFuel;
+void Engine::set_fuel(string& new_fuel) {
+    this->fuel = new_fuel;
 }
 
-void Engine::set_power(double newPower) {
-    this->power = newPower;
+void Engine::set_power(double new_power) {
+    this->power = new_power;
 }
 
 [[maybe_unused]] double Engine::get_capacity(){
