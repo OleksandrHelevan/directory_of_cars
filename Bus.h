@@ -21,7 +21,7 @@ public:
     Bus(Bus&& other) noexcept;
     Bus& operator=(const Bus& other);
     Bus& operator=(Bus&& other) noexcept;
-    bool if_exists(list<Bus> buses);
+    bool if_exists(const list<Bus>& buses);
 
 
     [[nodiscard]] bool sort_passenger_capacity_h(int new_cap) const;

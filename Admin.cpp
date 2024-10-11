@@ -15,24 +15,11 @@ Admin::Admin(std::string &new_name, std::string &new_surname, std::string &new_p
     fout.close();
 }
 
-Admin::Admin(const Admin &other) : Person(other) {}
+Admin::Admin(const Admin &other) = default;
 
 Admin::Admin(Admin &&other) noexcept: Person(std::move(other)) {}
 
 Admin::Admin() : Person() {}
-
-
-string Admin::get_name() {
-    return Person::get_name();
-}
-
-string Admin::get_surname() {
-    return Person::get_surname();
-}
-
-string Admin::get_password() {
-    return Person::get_password();
-}
 
 ostream &operator<<(ostream &os, const Admin &obj) {
     os << static_cast<Person &>((Person &) obj);
@@ -58,7 +45,7 @@ Admin &Admin::operator=(const Admin &other) {
 
 
 void Admin::write_to_file() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)", ios_base::app);
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)", ios_base::app);
     fout << get_name() << "\t" << get_surname() << "\t" << get_password() << endl;
     fout.close();
 }
@@ -70,17 +57,6 @@ Admin::~Admin() noexcept {
     fout.close();
 }
 
-void Admin::set_surname(string &new_surname) {
-    Person::set_surname(new_surname);
-}
-
-void Admin::set_name(string &new_name) {
-    Person::set_name(new_name);
-}
-
-void Admin::set_password(string &new_password) {
-    Person::set_password(new_password);
-}
 
 bool Admin::search() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)");

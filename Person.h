@@ -29,9 +29,9 @@ public:
     friend istream &operator>>(istream& is, Person &obj);
 
 
-    virtual string get_name()=0;
-    virtual string get_surname()=0;
-    virtual string get_password()=0;
+    virtual string get_name();
+    virtual string get_surname();
+    virtual string get_password();
 
     virtual void set_name(string& new_name);
     virtual void set_surname(string& new_surname);
@@ -40,6 +40,7 @@ public:
     static list <Car> cars_from_file();
     static list <Truck> trucks_from_file();
     static list <Bus> buses_from_file();
+
     virtual void write_to_file()=0;
     virtual bool search()=0;
 

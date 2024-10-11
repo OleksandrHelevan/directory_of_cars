@@ -23,7 +23,7 @@ istream &operator>>(istream  &is, Bus &obj){
 Bus::Bus(int year, std::string &brand, std::string &model, std::string &color)
 :Vehicle(year, brand, model, color){}
 
-Bus::Bus(const Bus& other) : Vehicle(other), passenger_capacity{other.passenger_capacity} {}
+Bus::Bus(const Bus& other) = default;
 
 Bus::Bus(Bus&& other) noexcept : Vehicle(std::move(other)), passenger_capacity{other.passenger_capacity} {}
 
@@ -72,7 +72,7 @@ bool Bus::sort_passenger_capacity_l(int new_cap) const{
     return passenger_capacity <= new_cap;
 }
 
-bool Bus::if_exists(const list<Bus> buses) {
+bool Bus::if_exists(const list<Bus>& buses) {
     return std::any_of(buses.begin(), buses.end(), [this](const Bus &b) {
         return this->get_year() == b.get_year() &&
                this->get_model() == b.get_model() &&

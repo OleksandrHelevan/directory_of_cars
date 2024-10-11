@@ -18,16 +18,9 @@ public:
     friend ostream& operator<<(ostream& os, const User& obj);
     friend istream& operator>>(istream& is, User& obj);
 
-    string get_name() override;
-    string get_surname() override;
-    string get_password() override;
-
-    void set_name(string& new_name) override;
-    void set_surname(string& new_surname) override;
-    void set_password(string& new_password) override;
-
     void write_to_file() override;
     bool search() override;
+
     static void car_menu();
     static void truck_menu();
     static void bus_menu();

@@ -17,17 +17,10 @@ public:
     friend ostream& operator<<(ostream& os, const Admin& obj);
     friend istream& operator>>(istream& is, Admin& obj);
 
-    string get_name() override;
-    string get_surname() override;
-    string get_password() override;
-
-    void set_name(string& new_name) override;
-    void set_surname(string& new_surname) override;
-    void set_password(string& new_password) override;
-
     static void add_car();
     static void add_truck();
     static void add_bus();
+
     void write_to_file() override;
     bool search() override;
 

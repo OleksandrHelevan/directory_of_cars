@@ -23,15 +23,6 @@ istream &operator>>(istream& is, Person &obj){
     return is;
 }
 
-void Person::write_to_file(){
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)", ios_base::app);
-    fout << name << "\t" << surname << "\t" << *password << endl;
-    fout.close();
-}
-
-bool Person::search() {
-    return false;
-}
 
 Person &Person::operator=(const Person &other) {
     if (this == &other)

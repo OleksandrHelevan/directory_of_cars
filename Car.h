@@ -26,8 +26,8 @@ public:
 
     bool if_exists(const list<Car>& cars);
 
-    [[nodiscard]] string get_wheel_drive() const;
-    [[nodiscard]] string get_transmission() const;
+    [[maybe_unused]] [[nodiscard]] string get_wheel_drive() const;
+    [[maybe_unused]] [[nodiscard]] string get_transmission() const;
 
     void set_wheel_drive(string &new_wheel_drive);
     void set_transmission(string &new_transmission);

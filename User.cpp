@@ -50,31 +50,9 @@ bool User::search() {
 }
 
 void User::write_to_file() {
-    Person::write_to_file();
-}
-
-string User::get_name() {
-    return Person::get_name();
-}
-
-string User::get_surname() {
-    return Person::get_surname();
-}
-
-string User::get_password() {
-    return Person::get_password();
-}
-
-void User::set_name(string &newname) {
-    Person::set_name(newname);
-}
-
-void User::set_surname(string &newsurname) {
-    Person::set_surname(newsurname);
-}
-
-void User::set_password(string &newpassword) {
-    Person::set_password(newpassword);
+    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)", ios_base::app);
+    fout << get_name() << "\t" << get_surname() << "\t" << get_password() << endl;
+    fout.close();
 }
 
 

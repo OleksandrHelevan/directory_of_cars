@@ -75,15 +75,15 @@ int main() {
                                 }
                                 switch (*choice1) {
                                     case 1: {
-                                        Admin::add_car();
+                                        admin.add_car();
                                         break;
                                     }
                                     case 2: {
-                                        Admin::add_truck();
+                                        admin.add_truck();
                                         break;
                                     }
                                     case 3: {
-                                        Admin::add_bus();
+                                        admin.add_bus();
                                         break;
                                     }
                                     case 4: {
@@ -113,15 +113,15 @@ int main() {
                                         break;
                                     }
                                     case 7: {
-                                        Admin::set_car();
+                                        admin.set_car();
                                         break;
                                     }
                                     case 8:{
-                                        Admin::set_truck();
+                                        admin.set_truck();
                                         break;
                                     }
                                     case 9:{
-                                        Admin::set_bus();
+                                        admin.set_bus();
                                         break;
                                     }
                                     case 10:
