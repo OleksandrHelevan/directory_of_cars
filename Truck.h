@@ -27,8 +27,8 @@ public:
 
     [[nodiscard]] bool sort_cargo_capacity_h(int new_cap) const;
     [[nodiscard]] bool sort_cargo_capacity_l(int new_cap) const;
-    [[maybe_unused]] [[nodiscard]] int get_cargo_capacity() const;
-    [[maybe_unused]] void set_cargo_capacity(int new_cargo);
+    [[nodiscard]] int get_cargo_capacity() const;
+    void set_cargo_capacity(int new_cargo);
 };
 
 

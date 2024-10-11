@@ -1,9 +1,9 @@
 
 #include "Admin.h"
 #include <fstream>
-#include "Client_not_found.h"
+#include "ClientNotFound.h"
 #include "FileReader.h"
-#include "Wrong_choice.h"
+#include "WrongChoice.h"
 #include <list>
 #include <algorithm>
 
@@ -70,16 +70,16 @@ Admin::~Admin() noexcept {
     fout.close();
 }
 
-void Admin::set_surname(string &newsurname) {
-    Person::set_surname(newsurname);
+void Admin::set_surname(string &new_surname) {
+    Person::set_surname(new_surname);
 }
 
-void Admin::set_name(string &newname) {
-    Person::set_name(newname);
+void Admin::set_name(string &new_name) {
+    Person::set_name(new_name);
 }
 
-void Admin::set_password(string &newpassword) {
-    Person::set_password(newpassword);
+void Admin::set_password(string &new_password) {
+    Person::set_password(new_password);
 }
 
 bool Admin::search() {
@@ -353,7 +353,7 @@ void Admin::set_car() {
                         break;
                     }
                     default: {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
                 }
             }
@@ -361,7 +361,7 @@ void Admin::set_car() {
         }
         fout.close();
 
-    } catch (Wrong_choice &e) {
+    } catch (WrongChoice &e) {
         cerr << e.what() << endl;
     } catch (exception &e) {
         cerr << e.what() << endl;
@@ -489,14 +489,14 @@ void Admin::set_truck() {
                         break;
                     }
                     default: {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
                 }
             }
             fout << truck;
         }
         fout.close();
-    } catch (Wrong_choice &e) {
+    } catch (WrongChoice &e) {
         cerr << e.what() << endl;
     } catch (exception &e) {
         cerr << e.what() << endl;
@@ -626,14 +626,14 @@ void Admin::set_bus() {
                         break;
                     }
                     default: {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
                 }
             }
             fout << bus;
         }
         fout.close();
-    } catch (Wrong_choice &e) {
+    } catch (WrongChoice &e) {
         cerr << e.what() << endl;
     } catch (exception &e) {
         cerr << e.what() << endl;
@@ -760,10 +760,10 @@ void Admin::delete_vehicle() {
                 break;
             }
             default: {
-                throw Wrong_choice();
+                throw WrongChoice();
             }
         }
-    } catch (Wrong_choice &e) {
+    } catch (WrongChoice &e) {
         cerr << e.what() << endl;
     } catch (exception &e) {
         cerr << e.what() << endl;

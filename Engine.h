@@ -21,12 +21,12 @@ public:
     friend ostream &operator<<(ostream& os, const Engine& obj);
     friend istream &operator>>(istream& is, Engine& engine);
 
-    [[maybe_unused]] void set_capacity(double newCapacity);
-    [[maybe_unused]] void set_fuel(string& newFuel);
-    [[maybe_unused]] void set_power(double newPower);
+    void set_capacity(double newCapacity);
+    void set_fuel(string& newFuel);
+    void set_power(double newPower);
 
-    [[maybe_unused]] [[nodiscard]] double get_capacity() const;
-    [[maybe_unused]] [[nodiscard]] string get_fuel() const;
+    [[maybe_unused]]double get_capacity();
+    [[maybe_unused]]string get_fuel();
     [[maybe_unused]] [[nodiscard]] double get_power() const;
 
     void get_engine() const;

@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "Wrong_type.h"
+#include "WrongType.h"
 #include "fstream"
 #include <algorithm>
 using namespace std;
@@ -31,7 +31,7 @@ bool Engine::sort_capacity_h(double cap) {
     return *this->capacity >= cap;
 }
 
-bool Engine::sort_power_h(double pow) const {
+bool Engine::sort_power_h(double pow) const{
     return this->power >= pow;
 }
 
@@ -97,14 +97,14 @@ void Engine::set_power(double newPower) {
     this->power = newPower;
 }
 
-double Engine::get_capacity() const {
+[[maybe_unused]] double Engine::get_capacity(){
         return *capacity;
 }
 
-string Engine::get_fuel() const {
+[[maybe_unused]] string Engine::get_fuel(){
     return fuel;
 }
 
-double Engine::get_power() const {
+[[maybe_unused]] double Engine::get_power() const{
     return power;
 }

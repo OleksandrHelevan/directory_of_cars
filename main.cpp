@@ -6,13 +6,12 @@
 #include "Car.h"
 #include "Bus.h"
 #include <memory>
-#include "Wrong_type.h"
-#include "Wrong_choice.h"
-#include "Client_not_found.h"
+#include "WrongType.h"
+#include "WrongChoice.h"
+#include "ClientNotFound.h"
 #include <algorithm>
 #include <limits>
 #include "FileReader.h"
-
 
 using namespace std;
 
@@ -20,7 +19,6 @@ void line(){
     cout<<"------------------------------------------------------------"
           "------------------------------------------------------------";
 }
-
 
 int main() {
     cout<<"WELCOME!"<<endl;
@@ -35,7 +33,7 @@ int main() {
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw Wrong_type();
+                throw WrongType();
             }
             switch (*choice) {
                 case 1: {
@@ -73,7 +71,7 @@ int main() {
                                 if (cin.fail()) {
                                     cin.clear();
                                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                    throw Wrong_type();
+                                    throw WrongType();
                                 }
                                 switch (*choice1) {
                                     case 1: {
@@ -135,18 +133,18 @@ int main() {
                                         return 0;
                                     }
                                     default: {
-                                        throw Wrong_choice();
+                                        throw WrongChoice();
                                     }
                                 }
-                            }catch (const Wrong_choice& e) {
+                            }catch (const WrongChoice& e) {
                                 cerr << e.what() << endl;
-                            }catch (const Wrong_type& e){
+                            }catch (const WrongType& e){
                                 cerr << e.what() << endl;
                             }
                         }
                     }
                     else{
-                        throw Client_not_found();
+                        throw ClientNotFound();
                     }
                 }
                 case 2: {
@@ -187,7 +185,7 @@ int main() {
                                 if (cin.fail()) {
                                     cin.clear();
                                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                    throw Wrong_type();
+                                    throw WrongType();
                                 }
                                 switch (*choice1) {
                                     case 1:{
@@ -232,12 +230,12 @@ int main() {
                                         return 0;
                                     }
                                     default: {
-                                        throw Wrong_choice();
+                                        throw WrongChoice();
                                     }
                                 }
-                            } catch (const Wrong_choice &e) {
+                            } catch (const WrongChoice &e) {
                                 cerr << e.what() << endl;
-                            } catch (const Wrong_type &e) {
+                            } catch (const WrongType &e) {
                                 cerr << e.what() << endl;
                             }
                         }
@@ -252,15 +250,15 @@ int main() {
                     break;
                 }
                 default: {
-                    throw Wrong_choice();
+                    throw WrongChoice();
                 }
 
             }
-        }catch (const Wrong_choice& e) {
+        }catch (const WrongChoice& e) {
             cerr << e.what() << endl;
-        }catch (const Wrong_type& e){
+        }catch (const WrongType& e){
             cerr << e.what() << endl;
-        }catch(const Client_not_found &e){
+        }catch(const ClientNotFound &e){
             cerr<< e.what()<<endl;
         }
 

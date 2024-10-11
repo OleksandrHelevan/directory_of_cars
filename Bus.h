@@ -24,10 +24,10 @@ public:
     bool if_exists(list<Bus> buses);
 
 
-    [[nodiscard]] bool sort_passenger_capacity_h(int newcap) const;
-    [[nodiscard]] bool sort_passenger_capacity_l(int newcap) const;
-    [[maybe_unused]][[nodiscard]] int get_passenger_capacity() const;
-    [[maybe_unused]]void set_passenger_capacity(int newcap);
+    [[nodiscard]] bool sort_passenger_capacity_h(int new_cap) const;
+    [[nodiscard]] bool sort_passenger_capacity_l(int new_cap) const;
+    [[nodiscard]] int get_passenger_capacity() const;
+    void set_passenger_capacity(int new_cap);
 
     void get_vehicle() const override;
 };

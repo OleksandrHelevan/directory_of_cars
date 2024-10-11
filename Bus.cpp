@@ -56,20 +56,20 @@ Bus::~Bus() noexcept {
     fout.close();
 }
 
-int Bus::get_passenger_capacity() const {
+int Bus::get_passenger_capacity() const{
     return passenger_capacity;
 }
 
-void Bus::set_passenger_capacity(int newcap) {
-    this->passenger_capacity = newcap;
+void Bus::set_passenger_capacity(int new_cap) {
+    this->passenger_capacity = new_cap;
 }
 
-bool Bus::sort_passenger_capacity_h(int newcap) const {
-    return passenger_capacity >= newcap;
+bool Bus::sort_passenger_capacity_h(int new_cap) const{
+    return passenger_capacity >= new_cap;
 }
 
-bool Bus::sort_passenger_capacity_l(int newcap) const {
-    return passenger_capacity <= newcap;
+bool Bus::sort_passenger_capacity_l(int new_cap) const{
+    return passenger_capacity <= new_cap;
 }
 
 bool Bus::if_exists(const list<Bus> buses) {

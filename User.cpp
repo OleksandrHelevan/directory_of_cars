@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "User.h"
 #include <fstream>
-#include "Wrong_choice.h"
+#include "WrongChoice.h"
 #include "FileReader.h"
 
 User::User(std::string &new_name, std::string &new_surname, std::string &new_password)
@@ -122,9 +122,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -161,9 +161,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -195,9 +195,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -229,9 +229,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -283,9 +283,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -322,9 +322,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -425,9 +425,9 @@ void User::car_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
 
@@ -466,11 +466,11 @@ void User::car_menu() {
                 break;
             }
             default: {
-                throw Wrong_choice();
+                throw WrongChoice();
             }
 
         }
-    }catch (Wrong_choice& e){
+    }catch (WrongChoice& e){
         cerr<<e.what()<<endl;
     }
 }
@@ -521,9 +521,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -560,9 +560,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -594,9 +594,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -628,9 +628,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -682,9 +682,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -721,9 +721,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -824,9 +824,9 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
 
@@ -866,20 +866,20 @@ void User::truck_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
             }
 
             default: {
-                throw Wrong_choice();
+                throw WrongChoice();
             }
 
         }
-    }catch (Wrong_choice& e){
+    }catch (WrongChoice& e){
         cerr<<e.what()<<endl;
     }
 }
@@ -930,9 +930,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -969,9 +969,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -1003,9 +1003,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -1037,9 +1037,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
             }
@@ -1091,9 +1091,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -1130,9 +1130,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
@@ -1233,9 +1233,9 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
 
@@ -1275,20 +1275,20 @@ void User::bus_menu() {
                         });
                         break;
                     } else {
-                        throw Wrong_choice();
+                        throw WrongChoice();
                     }
-                }catch(Wrong_choice& e){
+                }catch(WrongChoice& e){
                     cerr<<e.what()<<endl;
                 }
                 break;
             }
 
             default: {
-                throw Wrong_choice();
+                throw WrongChoice();
             }
 
         }
-    }catch (Wrong_choice& e){
+    }catch (WrongChoice& e){
         cerr<<e.what()<<endl;
     }
 }
