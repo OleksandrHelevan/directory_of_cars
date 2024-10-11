@@ -1,35 +1,54 @@
 authorization of ADMIN
 Admin destructor
 Oleksandr destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
+car destructor
+Logan Dacia 2007 destructor
+1.6 dizel destructor
+car destructor
+Logan Dacia 2007 destructor
 0   destructor
-bus destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-Oleksandr destructor
-Oleksandr destructor
+car destructor
+X5 BMW 2017 destructor
+2.5 disel destructor
+car destructor
+X7 BMW 2022 destructor
+3 disel destructor
+car destructor
+URUS Lamborgini 2024 destructor
+30 95 destructor
+car destructor
+Touareg Volkswagen 2017 destructor
+3 disel destructor
+car destructor
+Focus Ford 2015 destructor
+1.6 petroil destructor
+car destructor
+Logan Dacia 3456 destructor
+1.6 dizel destructor
+car destructor
+Logan Dacia 3456 destructor
+1.6 dizel destructor
+car destructor
+Logan Dacia 3456 destructor
+0   destructor
+car destructor
+X5 BMW 2017 destructor
+2.5 disel destructor
+car destructor
+X7 BMW 2022 destructor
+3 disel destructor
+car destructor
+URUS Lamborgini 2024 destructor
+30 95 destructor
+car destructor
+Touareg Volkswagen 2017 destructor
+3 disel destructor
+car destructor
+Focus Ford 2015 destructor
+1.6 petroil destructor
+car destructor
+Logan Dacia 2007 destructor
+1.6 dizel destructor
 car destructor
 Logan Dacia 2007 destructor
 1.6 dizel destructor
@@ -51,106 +70,3 @@ Focus Ford 2015 destructor
 car destructor
 Logan Dacia 2007 destructor
 1.6 dizel destructor
-truck destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-truck destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-car destructor
-URUS Lamborgini 2024 destructor
-30 95 destructor
-car destructor
-X7 BMW 2022 destructor
-3 disel destructor
-car destructor
-X5 BMW 2017 destructor
-2.5 disel destructor
-car destructor
-Touareg Volkswagen 2017 destructor
-3 disel destructor
-car destructor
-Focus Ford 2015 destructor
-1.6 petroil destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-Oleksandr destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-car destructor
-URUS Lamborgini 2024 destructor
-30 95 destructor
-car destructor
-X7 BMW 2022 destructor
-3 disel destructor
-car destructor
-X5 BMW 2017 destructor
-2.5 disel destructor
-car destructor
-Touareg Volkswagen 2017 destructor
-3 disel destructor
-car destructor
-Focus Ford 2015 destructor
-1.6 petroil destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-car destructor
-URUS Lamborgini 2024 destructor
-30 95 destructor
-car destructor
-Focus Ford 2015 destructor
-1.6 petroil destructor
-car destructor
-Touareg Volkswagen 2017 destructor
-3 disel destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-car destructor
-X5 BMW 2017 destructor
-2.5 disel destructor
-car destructor
-X7 BMW 2022 destructor
-3 disel destructor
-Oleksandr destructor
-Oleksandr destructor
-Oleksandr destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-Tata-3 Tata 1999 destructor
-5.6 diesel destructor
-bus destructor
-A-092 Bogdan 1988 destructor
-5.2 disel destructor
-Oleksandr destructor
-Oleksandr destructor
-Oleksandr destructor

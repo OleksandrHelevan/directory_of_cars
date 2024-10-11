@@ -4,5 +4,4 @@ Danilo	Yakymiv	123
 Vlad Ostrovskiy Dnepr
 Anton Olyanyuk 1503
 John	Snow	12345678
-Oleksandr	dknv	143
 Maks	Hrushko	123

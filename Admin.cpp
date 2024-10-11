@@ -247,10 +247,21 @@ void Admin::set_car() {
         FileReader::read_file(file);
         Admin::line();
 
-        cout << "Enter the choice for changing" << endl;
-
-        unique_ptr<int> choice{new int};
-        cin >> *choice;
+         unique_ptr<int> choice {new int{0}};
+        while(unique_ptr<int> choice1 =
+                make_unique<int>(get_input<int>("Enter the choice for changing"))
+        ) {
+             try {
+                if (*choice1 > 14 || *choice1 < 0)
+                    throw WrongChoice();
+                else {
+                    *choice = *choice1;
+                    break;
+                }
+            } catch (WrongChoice &e) {
+                cerr << e.what() << endl;
+            }
+        }
 
         ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
         for (Car &car: cars) {
@@ -392,8 +403,22 @@ void Admin::set_truck() {
         string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
         FileReader::read_file(file);
 
-        unique_ptr<int> choice{new int};
-        cin >> *choice;
+        unique_ptr<int> choice {new int{0}};
+        while(unique_ptr<int> choice1 =
+                make_unique<int>(get_input<int>("Enter the choice for changing"))
+                ) {
+            try {
+                if (*choice1 > 14 || *choice1 < 0)
+                    throw WrongChoice();
+                else {
+                    *choice = *choice1;
+                    break;
+                }
+            } catch (WrongChoice &e) {
+                cerr << e.what() << endl;
+            }
+        }
+
         ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
         for (Truck &truck: trucks) {
             if (truck.get_brand() == *brand && truck.get_model() == *model && truck.get_year() == *year &&
@@ -527,8 +552,22 @@ void Admin::set_bus() {
         string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
         FileReader::read_file(file);
 
-        unique_ptr<int> choice{new int};
-        cin >> *choice;
+        unique_ptr<int> choice {new int{0}};
+        while(unique_ptr<int> choice1 =
+                make_unique<int>(get_input<int>("Enter the choice for changing"))
+                ) {
+            try {
+                if (*choice1 > 14 || *choice1 < 0)
+                    throw WrongChoice();
+                else {
+                    *choice = *choice1;
+                    break;
+                }
+            } catch (WrongChoice &e) {
+                cerr << e.what() << endl;
+            }
+        }
+
 
         ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
 
