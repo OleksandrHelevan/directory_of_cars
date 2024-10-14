@@ -51,16 +51,16 @@ public:
     [[nodiscard]] bool sort_price_l(int pric) const;
     [[nodiscard]] bool sort_price_h(int pric) const;
 
-    void set_engine(const Engine& newEngine);
-    void set_weight(int newWeight);
-    void set_fuel_consumption(double newFuelConsumption);
-    void set_mileage(int newMileage);
-    void set_color(const string& newColor);
-    void set_brand(const string& newBrand);
-    void set_model(const string& newModel);
-    void set_year(int newYear);
-    void set_location(const string& newLocation);
-    void set_price(int newPrice);
+    void set_engine(const Engine& new_engine);
+    void set_weight(int new_weight);
+    void set_fuel_consumption(double new_consumption);
+    void set_mileage(int new_mileage);
+    void set_color(const string& new_color);
+    void set_brand(const string& new_brand);
+    void set_model(const string& new_model);
+    void set_year(int new_year);
+    void set_location(const string& new_location);
+    void set_price(int new_price);
 
     [[nodiscard]] Engine get_engine() const;
     [[nodiscard]] int get_weight() const;

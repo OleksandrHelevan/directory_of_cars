@@ -17,7 +17,6 @@ public:
         string& bran, string& mod, int new_year, string& loc, int new_price, string& wh_dr, string& tran);
     friend ostream &operator<<(ostream &os, const Car &obj);
     friend istream &operator>>(istream &is, Car &obj);
-    void get_vehicle() const override;
     ~Car() override;
     Car(const Car& other);
     Car(Car&& other) noexcept;
@@ -25,6 +24,7 @@ public:
     Car& operator=(Car&& other) noexcept;
 
     bool if_exists(const list<Car>& cars);
+    void get_vehicle() const override;
 
     [[maybe_unused]] [[nodiscard]] string get_wheel_drive() const;
     [[maybe_unused]] [[nodiscard]] string get_transmission() const;
@@ -34,7 +34,6 @@ public:
 
     bool sort_transmission(string& new_transmission);
     bool sort_wheel_drive(string& new_wheel_drive);
-
 };
 
 

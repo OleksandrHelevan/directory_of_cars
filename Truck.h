@@ -21,8 +21,8 @@ public:
     Truck(Truck&& other) noexcept;
     Truck& operator=(const Truck& other);
     Truck& operator=(Truck&& other) noexcept;
-    void get_vehicle() const override;
 
+    void get_vehicle() const override;
     bool if_exists(const list<Truck> &trucks);
 
     [[nodiscard]] bool sort_cargo_capacity_h(int new_cap) const;
