@@ -6,6 +6,9 @@
 #include <vector>
 #include <limits>
 #include <list>
+#include "Car.h"
+#include "Bus.h"
+#include "Truck.h"
 
 using namespace std;
 
@@ -30,6 +33,10 @@ public:
     virtual void set_bus() = 0;
 
     virtual void delete_vehicle() = 0;
+
+    virtual void car_menu() = 0;
+    virtual void truck_menu() = 0;
+    virtual void bus_menu() = 0;
 
 };
 

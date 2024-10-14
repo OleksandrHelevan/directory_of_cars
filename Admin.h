@@ -55,6 +55,10 @@ public:
 
     void delete_vehicle() override;
 
+    void car_menu() override;
+    void truck_menu() override;
+    void bus_menu() override;
+
     template <typename T>
     static T get_input(const string& prompt) {
         T value;

@@ -110,6 +110,16 @@ bool Admin::search() {
     return false;
 }
 
+void Admin::car_menu() {
+    cout<<"You are not Client"<<endl;
+}
+void Admin::truck_menu() {
+    cout<<"You are not Client"<<endl;
+}
+void Admin::bus_menu() {
+    cout<<"You are not Client"<<endl;
+}
+
 void Admin::add_car() {
     unique_ptr<string> brand =
             get_string_input("Enter BRAND of car:");

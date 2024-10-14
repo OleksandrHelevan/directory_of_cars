@@ -51,9 +51,9 @@ public:
     static list<Truck> trucks_from_file();
     static list<Bus> buses_from_file();
 
-    static void car_menu();
-    static void truck_menu();
-    static void bus_menu();
+    void car_menu() override;
+    void truck_menu() override;
+    void bus_menu() override;
 
     friend ostream& operator<<(ostream& os, const User& obj);
     friend istream& operator>>(istream& is, User& obj);

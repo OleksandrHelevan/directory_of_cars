@@ -213,15 +213,15 @@ int main() {
                                     break;
                                 }
                                 case 4: {
-                                    User::car_menu();
+                                    user.car_menu();
                                     break;
                                 }
                                 case 5: {
-                                    User::truck_menu();
+                                    user.truck_menu();
                                     break;
                                 }
                                 case 6: {
-                                    User::bus_menu();
+                                    user.bus_menu();
                                     break;
                                 }
                                 case 0: {

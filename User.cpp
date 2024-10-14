@@ -105,7 +105,7 @@ list<Car> User::cars_from_file() {
 }
 
 list<Bus> User::buses_from_file() {
-    shared_ptr<Bus> bus{new Bus};
+    shared_ptr<Bus> bus{new Bus()};
     list<Bus> buses;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
     while (fin >> *bus) {
@@ -116,7 +116,7 @@ list<Bus> User::buses_from_file() {
 }
 
 list<Truck> User::trucks_from_file() {
-    shared_ptr<Truck> truck{new Truck};
+    shared_ptr<Truck> truck{new Truck()};
     list<Truck> trucks;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
     while (fin >> *truck) {
