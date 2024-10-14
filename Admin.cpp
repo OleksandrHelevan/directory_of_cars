@@ -1,55 +1,70 @@
-
 #include "Admin.h"
 #include <fstream>
 #include "ClientNotFound.h"
 #include "WrongChoice.h"
-#include "CriteriaReader.h"
+#include "FileReader.h"
 #include <list>
 #include <algorithm>
+#include <memory>
 
+using namespace std;
 
-Admin::Admin(std::string &new_name, std::string &new_surname, std::string &new_password)
-        : Person(new_name, new_surname, new_password) {
+Admin::Admin(string &new_name, string &new_surname, string &new_password) {
+    name = make_unique<string>(new_name);
+    surname = make_unique<string>(new_surname);
+    password = make_unique<string>(new_password);
+
     ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
     fout << "authorization of ADMIN" << endl;
     fout.close();
 }
 
-Admin::Admin(const Admin &other) = default;
+[[maybe_unused]] Admin::Admin(const Admin &other) {
+    name = make_unique<string>(*other.name);
+    surname = make_unique<string>(*other.surname);
+    password = make_unique<string>(*other.password);
+}
 
-Admin::Admin(Admin &&other) noexcept: Person(std::move(other)) {}
+[[maybe_unused]] Admin::Admin(Admin &&other) noexcept
+        : name(std::move(other.name)), surname(std::move(other.surname)), password(std::move(other.password)) {}
 
-Admin::Admin() : Person() {}
+Admin::Admin() : name(make_unique<string>("")), surname(make_unique<string>("")), password(make_unique<string>("")) {}
 
 ostream &operator<<(ostream &os, const Admin &obj) {
-    os << static_cast<Person &>((Person &) obj);
+    os << "Name: " << *obj.name << ", Surname: " << *obj.surname << ", Password: " << *obj.password;
     return os;
 }
 
 istream &operator>>(istream &is, Admin &obj) {
-    is >> static_cast<Person &>(obj);
+    string name, surname, password;
+    is >> name >> surname >> password;
+    obj.set_name(name);
+    obj.set_surname(surname);
+    obj.set_password(password);
     return is;
 }
 
 Admin &Admin::operator=(Admin &&other) noexcept {
     if (this == &other) return *this;
-    Person::operator=(std::move(other));
+    name = std::move(other.name);
+    surname = std::move(other.surname);
+    password = std::move(other.password);
     return *this;
 }
 
 Admin &Admin::operator=(const Admin &other) {
     if (this == &other) return *this;
-    Person::operator=(other);
+    name = make_unique<string>(*other.name);
+    surname = make_unique<string>(*other.surname);
+    password = make_unique<string>(*other.password);
     return *this;
 }
 
-
 void Admin::write_to_file() {
     ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)", ios_base::app);
-    fout << get_name() << "\t" << get_surname() << "\t" << get_password() << endl;
+    fout << *name << "\t" << *surname << "\t" << *password << endl;
     fout.close();
 }
-
 
 Admin::~Admin() noexcept {
     ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)", ios_base::app);
@@ -57,13 +72,36 @@ Admin::~Admin() noexcept {
     fout.close();
 }
 
+string Admin::get_name() const {
+    return *name;
+}
+
+[[maybe_unused]] string Admin::get_surname() const {
+    return *surname;
+}
+
+[[maybe_unused]] string Admin::get_password() const {
+    return *password;
+}
+
+void Admin::set_name(const string &new_name) {
+    name = make_unique<string>(new_name);
+}
+
+void Admin::set_surname(const string &new_surname) {
+    surname = make_unique<string>(new_surname);
+}
+
+void Admin::set_password(const string &new_password) {
+    password = make_unique<string>(new_password);
+}
+
 
 bool Admin::search() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)");
     Admin A;
     while (fin >> A) {
-        if (A.get_name() == Person::get_name() && A.get_surname() == Person::get_surname()
-            && A.get_password() == Person::get_password()) {
+        if (*A.name == *name && *A.surname == *surname && *A.password == *password) {
             fin.close();
             return true;
         }
@@ -71,7 +109,6 @@ bool Admin::search() {
     fin.close();
     return false;
 }
-
 
 void Admin::add_car() {
     unique_ptr<string> brand =
@@ -197,6 +234,39 @@ void Admin::add_bus() {
     fout.close();
 }
 
+list<Car> Admin::cars_from_file() {
+    shared_ptr<Car> car{new Car()};
+    list<Car> cars;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+    while (fin >> *car) {
+        cars.push_back(*car);
+    }
+    fin.close();
+    return cars;
+}
+
+list<Bus> Admin::buses_from_file() {
+    shared_ptr<Bus> bus{new Bus};
+    list<Bus> buses;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
+    while (fin >> *bus) {
+        buses.push_back(*bus);
+    }
+    fin.close();
+    return buses;
+}
+
+list<Truck> Admin::trucks_from_file() {
+    shared_ptr<Truck> truck{new Truck};
+    list<Truck> trucks;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    while (fin >> *truck) {
+        trucks.push_back(*truck);
+    }
+    fin.close();
+    return trucks;
+}
+
 void Admin::set_car() {
 
     list<Car> cars = Admin::cars_from_file();
@@ -219,16 +289,15 @@ void Admin::set_car() {
         if (!car1.if_exists(cars))
             throw runtime_error("Car was not found!");
 
-        string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
-        CriteriaReader reader(file);
-        reader.read_file();
+        unique_ptr<string> file{new string {R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+        FileReader::read_file(*file);
         Admin::line();
 
-         unique_ptr<int> choice {new int{0}};
-        while(unique_ptr<int> choice1 =
+        unique_ptr<int> choice{new int{0}};
+        while (unique_ptr<int> choice1 =
                 make_unique<int>(get_input<int>("Enter the choice for changing"))
-        ) {
-             try {
+                ) {
+            try {
                 if (*choice1 > 14 || *choice1 < 0)
                     throw WrongChoice();
                 else {
@@ -336,7 +405,8 @@ void Admin::set_car() {
                     }
                     case 14: {
                         unique_ptr<string> wheelDrive =
-                                get_string_input("Enter WHEEL DRIVE of car (full/back/front) would you like to change:");
+                                get_string_input(
+                                        "Enter WHEEL DRIVE of car (full/back/front) would you like to change:");
                         car.set_wheel_drive(*wheelDrive);
                         break;
                     }
@@ -377,12 +447,11 @@ void Admin::set_truck() {
         if (!truck1.if_exists(trucks))
             throw runtime_error("Truck was not found!");
 
-        string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
-        CriteriaReader reader(file);
-        reader.read_file();
+        unique_ptr<string> file{new string {R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)"}};
+        FileReader::read_file(*file);
 
-        unique_ptr<int> choice {new int{0}};
-        while(unique_ptr<int> choice1 =
+        unique_ptr<int> choice{new int{0}};
+        while (unique_ptr<int> choice1 =
                 make_unique<int>(get_input<int>("Enter the choice for changing"))
                 ) {
             try {
@@ -426,7 +495,8 @@ void Admin::set_truck() {
                     case 4: {
                         unique_ptr<double> capacity =
                                 make_unique<double>(
-                                        get_input<double>("Enter CAPACITY of truck's engine would you like to change:"));
+                                        get_input<double>(
+                                                "Enter CAPACITY of truck's engine would you like to change:"));
                         Engine engine = truck.get_engine();
                         engine.set_capacity(*capacity);
                         truck.set_engine(engine);
@@ -527,12 +597,11 @@ void Admin::set_bus() {
         if (!bus1.if_exists(buses))
             throw runtime_error("Truck was not found!");
 
-        string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
-        CriteriaReader reader(file);
-        reader.read_file();
+        unique_ptr<string> file {new string {R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)"}};
+        FileReader::read_file(*file);
 
-        unique_ptr<int> choice {new int{0}};
-        while(unique_ptr<int> choice1 =
+        unique_ptr<int> choice{new int{0}};
+        while (unique_ptr<int> choice1 =
                 make_unique<int>(get_input<int>("Enter the choice for changing"))
                 ) {
             try {
@@ -700,7 +769,7 @@ void Admin::delete_vehicle() {
                     }
                 }
                 fout.close();
-                cout<<"Car have been deleted!"<<endl;
+                cout << "Car have been deleted!" << endl;
                 line();
                 break;
             }
@@ -736,7 +805,7 @@ void Admin::delete_vehicle() {
                     }
                 }
                 fout.close();
-                cout<<"Truck have been deleted!"<<endl;
+                cout << "Truck have been deleted!" << endl;
                 line();
                 break;
             }
@@ -773,7 +842,7 @@ void Admin::delete_vehicle() {
                     }
                 }
                 fout.close();
-                cout<<"Bus have been deleted!"<<endl;
+                cout << "Bus have been deleted!" << endl;
                 line();
                 break;
             }

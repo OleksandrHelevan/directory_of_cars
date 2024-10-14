@@ -11,7 +11,7 @@
 #include "ClientNotFound.h"
 #include <algorithm>
 #include <limits>
-#include "InstructionReader.h"
+#include "FileReader.h"
 
 using namespace std;
 
@@ -21,6 +21,7 @@ void line(){
 }
 
 int main() {
+    line();
     cout<<"WELCOME!"<<endl;
     line();
     unique_ptr<int> choice{new int};
@@ -126,7 +127,7 @@ int main() {
                                     }
                                     case 10:
                                     {
-                                        Admin::delete_vehicle();
+                                        admin.delete_vehicle();
                                         break;
                                     }
                                     case 0: {
@@ -243,9 +244,9 @@ int main() {
                 }
                 case 3: {
                     line();
-                    string instruction_file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\instruction.txt)";
-                    InstructionReader reader(instruction_file);
-                    reader.read_file();
+                    unique_ptr <string> instruction_file
+                    {new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\instruction.txt)"}};
+                    FileReader::read_file(*instruction_file);
                     cout<<endl;
                     line();
                     break;

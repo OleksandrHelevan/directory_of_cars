@@ -2,45 +2,59 @@
 #include "User.h"
 #include <fstream>
 #include "WrongChoice.h"
-#include "CriteriaReader.h"
+#include "FileReader.h"
 
-User::User(std::string &new_name, std::string &new_surname, std::string &new_password)
-: Person(new_name,new_surname,new_password){}
+User::User(string &new_name, string &new_surname, string &new_password)
+        : name(make_unique<string>(new_name)), surname(make_unique<string>(new_surname)),
+          password(make_unique<string>(new_password)) {}
 
-User::User(const User &other) : Person(other){}
+User::User(const User &other) {
+    name = make_unique<string>(*other.name);
+    surname = make_unique<string>(*other.surname);
+    password = make_unique<string>(*other.password);
+}
 
-User::User(User &&other) noexcept : Person(std::move(other)){}
+User::User(User &&other) noexcept {
+    name = std::move(other.name);
+    surname = std::move(other.surname);
+    password = std::move(other.password);
+}
 
-User::User() :Person(){}
+User::User() : name(make_unique<string>()), surname(make_unique<string>()), password(make_unique<string>()) {}
 
-ostream& operator<<(ostream& os, const User& obj){
-    os<<static_cast<Person&>((Person &) obj);
+ostream &operator<<(ostream &os, const User &obj) {
+    os << *obj.name << "\t" << *obj.surname << "\t" << *obj.password;
     return os;
 }
 
-istream& operator>>(istream& is, User& obj){
-    is>>static_cast<Person&>(obj);
+istream &operator>>(istream &is, User &obj) {
+    is >> *obj.name >> *obj.surname >> *obj.password;
     return is;
 }
 
 User &User::operator=(User &&other) noexcept {
     if (this == &other) return *this;
-    Person::operator=(std::move(other));
+    name = std::move(other.name);
+    surname = std::move(other.surname);
+    password = std::move(other.password);
     return *this;
 }
 
 User &User::operator=(const User &other) {
     if (this == &other) return *this;
-    Person::operator=(other);
+    name = make_unique<string>(*other.name);
+    surname = make_unique<string>(*other.surname);
+    password = make_unique<string>(*other.password);
     return *this;
 }
 
 bool User::search() {
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)");
     User A;
-    while(fin >> A){
-        if(A.get_name() == Person::get_name() && A.get_surname() == Person::get_surname()
-           && A.get_password() == Person::get_password()){
+    while (fin >> A) {
+        if (A.get_name() == this->get_name() &&
+            A.get_surname() == this->get_surname() &&
+            A.get_password() == this->get_password()) {
             fin.close();
             return true;
         }
@@ -55,28 +69,112 @@ void User::write_to_file() {
     fout.close();
 }
 
+string User::get_name() const {
+    return *name;
+}
+
+string User::get_surname() const {
+    return *surname;
+}
+
+string User::get_password() const {
+    return *password;
+}
+
+void User::set_name(const string &new_name) {
+    *name = new_name;
+}
+
+void User::set_surname(const string &new_surname) {
+    *surname = new_surname;
+}
+
+void User::set_password(const string &new_password) {
+    *password = new_password;
+}
+
+list <Car> User::cars_from_file() {
+    shared_ptr<Car> car{new Car()};
+    list <Car> cars;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+    while (fin >> *car) {
+        cars.push_back(*car);
+    }
+    fin.close();
+    return cars;
+}
+
+list <Bus> User::buses_from_file() {
+    shared_ptr<Bus> bus{new Bus};
+    list <Bus> buses;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
+    while (fin >> *bus) {
+        buses.push_back(*bus);
+    }
+    fin.close();
+    return buses;
+}
+
+list <Truck> User::trucks_from_file() {
+    shared_ptr<Truck> truck{new Truck};
+    list <Truck> trucks;
+    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    while (fin >> *truck) {
+        trucks.push_back(*truck);
+    }
+    fin.close();
+    return trucks;
+}
+
+void User::add_car() {
+    cout << "You are not admin!!!" << endl;
+}
+
+void User::add_truck() {
+    cout << "You are not admin!!!" << endl;
+}
+
+void User::add_bus() {
+    cout << "You are not admin!!!" << endl;
+}
+
+void User::set_car() {
+    cout << "You are not admin!!!" << endl;
+}
+
+void User::set_truck() {
+    cout << "You are not admin!!!" << endl;
+}
+
+void User::set_bus() {
+    cout << "You are not admin!!!" << endl;
+}
+
+void User::delete_vehicle() {
+    cout << "You are not admin!!!" << endl;
+}
 
 void User::car_menu() {
-    cout<<"CARS filter by:"<<endl;
-    string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)";
-    CriteriaReader reader(file);
-    reader.read_file();
-    cout<<endl;
+    cout << "CARS filter by:" << endl;
+    unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+    FileReader::read_file(*file);
+
+    cout << endl;
 
     unique_ptr<int> choice{new int};
-    cin>>*choice;
+    cin >> *choice;
     list<Car> cars = cars_from_file();
     try {
         switch (*choice) {
             case 1: {
                 unique_ptr<int> value =
-                make_unique<int>(User::get_input<int>("Enter the year you want to start from"));
+                        make_unique<int>(User::get_input<int>("Enter the year you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower year \n2 - higher year"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower year \n2 - higher year"));
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
@@ -103,8 +201,8 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 2: {
@@ -113,10 +211,10 @@ void User::car_menu() {
                                                  ("Enter the weight of car you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower weight \n2 - higher weight"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower weight \n2 - higher weight"));
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
@@ -142,18 +240,19 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 3: {
                 unique_ptr<double> value =
-                make_unique<double>(User::get_input<double>("Enter the power of car`s engine you want to start from"));
+                        make_unique<double>(
+                                User::get_input<double>("Enter the power of car`s engine you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower power \n2 - higher power"));
+                            make_unique<int>(User::get_input<int>("1 - lower power \n2 - higher power"));
                     User::line();
 
                     if (*choice1 == 1) {
@@ -176,18 +275,19 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 4: {
                 unique_ptr<double> value =
-                make_unique<double>(User::get_input<double>("Enter the capacity of car`s engine you want to start from"));
+                        make_unique<double>(
+                                User::get_input<double>("Enter the capacity of car`s engine you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower capacity \n2 - higher capacity"));
+                            make_unique<int>(User::get_input<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
 
                     if (*choice1 == 1) {
@@ -210,17 +310,17 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 5: {
                 unique_ptr<string> value =
                         get_string_input("Enter the fuel of car you want to have");
-                    User::line();
-                    cars.sort([](const Car &a, const Car &b) {
-                        return a.get_year() < b.get_year();
-                    });
+                User::line();
+                cars.sort([](const Car &a, const Car &b) {
+                    return a.get_year() < b.get_year();
+                });
                 for_each(cars.begin(), cars.end(), [&value](Car &car) {
                     if (car.sort_fuel(*value)) {
                         car.get_vehicle();
@@ -231,14 +331,14 @@ void User::car_menu() {
             }
             case 6: {
                 unique_ptr<double> value =
-                    make_unique<double>(User::get_input<double>
-                                                ("Enter the consumption of car you want to start from"));
+                        make_unique<double>(User::get_input<double>
+                                                    ("Enter the consumption of car you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower consumption \n2 - higher consumption"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower consumption \n2 - higher consumption"));
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
@@ -264,8 +364,8 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -274,9 +374,9 @@ void User::car_menu() {
                         make_unique<int>(User::get_input<int>("Enter the mileage you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower mileage \n2 - higher mileage"));
+                            make_unique<int>(User::get_input<int>("1 - lower mileage \n2 - higher mileage"));
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
@@ -303,8 +403,8 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -377,9 +477,9 @@ void User::car_menu() {
                         make_unique<int>(User::get_input<int>("Enter the price you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower price \n2 - higher price"));
+                            make_unique<int>(User::get_input<int>("1 - lower price \n2 - higher price"));
                     User::line();
 
                     cars.sort([](const Car &a, const Car &b) {
@@ -406,8 +506,8 @@ void User::car_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
 
                 break;
@@ -449,22 +549,21 @@ void User::car_menu() {
             }
 
         }
-    }catch (WrongChoice& e){
-        cerr<<e.what()<<endl;
+    } catch (WrongChoice &e) {
+        cerr << e.what() << endl;
     }
 }
 
 void User::truck_menu() {
-    cout<<"TRUCKS filter by:"<<endl;
-    string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)";
-    CriteriaReader reader(file);
-    reader.read_file();
-    cout<<endl;
+    cout << "TRUCKS filter by:" << endl;
+    unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+    FileReader::read_file(*file);
+    cout << endl;
 
-    cout<<endl;
+    cout << endl;
 
     unique_ptr<int> choice{new int};
-    cin>>*choice;
+    cin >> *choice;
     list<Truck> trucks = trucks_from_file();
     try {
         switch (*choice) {
@@ -473,10 +572,10 @@ void User::truck_menu() {
                         make_unique<int>(User::get_input<int>("Enter the year you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower year \n2 - higher year"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower year \n2 - higher year"));
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
@@ -503,8 +602,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 2: {
@@ -513,10 +612,10 @@ void User::truck_menu() {
                                                  ("Enter the weight of truck you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower weight \n2 - higher weight"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower weight \n2 - higher weight"));
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
@@ -542,8 +641,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 3: {
@@ -552,9 +651,9 @@ void User::truck_menu() {
                                 User::get_input<double>("Enter the power of truck`s engine you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower power \n2 - higher power"));
+                            make_unique<int>(User::get_input<int>("1 - lower power \n2 - higher power"));
                     User::line();
 
                     if (*choice1 == 1) {
@@ -577,8 +676,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 4: {
@@ -587,9 +686,9 @@ void User::truck_menu() {
                                 User::get_input<double>("Enter the capacity of truck`s engine you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower capacity \n2 - higher capacity"));
+                            make_unique<int>(User::get_input<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
 
                     if (*choice1 == 1) {
@@ -612,8 +711,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 5: {
@@ -637,10 +736,10 @@ void User::truck_menu() {
                                                     ("Enter the consumption of truck you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower consumption \n2 - higher consumption"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower consumption \n2 - higher consumption"));
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
@@ -666,8 +765,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -676,9 +775,9 @@ void User::truck_menu() {
                         make_unique<int>(User::get_input<int>("Enter the mileage you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower mileage \n2 - higher mileage"));
+                            make_unique<int>(User::get_input<int>("1 - lower mileage \n2 - higher mileage"));
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
@@ -705,8 +804,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -779,9 +878,9 @@ void User::truck_menu() {
                         make_unique<int>(User::get_input<int>("Enter the price you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower price \n2 - higher price"));
+                            make_unique<int>(User::get_input<int>("1 - lower price \n2 - higher price"));
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
@@ -808,8 +907,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
 
                 break;
@@ -820,10 +919,10 @@ void User::truck_menu() {
                                                  ("Enter the cargo capacity you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower year \n2 - higher year"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower year \n2 - higher year"));
                     User::line();
 
                     trucks.sort([](const Truck &a, const Truck &b) {
@@ -850,8 +949,8 @@ void User::truck_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -861,22 +960,21 @@ void User::truck_menu() {
             }
 
         }
-    }catch (WrongChoice& e){
-        cerr<<e.what()<<endl;
+    } catch (WrongChoice &e) {
+        cerr << e.what() << endl;
     }
 }
 
 void User::bus_menu() {
-    cout<<"BUSES filter by:"<<endl;
-    string file = R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)";
-    CriteriaReader reader(file);
-    reader.read_file();
-    cout<<endl;
+    cout << "BUSES filter by:" << endl;
+    unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+    FileReader::read_file(*file);
+    cout << endl;
 
-    cout<<endl;
+    cout << endl;
 
     unique_ptr<int> choice{new int};
-    cin>>*choice;
+    cin >> *choice;
     list<Bus> buses = buses_from_file();
     try {
         switch (*choice) {
@@ -885,10 +983,10 @@ void User::bus_menu() {
                         make_unique<int>(User::get_input<int>("Enter the year you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower year \n2 - higher year"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower year \n2 - higher year"));
                     User::line();
 
                     buses.sort([](const Bus &a, const Bus &b) {
@@ -915,8 +1013,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 2: {
@@ -925,10 +1023,10 @@ void User::bus_menu() {
                                                  ("Enter the weight of truck you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower weight \n2 - higher weight"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower weight \n2 - higher weight"));
                     User::line();
 
                     buses.sort([](const Bus &a, const Bus &b) {
@@ -954,8 +1052,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 3: {
@@ -964,9 +1062,9 @@ void User::bus_menu() {
                                 User::get_input<double>("Enter the power of truck`s engine you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower power \n2 - higher power"));
+                            make_unique<int>(User::get_input<int>("1 - lower power \n2 - higher power"));
                     User::line();
 
                     if (*choice1 == 1) {
@@ -989,8 +1087,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 4: {
@@ -999,9 +1097,9 @@ void User::bus_menu() {
                                 User::get_input<double>("Enter the capacity of truck`s engine you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower capacity \n2 - higher capacity"));
+                            make_unique<int>(User::get_input<int>("1 - lower capacity \n2 - higher capacity"));
                     User::line();
 
                     if (*choice1 == 1) {
@@ -1024,8 +1122,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
             }
             case 5: {
@@ -1049,10 +1147,10 @@ void User::bus_menu() {
                                                     ("Enter the consumption of truck you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower consumption \n2 - higher consumption"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower consumption \n2 - higher consumption"));
                     User::line();
 
                     buses.sort([](const Bus &a, const Bus &b) {
@@ -1078,8 +1176,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -1088,9 +1186,9 @@ void User::bus_menu() {
                         make_unique<int>(User::get_input<int>("Enter the mileage you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower mileage \n2 - higher mileage"));
+                            make_unique<int>(User::get_input<int>("1 - lower mileage \n2 - higher mileage"));
                     User::line();
 
                     buses.sort([](const Bus &a, const Bus &b) {
@@ -1117,8 +1215,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -1191,9 +1289,9 @@ void User::bus_menu() {
                         make_unique<int>(User::get_input<int>("Enter the price you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>("1 - lower price \n2 - higher price"));
+                            make_unique<int>(User::get_input<int>("1 - lower price \n2 - higher price"));
                     User::line();
 
                     buses.sort([](const Bus &a, const Bus &b) {
@@ -1220,8 +1318,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
 
                 break;
@@ -1232,10 +1330,10 @@ void User::bus_menu() {
                                                  ("Enter the cargo capacity you want to start from"));
                 try {
                     User::line();
-                    cout<<"Enter what do you want to get"<<endl;
+                    cout << "Enter what do you want to get" << endl;
                     unique_ptr<int> choice1 =
-                            make_unique<int> (User::get_input<int>
-                                                      ("1 - lower year \n2 - higher year"));
+                            make_unique<int>(User::get_input<int>
+                                                     ("1 - lower year \n2 - higher year"));
                     User::line();
 
                     buses.sort([](const Bus &a, const Bus &b) {
@@ -1262,8 +1360,8 @@ void User::bus_menu() {
                     } else {
                         throw WrongChoice();
                     }
-                }catch(WrongChoice& e){
-                    cerr<<e.what()<<endl;
+                } catch (WrongChoice &e) {
+                    cerr << e.what() << endl;
                 }
                 break;
             }
@@ -1273,7 +1371,7 @@ void User::bus_menu() {
             }
 
         }
-    }catch (WrongChoice& e){
-        cerr<<e.what()<<endl;
+    } catch (WrongChoice &e) {
+        cerr << e.what() << endl;
     }
 }
