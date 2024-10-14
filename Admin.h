@@ -27,6 +27,9 @@ public:
     Admin& operator=(Admin &&other) noexcept;
     Admin& operator=(const Admin &other);
 
+    friend ostream& operator<<(ostream& os, const Admin& obj);
+    friend istream& operator>>(istream& is, Admin& obj);
+
     [[nodiscard]] string get_name() const;
     [[maybe_unused]] [[nodiscard]] string get_surname() const;
     [[maybe_unused]] [[nodiscard]] string get_password() const;
@@ -51,9 +54,6 @@ public:
     static list <Bus> buses_from_file();
 
     void delete_vehicle() override;
-
-    friend ostream& operator<<(ostream& os, const Admin& obj);
-    friend istream& operator>>(istream& is, Admin& obj);
 
     template <typename T>
     static T get_input(const string& prompt) {

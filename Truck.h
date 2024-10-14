@@ -7,7 +7,7 @@
 using namespace std;
 
 class Truck :public Vehicle{
-int cargo_capacity;
+int cargo_capacity{};
 
 public:
     Truck();

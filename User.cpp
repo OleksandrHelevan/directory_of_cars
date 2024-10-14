@@ -93,9 +93,9 @@ void User::set_password(const string &new_password) {
     *password = new_password;
 }
 
-list <Car> User::cars_from_file() {
+list<Car> User::cars_from_file() {
     shared_ptr<Car> car{new Car()};
-    list <Car> cars;
+    list<Car> cars;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
     while (fin >> *car) {
         cars.push_back(*car);
@@ -104,9 +104,9 @@ list <Car> User::cars_from_file() {
     return cars;
 }
 
-list <Bus> User::buses_from_file() {
+list<Bus> User::buses_from_file() {
     shared_ptr<Bus> bus{new Bus};
-    list <Bus> buses;
+    list<Bus> buses;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
     while (fin >> *bus) {
         buses.push_back(*bus);
@@ -115,9 +115,9 @@ list <Bus> User::buses_from_file() {
     return buses;
 }
 
-list <Truck> User::trucks_from_file() {
+list<Truck> User::trucks_from_file() {
     shared_ptr<Truck> truck{new Truck};
-    list <Truck> trucks;
+    list<Truck> trucks;
     ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
     while (fin >> *truck) {
         trucks.push_back(*truck);
@@ -972,7 +972,6 @@ void User::bus_menu() {
     cout << endl;
 
     cout << endl;
-
     unique_ptr<int> choice{new int};
     cin >> *choice;
     list<Bus> buses = buses_from_file();

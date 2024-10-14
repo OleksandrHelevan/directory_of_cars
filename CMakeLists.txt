@@ -4,7 +4,6 @@ project(directory_of_cars)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(directory_of_cars main.cpp
-        Person.cpp
         Person.h
         Engine.cpp
         Engine.h

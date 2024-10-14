@@ -22,14 +22,15 @@ public:
     Vehicle();
     Vehicle(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
             string& bran, string& mod, int new_year, string& loc, int new_price);
+    virtual ~Vehicle();
     Vehicle(const Vehicle& other);
     Vehicle(int year, string &brand, string &model, string &color);
     Vehicle(Vehicle&& other) noexcept;
     Vehicle& operator=(const Vehicle& other);
     Vehicle& operator=(Vehicle&& other) noexcept;
+
     friend ostream &operator<<(ostream &os, const Vehicle &obj);
     friend istream &operator>>(istream &is, Vehicle &obj);
-    virtual ~Vehicle();
 
     bool sort_capacity_l(double cap);
     bool sort_power_l(double pow);

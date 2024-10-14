@@ -15,13 +15,14 @@ public:
     Car(int year, string &brand, string &model, string &color);
     Car(Engine& new_engine, int weigh, double consumption, int new_mileage, string& col,
         string& bran, string& mod, int new_year, string& loc, int new_price, string& wh_dr, string& tran);
-    friend ostream &operator<<(ostream &os, const Car &obj);
-    friend istream &operator>>(istream &is, Car &obj);
     ~Car() override;
     Car(const Car& other);
     Car(Car&& other) noexcept;
     Car& operator=(const Car& other);
     Car& operator=(Car&& other) noexcept;
+
+    friend ostream &operator<<(ostream &os, const Car &obj);
+    friend istream &operator>>(istream &is, Car &obj);
 
     bool if_exists(const list<Car>& cars);
     void get_vehicle() const override;

@@ -15,22 +15,22 @@
 
 using namespace std;
 
-void line(){
-    cout<<"------------------------------------------------------------"
-          "------------------------------------------------------------";
+void line() {
+    cout << "------------------------------------------------------------"
+            "------------------------------------------------------------";
 }
 
 int main() {
     line();
-    cout<<"WELCOME!"<<endl;
+    cout << "WELCOME!" << endl;
     line();
     unique_ptr<int> choice{new int};
     while (true) {
         try {
-            cout<<"MAKE YOUR CHOICE:"<<endl;
-            cout<<"1 - ADMIN"<<endl<<"2 - CLIENT"<<endl<<"3 - VIEW THE INSTRUCTIONS"<<endl;
+            cout << "MAKE YOUR CHOICE:" << endl;
+            cout << "1 - ADMIN" << endl << "2 - CLIENT" << endl << "3 - VIEW THE INSTRUCTIONS" << endl;
             line();
-            cin>>*choice;
+            cin >> *choice;
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -100,8 +100,8 @@ int main() {
                                         for_each(trucks.begin(), trucks.end(),
                                                  [](Truck &truck) {
                                                      truck.get_vehicle();
-                                        line();
-                                        });
+                                                     line();
+                                                 });
                                         break;
                                     }
                                     case 6: {
@@ -109,24 +109,23 @@ int main() {
                                         for_each(buses.begin(), buses.end(),
                                                  [](Bus &bus) {
                                                      bus.get_vehicle();
-                                        line();
-                                        });
+                                                     line();
+                                                 });
                                         break;
                                     }
                                     case 7: {
                                         admin.set_car();
                                         break;
                                     }
-                                    case 8:{
+                                    case 8: {
                                         admin.set_truck();
                                         break;
                                     }
-                                    case 9:{
+                                    case 9: {
                                         admin.set_bus();
                                         break;
                                     }
-                                    case 10:
-                                    {
+                                    case 10: {
                                         admin.delete_vehicle();
                                         break;
                                     }
@@ -137,14 +136,13 @@ int main() {
                                         throw WrongChoice();
                                     }
                                 }
-                            }catch (const WrongChoice& e) {
+                            } catch (const WrongChoice &e) {
                                 cerr << e.what() << endl;
-                            }catch (const WrongType& e){
+                            } catch (const WrongType &e) {
                                 cerr << e.what() << endl;
                             }
                         }
-                    }
-                    else{
+                    } else {
                         throw ClientNotFound();
                     }
                 }
@@ -162,92 +160,91 @@ int main() {
                     line();
 
                     User user(*name, *surname, *password);
-                    if(user.search()){
-                        cout << "Hello " << user.get_name() <<"!" << endl;
-                    }
-                    else {
+                    if (user.search()) {
+                        cout << "Hello " << user.get_name() << "!" << endl;
+                    } else {
                         user.write_to_file();
-                        cout << "Hello new client: " << user.get_name() <<"!" << endl;
+                        cout << "Hello new client: " << user.get_name() << "!" << endl;
                     }
 
-                        while (true) {
-                            try {
-                                cout << "Choose what do you want" << endl;
-                                cout << "1 - to view all CARS" << endl;
-                                cout << "2 - to view all TRUCKS" << endl;
-                                cout << "3 - to view all BUSES" << endl;
-                                cout << "4 - to use some filter for CARS" << endl;
-                                cout << "5 - to use some filter for TRUCKS" << endl;
-                                cout << "6 - to use some filter for BUSES" << endl;
-                                cout << "0 - STOP " << endl;
-                                unique_ptr<int> choice1{new int};
-                                cin >> *choice1;
-                                line();
-                                if (cin.fail()) {
-                                    cin.clear();
-                                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                    throw WrongType();
-                                }
-                                switch (*choice1) {
-                                    case 1:{
-                                        list<Car> cars = User::cars_from_file();
-                                        for_each(cars.begin(), cars.end(), [](Car &car) {
-                                            car.get_vehicle();
-                                            line();
-                                        });
-                                        break;
-                                    }
-                                    case 2:{
-                                        list<Truck> trucks = User::trucks_from_file();
-                                        for_each(trucks.begin(), trucks.end(),
-                                                 [](Truck &truck) {
-                                                     truck.get_vehicle();
-                                                     line();
-                                                 });
-                                        break;
-                                    }
-                                    case 3:{
-                                        list<Bus> buses = User::buses_from_file();
-                                        for_each(buses.begin(), buses.end(),
-                                                 [](Bus &bus) {
-                                                     bus.get_vehicle();
-                                                     line();
-                                                 });
-                                        break;
-                                    }
-                                    case 4:{
-                                        User::car_menu();
-                                        break;
-                                    }
-                                    case 5:{
-                                        User::truck_menu();
-                                        break;
-                                    }
-                                    case 6:{
-                                        User::bus_menu();
-                                        break;
-                                    }
-                                    case 0:{
-                                        return 0;
-                                    }
-                                    default: {
-                                        throw WrongChoice();
-                                    }
-                                }
-                            } catch (const WrongChoice &e) {
-                                cerr << e.what() << endl;
-                            } catch (const WrongType &e) {
-                                cerr << e.what() << endl;
+                    while (true) {
+                        try {
+                            cout << "Choose what do you want" << endl;
+                            cout << "1 - to view all CARS" << endl;
+                            cout << "2 - to view all TRUCKS" << endl;
+                            cout << "3 - to view all BUSES" << endl;
+                            cout << "4 - to use some filter for CARS" << endl;
+                            cout << "5 - to use some filter for TRUCKS" << endl;
+                            cout << "6 - to use some filter for BUSES" << endl;
+                            cout << "0 - STOP " << endl;
+                            unique_ptr<int> choice1{new int};
+                            cin >> *choice1;
+                            line();
+                            if (cin.fail()) {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                throw WrongType();
                             }
+                            switch (*choice1) {
+                                case 1: {
+                                    list<Car> cars = User::cars_from_file();
+                                    for_each(cars.begin(), cars.end(), [](Car &car) {
+                                        car.get_vehicle();
+                                        line();
+                                    });
+                                    break;
+                                }
+                                case 2: {
+                                    list<Truck> trucks = User::trucks_from_file();
+                                    for_each(trucks.begin(), trucks.end(),
+                                             [](Truck &truck) {
+                                                 truck.get_vehicle();
+                                                 line();
+                                             });
+                                    break;
+                                }
+                                case 3: {
+                                    list<Bus> buses = User::buses_from_file();
+                                    for_each(buses.begin(), buses.end(),
+                                             [](Bus &bus) {
+                                                 bus.get_vehicle();
+                                                 line();
+                                             });
+                                    break;
+                                }
+                                case 4: {
+                                    User::car_menu();
+                                    break;
+                                }
+                                case 5: {
+                                    User::truck_menu();
+                                    break;
+                                }
+                                case 6: {
+                                    User::bus_menu();
+                                    break;
+                                }
+                                case 0: {
+                                    return 0;
+                                }
+                                default: {
+                                    throw WrongChoice();
+                                }
+                            }
+                        } catch (const WrongChoice &e) {
+                            cerr << e.what() << endl;
+                        } catch (const WrongType &e) {
+                            cerr << e.what() << endl;
                         }
+                    }
 
                 }
                 case 3: {
                     line();
-                    unique_ptr <string> instruction_file
-                    {new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\instruction.txt)"}};
+                    unique_ptr<string> instruction_file
+                            {new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\instruction.txt)"}};
                     FileReader::read_file(*instruction_file);
-                    cout<<endl;
+                    cout << endl;
                     line();
                     break;
                 }
@@ -256,12 +253,12 @@ int main() {
                 }
 
             }
-        }catch (const WrongChoice& e) {
+        } catch (const WrongChoice &e) {
             cerr << e.what() << endl;
-        }catch (const WrongType& e){
+        } catch (const WrongType &e) {
             cerr << e.what() << endl;
-        }catch(const ClientNotFound &e){
-            cerr<< e.what()<<endl;
+        } catch (const ClientNotFound &e) {
+            cerr << e.what() << endl;
         }
 
     }

@@ -289,7 +289,7 @@ void Admin::set_car() {
         if (!car1.if_exists(cars))
             throw runtime_error("Car was not found!");
 
-        unique_ptr<string> file{new string {R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+        unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
         FileReader::read_file(*file);
         Admin::line();
 
@@ -447,7 +447,7 @@ void Admin::set_truck() {
         if (!truck1.if_exists(trucks))
             throw runtime_error("Truck was not found!");
 
-        unique_ptr<string> file{new string {R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)"}};
+        unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)"}};
         FileReader::read_file(*file);
 
         unique_ptr<int> choice{new int{0}};
@@ -597,7 +597,7 @@ void Admin::set_bus() {
         if (!bus1.if_exists(buses))
             throw runtime_error("Truck was not found!");
 
-        unique_ptr<string> file {new string {R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)"}};
+        unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)"}};
         FileReader::read_file(*file);
 
         unique_ptr<int> choice{new int{0}};

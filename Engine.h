@@ -18,6 +18,7 @@ public:
     Engine(const Engine &other);
     Engine& operator=(const Engine& other);
     Engine& operator=(Engine&& other) noexcept;
+
     friend ostream &operator<<(ostream& os, const Engine& obj);
     friend istream &operator>>(istream& is, Engine& engine);
 
