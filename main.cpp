@@ -51,7 +51,7 @@ int main() {
                     line();
                     Admin admin(*name, *surname, *password);
                     if (admin.search()) {
-                        cout << "Hello" << " " << admin.get_name() << endl;
+                        cout << "Hello" << " " << admin.get_name() << "!" << endl;
                         while (true) {
                             try {
                                 cout << "Choose what do you want" << endl;
@@ -65,6 +65,7 @@ int main() {
                                 cout << "8 - to change some criteria of TRUCK" << endl;
                                 cout << "9 - to change some criteria of BUS" << endl;
                                 cout << "10 - to delete some VEHICLE" << endl;
+                                cout << "11 - to add new admin" << endl;
                                 cout << "0 - STOP " << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
@@ -127,6 +128,23 @@ int main() {
                                     }
                                     case 10: {
                                         admin.delete_vehicle();
+                                        break;
+                                    }
+                                    case 11: {
+                                        unique_ptr<string> new_name{new string};
+                                        unique_ptr<string> new_surname{new string};
+                                        unique_ptr<string> new_password{new string};
+                                        cout << "Enter name of new admin:" << endl;
+                                        cin >> *new_name;
+                                        cout << "Enter surname of new admin:" << endl;
+                                        cin >> *new_surname;
+                                        cout << "Enter password for new admin:" << endl;
+                                        cin >> *new_password;
+                                        line();
+                                        Admin new_admin(*new_name, *new_surname, *new_password);
+                                        new_admin.write_to_file();
+                                        cout << "Admin was added successfully" << endl;
+                                        line();
                                         break;
                                     }
                                     case 0: {

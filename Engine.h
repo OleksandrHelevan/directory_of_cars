@@ -26,7 +26,7 @@ public:
     void set_fuel(string& new_fuel);
     void set_power(double new_power);
 
-    [[maybe_unused]]double get_capacity();
+    [[maybe_unused]] double get_capacity();
     [[maybe_unused]]string get_fuel();
     [[maybe_unused]] [[nodiscard]] double get_power() const;
 

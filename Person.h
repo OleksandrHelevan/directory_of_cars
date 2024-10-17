@@ -35,7 +35,9 @@ public:
     virtual void delete_vehicle() = 0;
 
     virtual void car_menu() = 0;
+
     virtual void truck_menu() = 0;
+
     virtual void bus_menu() = 0;
 
 };

@@ -26,13 +26,16 @@ public:
     friend ostream& operator<<(ostream& os, const User& obj);
     friend istream& operator>>(istream& is, User& obj);
 
+    friend ostream& operator<<(ostream& os, const User& obj);
+    friend istream& operator>>(istream& is, User& obj);
+
     [[nodiscard]] string get_name() const;
     [[nodiscard]] string get_surname() const;
     [[nodiscard]] string get_password() const;
 
-    [[maybe_unused]] void set_name(const string& new_name);
-    [[maybe_unused]] void set_surname(const string& new_surname);
-    [[maybe_unused]] void set_password(const string& new_password);
+    [[maybe_unused]] void set_name(string& new_name);
+    [[maybe_unused]] void set_surname(string& new_surname);
+    [[maybe_unused]] void set_password(string& new_password);
 
     void write_to_file() override;
     bool search() override;
@@ -54,9 +57,6 @@ public:
     void car_menu() override;
     void truck_menu() override;
     void bus_menu() override;
-
-    friend ostream& operator<<(ostream& os, const User& obj);
-    friend istream& operator>>(istream& is, User& obj);
 
     template <typename T>
     static T get_input(const string& prompt) {

@@ -81,15 +81,15 @@ string User::get_password() const {
     return *password;
 }
 
-void User::set_name(const string &new_name) {
+void User::set_name(string &new_name) {
     *name = new_name;
 }
 
-void User::set_surname(const string &new_surname) {
+void User::set_surname(string &new_surname) {
     *surname = new_surname;
 }
 
-void User::set_password(const string &new_password) {
+void User::set_password(string &new_password) {
     *password = new_password;
 }
 
