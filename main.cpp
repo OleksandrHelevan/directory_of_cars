@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <limits>
 #include "FileReader.h"
+#include "WrongTypeVehicle.h"
 
 using namespace std;
 
@@ -157,6 +158,8 @@ int main() {
                             } catch (const WrongChoice &e) {
                                 cerr << e.what() << endl;
                             } catch (const WrongType &e) {
+                                cerr << e.what() << endl;
+                            } catch (const WrongTypeVehicle &e){
                                 cerr << e.what() << endl;
                             }
                         }

@@ -6,6 +6,8 @@
 #include <list>
 #include <algorithm>
 #include <memory>
+#include "WrongTypeVehicle.h"
+#include "WrongYear.h"
 
 using namespace std;
 
@@ -125,8 +127,20 @@ void Admin::add_car() {
             get_string_input("Enter BRAND of car:");
     unique_ptr<string> model =
             get_string_input("Enter MODEL of car:");
-    unique_ptr<int> year =
-            make_unique<int>(get_input<int>("Enter YEAR of car:"));
+    unique_ptr<int> year;
+    while(true){
+        try {
+            year = make_unique<int>(get_input<int>("Enter YEAR of car:"));
+
+            if (*year < 1900 || *year > 2024)
+                throw WrongYear();
+
+            else break;
+        }catch (const WrongYear &e){
+            cerr<<e.what()<<endl;
+        }
+    }
+
     unique_ptr<string> color =
             get_string_input("Enter COLOR of car:");
     unique_ptr<double> capacity =
@@ -140,6 +154,10 @@ void Admin::add_car() {
 
     unique_ptr<int> weight =
             make_unique<int>(get_input<int>("Enter WEIGHT of car (kg):"));
+
+    if(*weight>3500)
+        throw WrongTypeVehicle();
+
     unique_ptr<double> fuelConsumption =
             make_unique<double>(get_input<double>("Enter FUEL CONSUMPTION of car (liters/100km):"));
     unique_ptr<int> mileage =
@@ -168,8 +186,20 @@ void Admin::add_truck() {
             get_string_input("Enter BRAND of truck:");
     unique_ptr<string> model =
             get_string_input("Enter MODEL of truck:");
-    unique_ptr<int> year =
-            make_unique<int>(get_input<int>("Enter YEAR of truck:"));
+    unique_ptr<int> year;
+    while(true){
+        try {
+            year = make_unique<int>(get_input<int>("Enter YEAR of truck:"));
+
+            if (*year < 1900 || *year > 2024)
+                throw WrongYear();
+
+            else break;
+        }catch (const WrongYear &e){
+            cerr<<e.what()<<endl;
+        }
+    }
+
     unique_ptr<string> color =
             get_string_input("Enter COLOR of truck:");
     unique_ptr<double> capacity =
@@ -185,6 +215,10 @@ void Admin::add_truck() {
             make_unique<int>(get_input<int>("Enter WEIGHT of truck (kg):"));
     unique_ptr<double> fuelConsumption =
             make_unique<double>(get_input<double>("Enter FUEL CONSUMPTION of truck (liters/100km):"));
+
+    if(*weight<=3500)
+        throw WrongTypeVehicle();
+
     unique_ptr<int> mileage =
             make_unique<int>(get_input<int>("Enter MILEAGE of truck (thousands of km):"));
     unique_ptr<string> location =
@@ -209,8 +243,24 @@ void Admin::add_bus() {
             get_string_input("Enter BRAND of bus:");
     unique_ptr<string> model =
             get_string_input("Enter MODEL of bus:");
-    unique_ptr<int> year =
-            make_unique<int>(get_input<int>("Enter YEAR of bus:"));
+
+    unique_ptr<int> year;
+    while(true){
+        try {
+            year = make_unique<int>(get_input<int>("Enter YEAR of bus:"));
+
+            if (*year < 1900 || *year > 2024)
+                throw WrongYear();
+
+            else break;
+        }catch (const WrongYear &e){
+            cerr<<e.what()<<endl;
+        }
+    }
+    if(*year<1900 || *year > 2024)
+        throw WrongYear();
+
+
     unique_ptr<string> color =
             get_string_input("Enter COLOR of bus:");
     unique_ptr<double> capacity =
@@ -224,6 +274,10 @@ void Admin::add_bus() {
 
     unique_ptr<int> weight =
             make_unique<int>(get_input<int>("Enter WEIGHT of bus (kg):"));
+
+    if(*weight<=3500)
+        throw WrongTypeVehicle();
+
     unique_ptr<double> fuelConsumption =
             make_unique<double>(get_input<double>("Enter FUEL CONSUMPTION of bus (liters/100km):"));
     unique_ptr<int> mileage =
@@ -292,6 +346,7 @@ void Admin::set_car() {
             get_string_input("Enter MODEL of car:");
     unique_ptr<int> year =
             make_unique<int>(get_input<int>("Enter YEAR of car:"));
+
     unique_ptr<string> color =
             get_string_input("Enter COLOR of car:");
     try {
@@ -325,15 +380,29 @@ void Admin::set_car() {
                 car.get_color() == *color) {
                 switch (*choice) {
                     case 1: {
-                        unique_ptr<int> year1 = make_unique<int>
-                                (get_input<int>("Enter YEAR of car would you like to change:"));
-                        car.set_year(*year1);
+                        while (true) {
+                            try {
+                                unique_ptr<int> year1 = make_unique<int>
+                                        (get_input<int>("Enter YEAR of car would you like to change:"));
+
+                                if (*year1 < 1900 || *year1 > 2024)
+                                    throw WrongYear();
+                                else {
+                                    car.set_year(*year1);
+                                    break;
+                                }
+                            } catch (const WrongYear &e) {
+                                cerr << e.what() << endl;
+                            }
+                        }
                         break;
                     }
                     case 2: {
                         unique_ptr<int> weight =
                                 make_unique<int>(get_input<int>("Enter WEIGHT of car would you like to change:"));
                         car.set_weight(*weight);
+                        if(*weight>3500)
+                            throw WrongTypeVehicle();
                         break;
                     }
                     case 3: {
@@ -482,15 +551,29 @@ void Admin::set_truck() {
                 truck.get_color() == *color) {
                 switch (*choice) {
                     case 1: {
-                        unique_ptr<int> year1 = make_unique<int>
-                                (get_input<int>("Enter YEAR of truck would you like to change:"));
-                        truck.set_year(*year1);
+                        while (true) {
+                            try {
+                                unique_ptr<int> year1 = make_unique<int>
+                                        (get_input<int>("Enter YEAR of truck would you like to change:"));
+
+                                if (*year1 < 1900 || *year1 > 2024)
+                                    throw WrongYear();
+                                else {
+                                    truck.set_year(*year1);
+                                    break;
+                                }
+                            } catch (const WrongYear &e) {
+                                cerr << e.what() << endl;
+                            }
+                        }
                         break;
                     }
                     case 2: {
                         unique_ptr<int> weight =
                                 make_unique<int>(get_input<int>("Enter WEIGHT of truck would you like to change:"));
                         truck.set_weight(*weight);
+                        if(*weight<=3500)
+                            throw WrongTypeVehicle();
                         break;
                     }
                     case 3: {
@@ -634,15 +717,31 @@ void Admin::set_bus() {
                 bus.get_color() == *color) {
                 switch (*choice) {
                     case 1: {
-                        unique_ptr<int> year1 = make_unique<int>
-                                (get_input<int>("Enter YEAR of bus would you like to change:"));
-                        bus.set_year(*year1);
+                        while (true) {
+                            try {
+                                unique_ptr<int> year1 = make_unique<int>
+                                        (get_input<int>("Enter YEAR of bus would you like to change:"));
+
+                                if (*year1 < 1900 || *year1 > 2024)
+                                    throw WrongYear();
+                                else {
+                                    bus.set_year(*year1);
+                                    break;
+                                }
+                            } catch (const WrongYear &e) {
+                                cerr << e.what() << endl;
+                            }
+                        }
                         break;
                     }
                     case 2: {
                         unique_ptr<int> weight =
                                 make_unique<int>(get_input<int>("Enter WEIGHT of bus would you like to change:"));
                         bus.set_weight(*weight);
+
+                        if(*weight<=3500)
+                            throw WrongTypeVehicle();
+
                         break;
                     }
                     case 3: {
