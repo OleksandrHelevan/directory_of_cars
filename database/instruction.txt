@@ -1,6 +1,7 @@
 1. Program:
  	- Language of this program is ENGLISH: you must enter all data in English!
 	- All choices in this program entered with numbers!
+	- All constructions which has two or more words must be entered through "-" (use kebab-case)!
 
 2. Main menu: 
 	In main menu you must authorize or register:

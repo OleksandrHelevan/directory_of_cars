@@ -1,33 +1,80 @@
 authorization of ADMIN
 Admin destructor
-car destructor
-Octavia Skoda 2005 destructor
-1.6 petrol destructor
-car destructor
-Octavia Skoda 2005 destructor
-0   destructor
-car destructor
-X5 BMW 2017 destructor
-2.5 disel destructor
-car destructor
-X7 BMW 2022 destructor
-3 disel destructor
-car destructor
-URUS Lamborgini 2024 destructor
-30 95 destructor
-car destructor
-Touareg Volkswagen 2017 destructor
-3 diesel destructor
-car destructor
-Focus Ford 2015 destructor
-1.6 petroil destructor
-car destructor
-Logan Dacia 2007 destructor
-1.6 dizel destructor
-car destructor
-Octavia Skoda 2006 destructor
-1.6 petrol destructor
-Admin destructor
-car destructor
-Octavia Skoda 2006 destructor
-1.6 petrol destructor
+truck destructor
+K Renault 2022 destructor
+14.5 diesel destructor
+truck destructor
+TGX MAN 2018 destructor
+12.4 diesel destructor
+truck destructor
+R-450 Scania 2020 destructor
+13 diesel destructor
+truck destructor
+FH16 Volvo 2019 destructor
+16.5 diesel destructor
+truck destructor
+Arocs Mercedes 2021 destructor
+15.6 diesel destructor
+truck destructor
+Stralis Iveco 2017 destructor
+11 diesel destructor
+truck destructor
+XF DAF 2020 destructor
+12.9 diesel destructor
+truck destructor
+T460 Renault 2021 destructor
+11.5 diesel destructor
+truck destructor
+TGM MAN 2016 destructor
+10.5 diesel destructor
+truck destructor
+P-20 Scania 2015 destructor
+9 diesel destructor
+truck destructor
+FL Volvo 2018 destructor
+10.2 diesel destructor
+truck destructor
+500 Hino 2022 destructor
+10.8 diesel destructor
+truck destructor
+Cascadia Freightliner 2020 destructor
+12.6 diesel destructor
+truck destructor
+T680 Kenworth 2021 destructor
+11.9 diesel destructor
+truck destructor
+579 Peterbilt 2019 destructor
+13.5 diesel destructor
+truck destructor
+Anthem Mack 2018 destructor
+14.2 diesel destructor
+truck destructor
+NPR Isuzu 2022 destructor
+6.5 diesel destructor
+truck destructor
+UD Nissan 2017 destructor
+7.8 diesel destructor
+truck destructor
+Canter Fuso 2020 destructor
+5 diesel destructor
+truck destructor
+300 Hino 2021 destructor
+4.5 diesel destructor
+truck destructor
+VNL Volvo 2016 destructor
+15.1 diesel destructor
+truck destructor
+LT International 2020 destructor
+12 diesel destructor
+truck destructor
+Actros Mercedes 2021 destructor
+13 diesel destructor
+truck destructor
+R-580 Scania 2019 destructor
+14 diesel destructor
+truck destructor
+TGS MAN 2017 destructor
+10.9 diesel destructor
+truck destructor
+K Renault 2022 destructor
+14.5 diesel destructor

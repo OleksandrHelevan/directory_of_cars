@@ -1,14 +1,14 @@
-1 - YEAR of car
-2 - WEIGHT of car
+1 - YEAR of the car
+2 - WEIGHT of the car
 3 - engine`s POWER
 4 - engine`s CAPACITY
 5 - engine`s FUEL
-6 - FUEL CONSUMPTION of car
-7 - MILEAGE of car
-8 - BRAND of car
-9 - MODEL of car
-10 - COLOR of car
-11 - LOCATION of car
-12 - PRICE of car
-13 - TRANSMISSION of car
-14 - WHEEL DRIVE of car
+6 - FUEL CONSUMPTION of the car
+7 - MILEAGE of the car
+8 - BRAND of the car
+9 - MODEL of the car
+10 - COLOR of the car
+11 - LOCATION of the car
+12 - PRICE of the car
+13 - TRANSMISSION of the car
+14 - WHEEL DRIVE of the car
