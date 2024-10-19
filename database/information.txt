@@ -1,3 +1,33 @@
 authorization of ADMIN
 Admin destructor
-1.6 patrol destructor
+car destructor
+Octavia Skoda 2005 destructor
+1.6 petrol destructor
+car destructor
+Octavia Skoda 2005 destructor
+0   destructor
+car destructor
+X5 BMW 2017 destructor
+2.5 disel destructor
+car destructor
+X7 BMW 2022 destructor
+3 disel destructor
+car destructor
+URUS Lamborgini 2024 destructor
+30 95 destructor
+car destructor
+Touareg Volkswagen 2017 destructor
+3 diesel destructor
+car destructor
+Focus Ford 2015 destructor
+1.6 petroil destructor
+car destructor
+Logan Dacia 2007 destructor
+1.6 dizel destructor
+car destructor
+Octavia Skoda 2006 destructor
+1.6 petrol destructor
+Admin destructor
+car destructor
+Octavia Skoda 2006 destructor
+1.6 petrol destructor

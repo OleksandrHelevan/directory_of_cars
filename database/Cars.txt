@@ -1,6 +1,7 @@
 BMW	X5	black	2017	22500	0	8	2500	Chernivtsi	2.5	disel	200	full	automatics
 BMW	X7	white	2022	49000	0	12	3000	Kharkiv	3	disel	350	full	automathics
 Lamborgini	URUS	red	2024	45000	0	12	2000	Khust	30	95	450	back	automathics
-Volkswagen	Touareg	blue	2017	25000	100	8	2250	Odesa	3	disel	3	full	automatics
+Volkswagen	Touareg	blue	2017	25000	100	8	2250	Odesa	3	diesel	3	full	automatics
 Ford	Focus	red	2015	4000	5	8	2000	Odesa	1.6	petroil	300	back	authomatics
 Dacia	Logan	gray	2007	4500	200	8	2300	Chernivtsi	1.6	dizel	300	back	mechanics
+Skoda	Octavia	gray	2006	4800	280	8	2100	Rivne	1.6	petrol	75	back	authomatic

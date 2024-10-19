@@ -158,8 +158,7 @@ void User::car_menu() {
     cout << "CARS filter by:" << endl;
     unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
     FileReader::read_file(*file);
-
-    cout << endl;
+    line();
 
     unique_ptr<int> choice{new int};
     cin >> *choice;
@@ -316,7 +315,7 @@ void User::car_menu() {
             }
             case 5: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the fuel of car you want to have");
+                        get_string_input("Enter the fuel of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -332,7 +331,7 @@ void User::car_menu() {
             case 6: {
                 unique_ptr<double> value =
                         make_unique<double>(User::get_input<double>
-                                                    ("Enter the consumption of car you want to start from"));
+                                                    ("Enter the consumption of the car you want to start from"));
                 try {
                     User::line();
                     cout << "Enter what do you want to get" << endl;
@@ -410,7 +409,7 @@ void User::car_menu() {
             }
             case 8: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the brand of car you want to have");
+                        get_string_input("Enter the brand of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -426,7 +425,7 @@ void User::car_menu() {
             }
             case 9: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the model of car you want to have");
+                        get_string_input("Enter the model of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -442,7 +441,7 @@ void User::car_menu() {
             }
             case 10: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the color of car you want to have");
+                        get_string_input("Enter the color of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -458,7 +457,7 @@ void User::car_menu() {
             }
             case 11: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the location of car you want to have");
+                        get_string_input("Enter the location of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -514,7 +513,7 @@ void User::car_menu() {
             }
             case 13: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the transmission of car you want to have");
+                        get_string_input("Enter the transmission of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -530,7 +529,7 @@ void User::car_menu() {
             }
             case 14: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the wheel drive of car you want to have");
+                        get_string_input("Enter the wheel drive of the car which you want to get");
                 User::line();
                 cars.sort([](const Car &a, const Car &b) {
                     return a.get_year() < b.get_year();
@@ -558,9 +557,7 @@ void User::truck_menu() {
     cout << "TRUCKS filter by:" << endl;
     unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
     FileReader::read_file(*file);
-    cout << endl;
-
-    cout << endl;
+    line();
 
     unique_ptr<int> choice{new int};
     cin >> *choice;
@@ -717,7 +714,7 @@ void User::truck_menu() {
             }
             case 5: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the fuel of truck you want to have");
+                        get_string_input("Enter the fuel of the truck which you want to get");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
                     return a.get_year() < b.get_year();
@@ -811,7 +808,7 @@ void User::truck_menu() {
             }
             case 8: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the brand of truck you want to have");
+                        get_string_input("Enter the brand of the truck which you want to get");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
                     return a.get_year() < b.get_year();
@@ -827,7 +824,7 @@ void User::truck_menu() {
             }
             case 9: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the model of truck you want to have");
+                        get_string_input("Enter the model of the truck which you want to get");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
                     return a.get_year() < b.get_year();
@@ -843,7 +840,7 @@ void User::truck_menu() {
             }
             case 10: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the color of truck you want to have");
+                        get_string_input("Enter the color of the truck which you want to get");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
                     return a.get_year() < b.get_year();
@@ -859,7 +856,7 @@ void User::truck_menu() {
             }
             case 11: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the location of truck you want to have");
+                        get_string_input("Enter the location of the truck which you want to get");
                 User::line();
                 trucks.sort([](const Truck &a, const Truck &b) {
                     return a.get_year() < b.get_year();
@@ -969,9 +966,8 @@ void User::bus_menu() {
     cout << "BUSES filter by:" << endl;
     unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
     FileReader::read_file(*file);
-    cout << endl;
+    line();
 
-    cout << endl;
     unique_ptr<int> choice{new int};
     cin >> *choice;
     list<Bus> buses = buses_from_file();
@@ -1127,7 +1123,7 @@ void User::bus_menu() {
             }
             case 5: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the fuel of truck you want to have");
+                        get_string_input("Enter the fuel of the truck you want to get");
                 User::line();
                 buses.sort([](const Bus &a, const Bus &b) {
                     return a.get_year() < b.get_year();
@@ -1221,7 +1217,7 @@ void User::bus_menu() {
             }
             case 8: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the brand of truck you want to have");
+                        get_string_input("Enter the brand of the truck you want to get");
                 User::line();
                 buses.sort([](const Bus &a, const Bus &b) {
                     return a.get_year() < b.get_year();
@@ -1237,7 +1233,7 @@ void User::bus_menu() {
             }
             case 9: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the model of truck you want to have");
+                        get_string_input("Enter the model of the truck you want to get");
                 User::line();
                 buses.sort([](const Bus &a, const Bus &b) {
                     return a.get_year() < b.get_year();
@@ -1253,7 +1249,7 @@ void User::bus_menu() {
             }
             case 10: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the color of truck you want to have");
+                        get_string_input("Enter the color of the truck which you want to get");
                 User::line();
                 buses.sort([](const Bus &a, const Bus &b) {
                     return a.get_year() < b.get_year();
@@ -1269,7 +1265,7 @@ void User::bus_menu() {
             }
             case 11: {
                 unique_ptr<string> value =
-                        get_string_input("Enter the location of truck you want to have");
+                        get_string_input("Enter the location of the truck which you want to get");
                 User::line();
                 buses.sort([](const Bus &a, const Bus &b) {
                     return a.get_year() < b.get_year();

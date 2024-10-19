@@ -1,30 +1,32 @@
 1. Program:
- 	- Language of this program is ENGLISH: you must to enter all data in English!
+ 	- Language of this program is ENGLISH: you must enter all data in English!
 	- All choices in this program entered with numbers!
 
 2. Main menu: 
-	In main menu you must to authorize or register:
-2.1. If you are an ADMIN(1) you can only authorize and nothing else 
+	In main menu you must authorize or register:
+2.1. If you are an ADMIN(1) you can authorize only.
 	- Because your data have been added in database. You can`t register because of data protecting.
-2.2. If you are a CLIENT(2) it will be automatically.
-	- Everything you need is only enter data which are required of you.(name, surname, password)
+	    But if you are the ADMIN you can add new admins.
+2.2. If you are a CLIENT(2) the process of registration will be automatic.
+	- Everything you need is only to enter your data.(name, surname, password)
 
 3. After authorization or registration
-	You authorized or registered as a CLIENT, so now you have access to the database.
+	You have authorized or registered as a CLIENT, so now you have access to the database.
 	Then you need to choose which data you want to get:
-3.1. to view all CARS - you will get all cars which have been added to the database.
-3.2. to view all TRUCKS - you will get all trucks which have been added to the database.
-3.3. to view all BUSSES - you will get all busses which have been added to the database.	
+3.1. to view all CARS - you will get information about all cars which have been added to the database.
+3.2. to view all TRUCKS - you will get information about all trucks which have been added to the database.
+3.3. to view all BUSES - you will get information about all  buses which have been added to the database.
 
 4. For filter-sorting:
-	You can use some filter for this types of vehicles:
+	You can use some filter for some types of vehicles:
 	- To show newer ones or older ones, heavier or lighter in weight etc.
-	You have chose one of vehicle`s type for this program function:
-4.1 to use some filter for CARS 
-4.2 to use some filter for TRUCKS
-4.3 to use some filter for BUSSES
-	- You must to enter value (year, weight,...) for filter.
-		You will get information about vehicles begining from this value 
-		and sorted with using filter which tou have chose.
+	You have to choose one of vehicle`s type for this function:
+	- filter:
+4.1 for CARS
+4.2 for TRUCKS
+4.3 for BUSES
+	- You must enter value (year, weight,...) for filter.
+		You will get information about vehicles started from this value
+		and sorted with using filter which you have chosen.
 	- Then you have to specify which vehicles you want to get (1 or 2 choice)
 If you enter the data which are not in the database you will get nothing.

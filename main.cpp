@@ -55,19 +55,19 @@ int main() {
                         cout << "Hello" << " " << admin.get_name() << "!" << endl;
                         while (true) {
                             try {
-                                cout << "Choose what do you want" << endl;
-                                cout << "1 - to add CAR" << endl;
-                                cout << "2 - to add TRUCK" << endl;
-                                cout << "3 - to add BUS" << endl;
-                                cout << "4 - to view all CARS" << endl;
-                                cout << "5 - to view all TRUCKS" << endl;
-                                cout << "6 - to view all BUSES" << endl;
-                                cout << "7 - to change some criteria of CAR" << endl;
-                                cout << "8 - to change some criteria of TRUCK" << endl;
-                                cout << "9 - to change some criteria of BUS" << endl;
-                                cout << "10 - to delete some VEHICLE" << endl;
-                                cout << "11 - to add new admin" << endl;
-                                cout << "0 - STOP " << endl;
+                                cout << "Choose one of options" << endl;
+                                cout << "1 - add CAR" << endl;
+                                cout << "2 - add TRUCK" << endl;
+                                cout << "3 - add BUS" << endl;
+                                cout << "4 - get information about all CARS" << endl;
+                                cout << "5 - get information about all TRUCKS" << endl;
+                                cout << "6 - get information about all BUSES" << endl;
+                                cout << "7 - change some criteria of CAR" << endl;
+                                cout << "8 - change some criteria of TRUCK" << endl;
+                                cout << "9 - change some criteria of BUS" << endl;
+                                cout << "10 - delete a specific VEHICLE" << endl;
+                                cout << "11 - add new admin" << endl;
+                                cout << "0 - EXIT" << endl;
                                 unique_ptr<int> choice1{new int};
                                 cin >> *choice1;
                                 line();
@@ -190,14 +190,14 @@ int main() {
 
                     while (true) {
                         try {
-                            cout << "Choose what do you want" << endl;
-                            cout << "1 - to view all CARS" << endl;
-                            cout << "2 - to view all TRUCKS" << endl;
-                            cout << "3 - to view all BUSES" << endl;
-                            cout << "4 - to use some filter for CARS" << endl;
-                            cout << "5 - to use some filter for TRUCKS" << endl;
-                            cout << "6 - to use some filter for BUSES" << endl;
-                            cout << "0 - STOP " << endl;
+                            cout << "Choose one of options" << endl;
+                            cout << "1 - get information about all CARS" << endl;
+                            cout << "2 - get information about all TRUCKS" << endl;
+                            cout << "3 - get information about all BUSES" << endl;
+                            cout << "4 - use some filter for CARS" << endl;
+                            cout << "5 - use some filter for TRUCKS" << endl;
+                            cout << "6 - use some filter for BUSES" << endl;
+                            cout << "0 - EXIT " << endl;
                             unique_ptr<int> choice1{new int};
                             cin >> *choice1;
                             line();
