@@ -40,9 +40,11 @@ bool Engine::sort_fuel(std::string &new_fuel) {
     transform(new_fuel.begin(), new_fuel.end(), new_fuel.begin(), [](char c) {
         return std::tolower(c);
     });
-    cout << new_fuel;
-    return this->fuel == new_fuel;
-
+    std::string fuel_copy = this->fuel;
+    transform(fuel_copy.begin(), fuel_copy.end(), fuel_copy.begin(), [](char c) {
+        return std::tolower(c);
+    });
+    return fuel_copy == new_fuel;
 }
 
 Engine::Engine(const Engine &other) {

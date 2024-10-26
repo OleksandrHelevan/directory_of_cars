@@ -1,7 +1,7 @@
 1. Program:
  	- Language of this program is ENGLISH: you must enter all data in English!
 	- All choices in this program entered with numbers!
-	- All constructions which has two or more words must be entered through "-" (use kebab-case)!
+	- All constructions which has two or more words must be entered through "_" (use snake_case)!
 
 2. Main menu: 
 	In main menu you must authorize or register:
@@ -22,10 +22,9 @@
 	You can use some filter for some types of vehicles:
 	- To show newer ones or older ones, heavier or lighter in weight etc.
 	You have to choose one of vehicle`s type for this function:
-	- filter:
-4.1 for CARS
-4.2 for TRUCKS
-4.3 for BUSES
+4.1 use some filter for CARS
+4.2 se some filter for TRUCKS
+4.3 use some filter for BUSES
 	- You must enter value (year, weight,...) for filter.
 		You will get information about vehicles started from this value
 		and sorted with using filter which you have chosen.

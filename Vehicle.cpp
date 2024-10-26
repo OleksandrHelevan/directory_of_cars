@@ -11,15 +11,10 @@ Vehicle::Vehicle() : engine{Engine()}, weight{0}, fuel_consumption{0},
 
 
 Vehicle::Vehicle(Engine &new_engine, int weigh, double consumption, int new_mileage, string &col,
-                 string &bran, string &mod, int new_year, string &loc, int new_price) : engine{new_engine},
-                                                                                        weight{weigh},
-                                                                                        fuel_consumption{consumption},
-                                                                                        mileage{new_mileage},
-                                                                                        color{col},
-                                                                                        brand{bran}, model{mod},
-                                                                                        year{new_year}, location{loc},
-                                                                                        price{make_unique<int>(
-                                                                                                new_price)} {}
+                 string &bran, string &mod, int new_year, string &loc, int new_price)
+        : engine{new_engine}, weight{weigh}, fuel_consumption{consumption}, mileage{new_mileage},
+          color{col}, brand{bran}, model{mod}, year{new_year}, location{loc},
+          price{make_unique<int>(new_price)} {}
 
 Vehicle::Vehicle(const Vehicle &other) : engine{other.engine}, weight{other.weight},
                                          fuel_consumption{other.fuel_consumption}, mileage{other.mileage},
@@ -133,26 +128,43 @@ bool Vehicle::sort_mileage_l(int mil) const {
 bool Vehicle::sort_mileage_h(int mil) const {
     return this->mileage >= mil;
 }
-
-bool Vehicle::sort_model(string &mod) {
+bool Vehicle::sort_model(std::string &mod) {
     transform(mod.begin(), mod.end(), mod.begin(), [](char c) {
         return std::tolower(c);
     });
-    return this->model == mod;
+
+    std::string model_copy = this->model;
+    transform(model_copy.begin(), model_copy.end(), model_copy.begin(), [](char c) {
+        return std::tolower(c);
+    });
+
+    return model_copy == mod;
 }
 
-bool Vehicle::sort_color(string &col) {
+bool Vehicle::sort_color(std::string &col) {
     transform(col.begin(), col.end(), col.begin(), [](char c) {
         return std::tolower(c);
     });
-    return this->color == col;
+
+    std::string color_copy = this->color;
+    transform(color_copy.begin(), color_copy.end(), color_copy.begin(), [](char c) {
+        return std::tolower(c);
+    });
+
+    return color_copy == col;
 }
 
-bool Vehicle::sort_brand(string &bra) {
+bool Vehicle::sort_brand(std::string &bra) {
     transform(bra.begin(), bra.end(), bra.begin(), [](char c) {
         return std::tolower(c);
     });
-    return this->brand == bra;
+
+    std::string brand_copy = this->brand;
+    transform(brand_copy.begin(), brand_copy.end(), brand_copy.begin(), [](char c) {
+        return std::tolower(c);
+    });
+
+    return brand_copy == bra;
 }
 
 bool Vehicle::sort_year_l(int yea) const {
@@ -167,8 +179,15 @@ bool Vehicle::sort_location(std::string &loc) {
     transform(loc.begin(), loc.end(), loc.begin(), [](char c) {
         return std::tolower(c);
     });
-    return this->location == loc;
+
+    std::string location_copy = this->location;
+    transform(location_copy.begin(), location_copy.end(), location_copy.begin(), [](char c) {
+        return std::tolower(c);
+    });
+
+    return location_copy == loc;
 }
+
 
 bool Vehicle::sort_price_h(int pric) const {
     return *this->price >= pric;

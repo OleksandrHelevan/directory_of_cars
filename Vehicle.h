@@ -8,9 +8,9 @@ using namespace std;
 
 class Vehicle {
     Engine engine;
-    int weight;
-    double fuel_consumption;
-    int mileage;
+    int weight{};
+    double fuel_consumption{};
+    int mileage{};
     string color;
     string brand;
     string model;

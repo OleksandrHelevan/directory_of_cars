@@ -18,12 +18,12 @@ using namespace std;
 
 void line() {
     cout << "------------------------------------------------------------"
-            "------------------------------------------------------------";
+            "------------------------------------------------------------"<<endl;
 }
 
 int main() {
     line();
-    cout << "WELCOME!" << endl;
+    cout << "WELCOME!"<<endl;
     line();
     unique_ptr<int> choice{new int};
     while (true) {

@@ -19,7 +19,7 @@ Solaris InterUrbino red 2014    40000  100  19   12000 Khmelnytskyi    6.9    di
 Iveco   Crossway  white    2017   55000 90  18   13000 Odesa   6.7   diesel    290    45
 Setra   S-517-HD  silver   2019  82000    70 23  16000    Uzhhorod   8.5   diesel    350    56
 VDL Futura-FHD2 blue    2013   60000 150 22  14000    Dnipro 7.2 diesel  320  52
-Ikarus EAG-E91  yellow   2007  19000    240    25 12500   Ternopil  9.5  diesel   290   48
+Ikarus EA-E91  yellow   2007  19000    240    25 12500   Ternopil  9.5  diesel   290   48
 Mercedes    Travego   black 2016    72000  100  19   15500 Kharkiv 7.6 diesel  310  50
 Van-Hool TX16   red   2018  90000    60 17  14500    Odesa  8.2  diesel   350   55
 Scania  Touring  white    2014   50000 110 20  13500    Poltava    7.0    diesel 300 52

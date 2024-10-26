@@ -75,13 +75,30 @@ void Car::set_wheel_drive(string &newwheel_drive) {
     this->wheel_drive = newwheel_drive;
 }
 
-bool Car::sort_transmission(std::string &newtransmission) {
-    return transmission == newtransmission;
+bool Car::sort_transmission(std::string &new_transmission) {
+    transform(new_transmission.begin(), new_transmission.end(),new_transmission.begin(),[](char c){
+        return std::tolower(c);
+    });
+    string transmission_copy = this->transmission;
+    transform(transmission_copy.begin(), transmission_copy.end(), transmission_copy.begin(),[](char c){
+        return std::tolower(c);
+    });
+    return transmission == transmission_copy;
 }
 
-bool Car::sort_wheel_drive(std::string &newwheel_drive) {
-    return wheel_drive == newwheel_drive;
+bool Car::sort_wheel_drive(std::string &new_wheel_drive) {
+    transform(new_wheel_drive.begin(), new_wheel_drive.end(), new_wheel_drive.begin(), [](char c) {
+        return std::tolower(c);
+    });
+
+    std::string wheel_drive_copy = this->wheel_drive;
+    transform(wheel_drive_copy.begin(), wheel_drive_copy.end(), wheel_drive_copy.begin(), [](char c) {
+        return std::tolower(c);
+    });
+
+    return wheel_drive_copy == new_wheel_drive;
 }
+
 
 Car::Car(int year, std::string &brand, std::string &model, std::string &color)
         : Vehicle(year, brand, model, color) {}
