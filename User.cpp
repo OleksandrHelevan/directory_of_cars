@@ -49,7 +49,7 @@ User &User::operator=(const User &other) {
 }
 
 bool User::search() {
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)");
+    ifstream fin("database\\Users.txt");
     User A;
     while (fin >> A) {
         if (A.get_name() == this->get_name() &&
@@ -64,7 +64,7 @@ bool User::search() {
 }
 
 void User::write_to_file() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Users.txt)", ios_base::app);
+    ofstream fout("database\\Users.txt", ios_base::app);
     fout << get_name() << "\t" << get_surname() << "\t" << get_password() << endl;
     fout.close();
 }
@@ -96,7 +96,7 @@ void User::set_password(string &new_password) {
 list<Car> User::cars_from_file() {
     shared_ptr<Car> car{new Car()};
     list<Car> cars;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+    ifstream fin("database\\Cars.txt");
     while (fin >> *car) {
         cars.push_back(*car);
     }
@@ -107,7 +107,7 @@ list<Car> User::cars_from_file() {
 list<Bus> User::buses_from_file() {
     shared_ptr<Bus> bus{new Bus()};
     list<Bus> buses;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
+    ifstream fin("database\\Buses.txt");
     while (fin >> *bus) {
         buses.push_back(*bus);
     }
@@ -118,7 +118,7 @@ list<Bus> User::buses_from_file() {
 list<Truck> User::trucks_from_file() {
     shared_ptr<Truck> truck{new Truck()};
     list<Truck> trucks;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    ifstream fin("database\\Trucks.txt");
     while (fin >> *truck) {
         trucks.push_back(*truck);
     }
@@ -156,7 +156,7 @@ void User::delete_vehicle() {
 
 void User::car_menu() {
     cout << "CARS filter by:" << endl;
-    unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+    unique_ptr<string> file{new string{"database\\Car_criteria.txt"}};
     FileReader::read_file(*file);
     line();
 
@@ -555,7 +555,7 @@ void User::car_menu() {
 
 void User::truck_menu() {
     cout << "TRUCKS filter by:" << endl;
-    unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+    unique_ptr<string> file{new string{"database\\Car_criteria.txt"}};
     FileReader::read_file(*file);
     line();
 
@@ -964,7 +964,7 @@ void User::truck_menu() {
 
 void User::bus_menu() {
     cout << "BUSES filter by:" << endl;
-    unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+    unique_ptr<string> file{new string{"database\\Car_criteria.txt"}};
     FileReader::read_file(*file);
     line();
 

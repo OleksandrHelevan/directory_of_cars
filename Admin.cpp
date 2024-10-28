@@ -16,7 +16,7 @@ Admin::Admin(string &new_name, string &new_surname, string &new_password) {
     surname = make_unique<string>(new_surname);
     password = make_unique<string>(new_password);
 
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)");
+    ofstream fout("database\\Log.txt");
     fout << "authorization of ADMIN" << endl;
     fout.close();
 }
@@ -62,14 +62,14 @@ Admin &Admin::operator=(const Admin &other) {
     return *this;
 }
 
-void Admin::write_to_file() {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)", ios_base::app);
+void Admin::write_to_file(){
+    ofstream fout("database\\Admins.txt", ios_base::app);
     fout << *name << "\t" << *surname << "\t" << *password << endl;
     fout.close();
 }
 
 Admin::~Admin() noexcept {
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\information.txt)", ios_base::app);
+    ofstream fout("database\\Log.txt", ios_base::app);
     fout << "Admin destructor" << endl;
     fout.close();
 }
@@ -100,7 +100,7 @@ void Admin::set_password(const string &new_password) {
 
 
 bool Admin::search() {
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Admins.txt)");
+    ifstream fin("database\\Admins.txt");
     Admin A;
     while (fin >> A) {
         if (*A.name == *name && *A.surname == *surname && *A.password == *password) {
@@ -175,7 +175,7 @@ void Admin::add_car() {
             *color, *brand, *model, *year, *location,
             *price, *wheelDrive, *transmission);
 
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)", ios_base::app);
+    ofstream fout("database\\Car.txt", ios_base::app);
     fout << car;
     fout.close();
 }
@@ -232,7 +232,7 @@ void Admin::add_truck() {
                 *color, *brand, *model, *year, *location,
                 *price, *cargoCapacity);
 
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)", ios_base::app);
+    ofstream fout("database\\Trucks.txt", ios_base::app);
     fout << truck;
     fout.close();
 }
@@ -293,7 +293,7 @@ void Admin::add_bus() {
             *color, *brand, *model, *year, *location,
             *price, *passengerCapacity);
 
-    ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)", ios_base::app);
+    ofstream fout("database\\Buses.txt", ios_base::app);
     fout << bus;
     fout.close();
 }
@@ -301,7 +301,7 @@ void Admin::add_bus() {
 list<Car> Admin::cars_from_file() {
     shared_ptr<Car> car{new Car()};
     list<Car> cars;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+    ifstream fin("database\\Car.txt");
     while (fin >> *car) {
         cars.push_back(*car);
     }
@@ -312,7 +312,7 @@ list<Car> Admin::cars_from_file() {
 list<Bus> Admin::buses_from_file() {
     shared_ptr<Bus> bus{new Bus};
     list<Bus> buses;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
+    ifstream fin("database\\Buses.txt");
     while (fin >> *bus) {
         buses.push_back(*bus);
     }
@@ -323,7 +323,7 @@ list<Bus> Admin::buses_from_file() {
 list<Truck> Admin::trucks_from_file() {
     shared_ptr<Truck> truck{new Truck};
     list<Truck> trucks;
-    ifstream fin(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+    ifstream fin("database\\Trucks.txt");
     while (fin >> *truck) {
         trucks.push_back(*truck);
     }
@@ -354,7 +354,7 @@ void Admin::set_car() {
         if (!car1.if_exists(cars))
             throw runtime_error("Car was not found!");
 
-        unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Car_criteria.txt)"}};
+        unique_ptr<string> file{new string{"database\\Car_criteria.txt"}};
         FileReader::read_file(*file);
         Admin::line();
 
@@ -374,7 +374,7 @@ void Admin::set_car() {
             }
         }
 
-        ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+        ofstream fout("database\\Cars.txt");
         for (Car &car: cars) {
             if (car.get_brand() == *brand && car.get_model() == *model && car.get_year() == *year &&
                 car.get_color() == *color) {
@@ -526,7 +526,7 @@ void Admin::set_truck() {
         if (!truck1.if_exists(trucks))
             throw runtime_error("Truck was not found!");
 
-        unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Truck_criteria.txt)"}};
+        unique_ptr<string> file{new string{"database\\Truck_criteria.txt"}};
         FileReader::read_file(*file);
 
         unique_ptr<int> choice{new int{0}};
@@ -545,7 +545,7 @@ void Admin::set_truck() {
             }
         }
 
-        ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+        ofstream fout("database\\Trucks.txt");
         for (Truck &truck: trucks) {
             if (truck.get_brand() == *brand && truck.get_model() == *model && truck.get_year() == *year &&
                 truck.get_color() == *color) {
@@ -690,7 +690,7 @@ void Admin::set_bus() {
         if (!bus1.if_exists(buses))
             throw runtime_error("Truck was not found!");
 
-        unique_ptr<string> file{new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\Bus_criteria.txt)"}};
+        unique_ptr<string> file{new string{"database\\Bus_criteria.txt"}};
         FileReader::read_file(*file);
 
         unique_ptr<int> choice{new int{0}};
@@ -710,7 +710,7 @@ void Admin::set_bus() {
         }
 
 
-        ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Buses.txt)");
+        ofstream fout("database\\Buses.txt)");
 
         for (Bus &bus: buses) {
             if (bus.get_brand() == *brand && bus.get_model() == *model && bus.get_year() == *year &&
@@ -868,7 +868,7 @@ void Admin::delete_vehicle() {
                 Car car1(*year, *brand, *model, *color);
                 if (!car1.if_exists(cars))
                     throw runtime_error("Car was not found!");
-                ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Cars.txt)");
+                ofstream fout("database\\Cars.txt");
                 for (Car &car: cars) {
                     if (car.get_brand() == *brand && car.get_model()
                         == *model && car.get_year() == *year &&
@@ -904,7 +904,7 @@ void Admin::delete_vehicle() {
                 Truck truck1(*year, *brand, *model, *color);
                 if (!truck1.if_exists(trucks))
                     throw runtime_error("Truck was not found!");
-                ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+                ofstream fout("database\\Trucks.txt");
                 for (Truck &truck: trucks) {
                     if (truck.get_brand() == *brand && truck.get_model()
                                                        == *model && truck.get_year() == *year &&
@@ -941,7 +941,7 @@ void Admin::delete_vehicle() {
                 Bus bus1(*year, *brand, *model, *color);
                 if (!bus1.if_exists(buses))
                     throw runtime_error("Bus was not found!");
-                ofstream fout(R"(C:\Users\Admin\Desktop\directory_of_cars\database\Trucks.txt)");
+                ofstream fout("database\\Trucks.txt");
                 for (Bus &bus: buses) {
                     if (bus.get_brand() == *brand && bus.get_model()
                                                      == *model && bus.get_year() == *year &&

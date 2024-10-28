@@ -51,7 +51,10 @@ int main() {
                     cin >> *password;
                     line();
                     Admin admin(*name, *surname, *password);
-                    if (admin.search()) {
+                    bool is_main_admin = false;
+                    if(admin.get_name() == "main" && admin.get_surname() == "admin" && admin.get_password() == "143")
+                        is_main_admin = true;
+                    if (admin.search() || is_main_admin) {
                         cout << "Hello" << " " << admin.get_name() << "!" << endl;
                         while (true) {
                             try {
@@ -263,7 +266,7 @@ int main() {
                 case 3: {
                     line();
                     unique_ptr<string> instruction_file
-                            {new string{R"(C:\Users\Admin\Desktop\directory_of_cars\database\instruction.txt)"}};
+                            {new string{"database\\instruction.txt"}};
                     FileReader::read_file(*instruction_file);
                     cout << endl;
                     line();
