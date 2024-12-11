@@ -175,7 +175,7 @@ void Admin::add_car() {
             *color, *brand, *model, *year, *location,
             *price, *wheelDrive, *transmission);
 
-    ofstream fout("database\\Car.txt", ios_base::app);
+    ofstream fout("database\\Cars.txt", ios_base::app);
     fout << car;
     fout.close();
 }
@@ -301,7 +301,7 @@ void Admin::add_bus() {
 list<Car> Admin::cars_from_file() {
     shared_ptr<Car> car{new Car()};
     list<Car> cars;
-    ifstream fin("database\\Car.txt");
+    ifstream fin("database\\Cars.txt");
     while (fin >> *car) {
         cars.push_back(*car);
     }
@@ -852,8 +852,7 @@ void Admin::delete_vehicle() {
                     car.get_vehicle();
                     Admin::line();
                 });
-
-
+                
                 cout << "Enter the brand, model, year and color of CAR which you would like to delete" << endl;
                 unique_ptr<string> brand =
                         get_string_input("Enter the BRAND of the car:");

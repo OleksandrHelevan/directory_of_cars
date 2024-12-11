@@ -23,8 +23,6 @@ public:
     User& operator=(User&& other) noexcept;
     User& operator=(const User& other);
     User(const User& other);
-    friend ostream& operator<<(ostream& os, const User& obj);
-    friend istream& operator>>(istream& is, User& obj);
 
     friend ostream& operator<<(ostream& os, const User& obj);
     friend istream& operator>>(istream& is, User& obj);
